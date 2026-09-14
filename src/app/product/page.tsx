@@ -34,7 +34,7 @@ function ProductContent() {
         </p>
         <Link
           href="/scan"
-          className="inline-block rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white"
+          className="btn-primary inline-block px-6 py-3"
         >
           Escanear
         </Link>
@@ -60,7 +60,7 @@ function ProductContent() {
             href={`https://world.openfoodfacts.org/cgi/product.pl?type=add&code=${state.barcode}`}
             target="_blank"
             rel="noreferrer noopener"
-            className="rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white"
+            className="btn-primary px-6 py-3"
           >
             Añadir el producto
           </a>
@@ -84,7 +84,7 @@ function ProductContent() {
         <button
           type="button"
           onClick={retry}
-          className="rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white"
+          className="btn-primary px-6 py-3"
         >
           Reintentar
         </button>
@@ -98,7 +98,7 @@ function ProductContent() {
 function Loading() {
   return (
     <div className="space-y-4 pt-10 text-center">
-      <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-slate-300 border-t-brand-600" />
+      <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-[var(--surface-2)] border-t-[var(--brand)]" />
       <p style={{ color: "var(--muted)" }}>Consultando Open Food Facts…</p>
     </div>
   );

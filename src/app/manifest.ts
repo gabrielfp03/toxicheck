@@ -6,8 +6,8 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Toxify · Analiza lo que comes",
-    short_name: "Toxify",
+    name: "Toxicheck · Analiza lo que comes",
+    short_name: "Toxicheck",
     description:
       "Nota de 0 a 10 de cualquier alimento según sus aditivos, su calidad nutricional y su nivel de procesamiento.",
     start_url: "/",

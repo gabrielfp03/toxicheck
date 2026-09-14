@@ -1,7 +1,19 @@
 "use client";
 
+/**
+ * Historial en rejilla, con la foto de cada producto.
+ *
+ * Las imágenes se sirven con `<img>` normal y no con `next/image` a
+ * propósito: el optimizador de imágenes de Next se ejecuta como función en el
+ * servidor y facturaría por cada miniatura. Open Food Facts ya entrega sus
+ * fotos desde una CDN, así que las consumimos tal cual, con carga diferida.
+ */
+
 import Link from "next/link";
-import { clearHistory, getHistoryStats } from "@/lib/storage";
+import { useCallback } from "react";
+import { ScanFab } from "@/components/ScanFab";
+import { TrashIcon } from "@/components/icons";
+import { clearHistory, getHistoryStats, type HistoryEntry } from "@/lib/storage";
 import { useHistory } from "@/hooks/useHistory";
 
 export default function HistoryPage() {
@@ -9,89 +21,126 @@ export default function HistoryPage() {
   const entries = useHistory();
   const stats = getHistoryStats(entries);
 
-  return (
-    <div className="space-y-5 pb-8">
-      <header className="flex items-baseline justify-between">
-        <h1 className="text-xl font-bold">Historial</h1>
-        {entries.length > 0 && (
-          <button
-            type="button"
-            onClick={clearHistory}
-            className="text-sm underline"
-            style={{ color: "var(--muted)" }}
-          >
-            Borrar
-          </button>
-        )}
-      </header>
+  const onClear = useCallback(() => {
+    if (window.confirm("¿Borrar todo el historial? No se puede deshacer.")) {
+      clearHistory();
+    }
+  }, []);
 
-      {entries.length === 0 ? (
-        <div className="space-y-4 pt-10 text-center">
-          <p style={{ color: "var(--muted)" }}>
+  if (entries.length === 0) {
+    return (
+      <div className="pb-24">
+        <h1 className="text-xl font-bold">Historial</h1>
+        <div className="card mt-6 px-6 py-12 text-center">
+          <p className="muted text-balance">
             Todavía no has escaneado nada. Tu historial se guarda sólo en este
-            dispositivo.
+            dispositivo y no sale de él.
           </p>
           <Link
             href="/scan"
-            className="inline-block rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white"
+            className="btn-primary mt-6 inline-block px-6 py-3"
           >
             Escanear el primero
           </Link>
         </div>
-      ) : (
-        <>
-          <div
-            className="grid grid-cols-4 gap-2 rounded-2xl border p-4 text-center"
-            style={{ borderColor: "var(--border)", background: "var(--card)" }}
-          >
-            <Stat value={stats.total} label="Escaneos" />
-            <Stat value={stats.average.toFixed(1)} label="Media" />
-            <Stat value={stats.green} label="Buenos" />
-            <Stat value={stats.red} label="Malos" />
-          </div>
+        <ScanFab />
+      </div>
+    );
+  }
 
-          <ul className="space-y-2">
-            {entries.map((entry) => (
-              <li key={entry.barcode}>
-                <Link
-                  href={`/product?code=${entry.barcode}`}
-                  className="flex items-center gap-3 rounded-2xl border p-3"
-                  style={{ borderColor: "var(--border)" }}
-                >
-                  <span
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-bold text-white"
-                    style={{ backgroundColor: entry.hex }}
-                  >
-                    {entry.score.toFixed(1)}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-medium">
-                      {entry.name}
-                    </span>
-                    <span
-                      className="block truncate text-xs"
-                      style={{ color: "var(--muted)" }}
-                    >
-                      {entry.brand ?? entry.barcode}
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
+  return (
+    <div className="space-y-5 pb-24">
+      <header className="flex items-center justify-between">
+        <h1 className="text-xl font-bold">Historial</h1>
+        <button
+          type="button"
+          onClick={onClear}
+          className="muted flex items-center gap-1.5 rounded-lg px-2 py-1 text-sm"
+        >
+          <TrashIcon size={16} />
+          Borrar
+        </button>
+      </header>
+
+      <div className="card grid grid-cols-4 divide-x divide-[var(--border)] py-3">
+        <Stat value={stats.total} label="Escaneos" />
+        <Stat value={stats.average.toFixed(1)} label="Media" />
+        <Stat value={stats.green} label="Buenos" tone="var(--score-green)" />
+        <Stat value={stats.red} label="Malos" tone="var(--score-red)" />
+      </div>
+
+      <ul className="grid grid-cols-2 gap-3">
+        {entries.map((entry) => (
+          <li key={entry.barcode}>
+            <ProductCard entry={entry} />
+          </li>
+        ))}
+      </ul>
+
+      <ScanFab />
     </div>
   );
 }
 
-function Stat({ value, label }: { value: string | number; label: string }) {
+function ProductCard({ entry }: { entry: HistoryEntry }) {
   return (
-    <div>
-      <p className="text-lg font-bold">{value}</p>
-      <p className="text-xs" style={{ color: "var(--muted)" }}>
-        {label}
+    <Link
+      href={`/product?code=${entry.barcode}`}
+      className="card flex h-full flex-col overflow-hidden"
+    >
+      <div className="relative">
+        {entry.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={entry.imageUrl}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="product-img aspect-square w-full"
+          />
+        ) : (
+          <div className="product-img flex aspect-square w-full items-center justify-center">
+            <span className="muted text-xs">Sin foto</span>
+          </div>
+        )}
+
+        {/* La nota, sobre la foto: es lo que el usuario viene a mirar. */}
+        <span
+          className="absolute top-2 left-2 flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white tabular-nums"
+          style={{
+            backgroundColor: entry.hex,
+            boxShadow: "0 2px 8px rgb(0 0 0 / 0.35)",
+          }}
+        >
+          {entry.score.toFixed(1)}
+        </span>
+      </div>
+
+      <div className="flex flex-1 flex-col gap-0.5 p-3">
+        <p className="line-clamp-2 text-sm leading-snug font-semibold">
+          {entry.name}
+        </p>
+        <p className="muted truncate text-xs">{entry.brand ?? entry.barcode}</p>
+      </div>
+    </Link>
+  );
+}
+
+function Stat({
+  value,
+  label,
+  tone,
+}: {
+  value: string | number;
+  label: string;
+  tone?: string;
+}) {
+  return (
+    <div className="px-1 text-center">
+      <p className="text-lg font-bold tabular-nums" style={{ color: tone }}>
+        {value}
       </p>
+      <p className="muted text-[11px]">{label}</p>
     </div>
   );
 }

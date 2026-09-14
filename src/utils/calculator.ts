@@ -17,7 +17,7 @@
  *
  *   nota = 0.40 · aditivos  +  0.40 · nutrición  +  0.20 · procesamiento
  *
- *  1. ADITIVOS (40 %)
+ *  1. ADITIVOS (50 %) — el bloque con más peso
  *     Parte de 10 y resta según el riesgo de cada número E presente:
  *       sin riesgo   →  −0
  *       bajo         →  −0.5
@@ -25,13 +25,15 @@
  *       alto/tóxico  →  −3
  *     Más una penalización por "efecto cóctel" cuando hay muchos aditivos.
  *
- *  2. NUTRICIÓN (40 %)
+ *  2. NUTRICIÓN (35 %)
  *     Nutri-Score recalculado por nosotros (ver `utils/nutrition.ts`) y
  *     mapeado linealmente a 0-10.
  *
- *  3. PROCESAMIENTO (20 %)
- *     Escala NOVA: 1 → 10, 2 → 7.5, 3 → 5, 4 → 0. Un ultraprocesado pierde
- *     por tanto exactamente 2 puntos de la nota final.
+ *  3. PROCESAMIENTO (15 %)
+ *     Escala NOVA: 1 → 10, 2 → 7.5, 3 → 5, 4 → 0.
+ *     Si el producto NO tiene grupo NOVA asignado, este bloque se excluye
+ *     por completo y no afecta a la nota: los pesos de los otros dos se
+ *     renormalizan. Nunca penalizamos por un dato que no tenemos.
  *
  * --------------------------------------------------------------------------
  *  DATOS FALTANTES
@@ -62,13 +64,19 @@ import { NOVA_DESCRIPTION, NOVA_LABEL, NOVA_SUBSCORE } from "@/utils/nova";
 /* -------------------------------------------------------------------------- */
 
 /** Súbela cuando cambies la fórmula: invalida cachés e historial guardado. */
-export const ALGORITHM_VERSION = "1.0.0";
+export const ALGORITHM_VERSION = "2.0.0";
 
-/** Pesos nominales de cada bloque. Deben sumar 1. */
+/**
+ * Pesos nominales de cada bloque. Deben sumar 1.
+ *
+ * La toxicidad manda: los aditivos pesan más que nada, la nutrición va
+ * detrás y el nivel de procesamiento cierra. Es el único sitio donde hay que
+ * tocar para recalibrar la severidad del modelo.
+ */
 export const WEIGHTS = {
-  additives: 0.4,
-  nutrition: 0.4,
-  processing: 0.2,
+  additives: 0.5,
+  nutrition: 0.35,
+  processing: 0.15,
 } as const;
 
 /**
@@ -78,16 +86,25 @@ export const WEIGHTS = {
  */
 const COCKTAIL = { threshold: 5, perAdditive: 0.25, maxPenalty: 2 } as const;
 
-/** Umbrales de color y etiqueta, de mejor a peor. */
+/**
+ * Umbrales de color y etiqueta, de mejor a peor.
+ *
+ *   verde   →  7,6 – 10
+ *   naranja →  5,0 – 7,5
+ *   rojo    →  0   – 4,9
+ *
+ * Dentro del verde distinguimos dos etiquetas para dar algo de matiz, pero
+ * el color es el mismo: la banda es la que manda.
+ */
 const SCALE: readonly {
   min: number;
   label: ScoreLabel;
   color: ScoreColor;
   hex: string;
 }[] = [
-  { min: 8.5, label: "Excelente", color: "green", hex: "#15803d" },
-  { min: 6.5, label: "Bueno", color: "green", hex: "#16a34a" },
-  { min: 4.0, label: "Mediocre", color: "yellow", hex: "#eab308" },
+  { min: 9.0, label: "Excelente", color: "green", hex: "#15803d" },
+  { min: 7.6, label: "Bueno", color: "green", hex: "#16a34a" },
+  { min: 5.0, label: "Mediocre", color: "orange", hex: "#ea580c" },
   { min: -Infinity, label: "Malo", color: "red", hex: "#dc2626" },
 ];
 
@@ -267,13 +284,19 @@ function buildProcessingBlock(product: Product): ScoreBlock {
   const nova: NovaGroup | null = product.novaGroup;
   const reasons: ScoreReason[] = [];
 
+  /*
+   * Sin grupo NOVA no evaluamos: `available: false` hace que el bloque quede
+   * fuera del cálculo y que su 15 % se reparta entre aditivos y nutrición.
+   * El producto no gana ni pierde nada por un dato que no existe.
+   */
   if (nova === null) {
     reasons.push({
       block: "processing",
-      label: "Nivel de procesamiento desconocido",
-      detail: "El producto no tiene grupo NOVA asignado en Open Food Facts.",
+      label: "Sin datos de procesamiento",
+      detail:
+        "Este producto no tiene grupo NOVA en Open Food Facts, así que este apartado no se tiene en cuenta y no afecta a la nota.",
       impact: 0,
-      severity: "low",
+      severity: "none",
     });
 
     return {
@@ -315,37 +338,35 @@ function buildProcessingBlock(product: Product): ScoreBlock {
 /**
  * Cómo se combinan los tres bloques en la nota final.
  *
- * - `"linear"` (por defecto) → media ponderada 40/40/20, tal cual.
+ * - `"geometric"` (por defecto) → media geométrica ponderada. Un bloque muy
+ *   malo arrastra la nota aunque los otros sean buenos, porque los factores
+ *   multiplican en lugar de sumar.
  *
- * - `"geometric"` → media geométrica ponderada. Un bloque muy malo arrastra
- *   la nota aunque los otros sean buenos, porque los factores multiplican en
- *   lugar de sumar.
+ * - `"linear"` → media ponderada 50/35/15 literal.
  *
- * **Por qué existe la segunda opción.** La media ponderada tiene un suelo
- * estructural: el bloque de aditivos vale el 40 % y un producto sin aditivos
- * saca un 10 en él, así que aporta 4 puntos fijos pase lo que pase. Un
- * ultraprocesado a base de azúcar y grasa pero sin números E (una crema de
- * cacao, por ejemplo) no puede bajar de 4,0 ni con nutrición 0 y NOVA 4. Es
- * decir: la escala lineal nunca podrá calificarlo de "Malo".
+ * **Por qué la geométrica es el defecto.** La media ponderada tiene un suelo
+ * estructural: el bloque de aditivos vale el 50 % y un producto sin aditivos
+ * saca un 10 en él, así que aporta **5 puntos fijos** pase lo que pase. Con
+ * las bandas de color actuales (rojo por debajo de 5,0) eso significa que un
+ * ultraprocesado a base de azúcar y grasa pero sin números E problemáticos
+ * —una crema de cacao, por ejemplo— **jamás podría salir en rojo**, ni con
+ * nutrición 0 y NOVA 4. La banda roja se volvería inalcanzable para media
+ * categoría de productos.
  *
- * La media geométrica elimina ese suelo. Con un suelo blando por bloque
+ * La media geométrica elimina ese suelo, con un suelo blando por bloque
  * (`GEOMETRIC_FLOOR`) para que un único 0 no anule la nota entera:
  *
  * ```
  * nota = 10 · Π (máx(subScore_i, 1) / 10) ^ peso_i
  * ```
  *
- * Comparativa con productos reales (ver `calculator.test.ts`):
- *
- * | Producto            | linear | geometric |
- * |---------------------|--------|-----------|
- * | Agua mineral        |  10.0  |   10.0    |
- * | Lentejas cocidas    |   8.3  |    8.0    |
- * | Refresco de cola    |   4.8  |    4.2    |
- * | Crema de cacao      |   5.2  |    3.9    |
- * | Salchichas cocidas  |   2.4  |    2.3    |
+ * Para volver al comportamiento lineal basta con pasar la opción, o cambiar
+ * `DEFAULT_AGGREGATION` aquí abajo.
  */
 export type Aggregation = "linear" | "geometric";
+
+/** Forma de combinar los bloques cuando no se especifica otra cosa. */
+export const DEFAULT_AGGREGATION: Aggregation = "geometric";
 
 /** Suelo por bloque en modo geométrico: evita que un 0 anule la nota. */
 const GEOMETRIC_FLOOR = 1;
@@ -357,7 +378,7 @@ export interface CalculateOptions {
    * Por defecto `false`.
    */
   scoreMissingBlocks?: boolean;
-  /** Forma de combinar los bloques. Por defecto `"linear"`. */
+  /** Forma de combinar los bloques. Por defecto `DEFAULT_AGGREGATION`. */
   aggregation?: Aggregation;
 }
 
@@ -373,10 +394,11 @@ export interface CalculateOptions {
  * const product = normalizeOffProduct(await fetchProduct("3017620422003"));
  * const result = calculateScore(product);
  *
- * result.score;                 // 2.6
+ * result.score;                 // 4.7
  * result.color;                 // "red"
+ * result.label;                 // "Malo"
  * result.reasons[0].label;      // "Azúcares: 56.3 g/100 g"
- * result.blocks[0].subScore;    // 9.5
+ * result.blocks[0].subScore;    // 10  (su único aditivo es lecitina)
  * ```
  */
 export function calculateScore(
@@ -405,7 +427,7 @@ export function calculateScore(
     block.weighted = round2(block.subScore * normalizedWeight);
   }
 
-  const aggregation: Aggregation = options.aggregation ?? "linear";
+  const aggregation: Aggregation = options.aggregation ?? DEFAULT_AGGREGATION;
 
   const raw =
     aggregation === "geometric"

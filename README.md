@@ -1,11 +1,11 @@
-# Toxify
+# Toxicheck
 
 PWA de consumo consciente. Escaneas un alimento y obtienes una nota de **0 a 10**
 con el desglose completo de por qué. Gratis, ilimitado, sin cuentas y sin
 servidor que pagar.
 
 ```
-nota = 0,40 · aditivos  +  0,40 · nutrición  +  0,20 · procesamiento
+nota = 10 · (aditivos/10)^0,50 · (nutrición/10)^0,35 · (procesamiento/10)^0,15
 ```
 
 ---
@@ -17,7 +17,7 @@ nota = 0,40 · aditivos  +  0,40 · nutrición  +  0,20 · procesamiento
 3. [El algoritmo](#3-el-algoritmo)
 4. [Puesta en marcha paso a paso](#4-puesta-en-marcha-paso-a-paso)
 5. [Despliegue en Vercel](#5-despliegue)
-6. [Limitación conocida del modelo](#6-limitación-conocida-del-modelo)
+6. [Cómo se combinan los bloques](#6-cómo-se-combinan-los-bloques)
 7. [Hoja de ruta](#7-hoja-de-ruta)
 8. [Licencias y aviso legal](#8-licencias-y-aviso-legal)
 
@@ -53,27 +53,31 @@ existe es la del hosting estático, que en Vercel Hobby es de sobra.
 ## 2. Estructura del proyecto
 
 ```
-toxify/
+toxicheck/
 ├── public/
 │   ├── icons/                       # iconos PWA (sustitúyelos por los tuyos)
 │   └── sw.js                        # service worker escrito a mano (~90 líneas)
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx               # shell, metadatos PWA, nav inferior
+│   │   ├── layout.tsx               # shell, metadatos PWA, script de tema
 │   │   ├── globals.css              # Tailwind v4 + tokens de color
 │   │   ├── manifest.ts              # manifiesto PWA tipado
 │   │   ├── page.tsx                 # inicio + entrada manual de código
 │   │   ├── scan/page.tsx            # escáner de códigos de barras
 │   │   ├── ocr/page.tsx             # análisis de etiqueta por foto
 │   │   ├── product/page.tsx         # ficha: /product?code=XXXX  (estática)
-│   │   └── history/page.tsx         # historial local
+│   │   └── history/page.tsx         # historial en rejilla con fotos
 │   ├── components/
 │   │   ├── BarcodeScanner.tsx       # cámara + decodificación
 │   │   ├── OcrScanner.tsx           # Tesseract.js con carga diferida
 │   │   ├── ScoreGauge.tsx           # medidor circular en SVG puro
 │   │   ├── ScoreBreakdown.tsx       # los tres bloques y sus motivos
 │   │   ├── ProductView.tsx          # composición de la ficha
-│   │   ├── BottomNav.tsx
+│   │   ├── AppHeader.tsx            # barra superior de marca
+│   │   ├── ThemeToggle.tsx          # claro / oscuro / sistema
+│   │   ├── BottomNav.tsx            # pestañas inferiores
+│   │   ├── ScanFab.tsx              # botón flotante de escaneo
+│   │   ├── icons.tsx                # iconos SVG en línea
 │   │   └── ServiceWorkerRegister.tsx
 │   ├── data/
 │   │   └── additives.json           # 122 números E con riesgo y descripción
@@ -83,16 +87,17 @@ toxify/
 │   ├── lib/
 │   │   ├── openfoodfacts.ts         # cliente + normalización + validación EAN
 │   │   ├── openfoodfacts.test.ts
+│   │   ├── theme.ts                 # store de tema (sin React)
 │   │   └── storage.ts               # historial observable
 │   ├── types/
 │   │   ├── product.ts               # capa cruda (OFF) + capa normalizada
 │   │   └── score.ts                 # tipos del resultado
 │   └── utils/
 │       ├── calculator.ts            # ★ EL ALGORITMO
-│       ├── calculator.test.ts       # 40 tests
+│       ├── calculator.test.ts       # 44 tests
 │       ├── additives.ts             # normalización de códigos E y búsqueda
 │       ├── nutrition.ts             # Nutri-Score 2017 recalculado
-│       └── nova.ts                  # escala NOVA + heurística de respaldo
+│       └── nova.ts                  # escala NOVA
 ├── eslint.config.mjs
 ├── next.config.ts
 ├── postcss.config.mjs
@@ -112,7 +117,7 @@ que montes la app nativa, se copia tal cual.
 `calculateScore(product) → ScoreResult`. Función pura. Entra un `Product`
 normalizado, sale la nota **y el argumento completo** que la justifica.
 
-### Bloque 1 · Aditivos y toxicidad (40 %)
+### Bloque 1 · Aditivos y toxicidad (50 %)
 
 Parte de 10 y resta según el riesgo de cada número E, tomado de
 `data/additives.json`:
@@ -128,7 +133,7 @@ Más una penalización por **efecto cóctel**: a partir del sexto aditivo, −0,
 por cada uno hasta un máximo de −2. Un aditivo que no esté catalogado se trata
 como `low`: prudencia sin alarmismo.
 
-### Bloque 2 · Calidad nutricional (40 %)
+### Bloque 2 · Calidad nutricional (35 %)
 
 Nutri-Score (algoritmo general 2017, con la tabla alternativa de bebidas)
 **recalculado por nosotros**, no copiado de la letra que trae Open Food Facts.
@@ -136,14 +141,31 @@ La razón es que necesitamos el desglose: "el azúcar te ha costado 1,2 puntos"
 en vez de una letra opaca. Después se mapea linealmente de `[-15, 40]` a
 `[10, 0]`.
 
-### Bloque 3 · Nivel de procesamiento (20 %)
+### Bloque 3 · Nivel de procesamiento (15 %)
 
-| NOVA | Subnota | Coste en la nota final |
+| NOVA | Subnota |
+|---|---|
+| 1 · sin procesar | 10 |
+| 2 · ingrediente culinario | 7,5 |
+| 3 · procesado | 5 |
+| 4 · ultraprocesado | 0 |
+| *sin dato* | *el apartado se excluye* |
+
+**Sin grupo NOVA, cero efecto.** Si Open Food Facts no clasifica el producto,
+el apartado no se evalúa: su 15 % se reparte entre aditivos y nutrición y la
+nota sale exactamente igual que si el apartado no existiera. Hubo una
+heurística que lo adivinaba a partir de los aditivos; se retiró porque
+adivinar sólo podía penalizar. Un dato que no tenemos nunca cuenta como un
+dato malo.
+
+### Bandas de color
+
+| Banda | Nota | Etiqueta |
 |---|---|---|
-| 1 · sin procesar | 10 | 0 |
-| 2 · ingrediente culinario | 7,5 | −0,5 |
-| 3 · procesado | 5 | −1 |
-| 4 · ultraprocesado | 0 | **−2** |
+| 🔴 Rojo | 0 – 4,9 | Malo |
+| 🟠 Naranja | 5,0 – 7,5 | Mediocre |
+| 🟢 Verde | 7,6 – 8,9 | Bueno |
+| 🟢 Verde | 9,0 – 10 | Excelente |
 
 ### Datos faltantes
 
@@ -161,11 +183,11 @@ import { calculateScore } from "@/utils/calculator";
 const product = await fetchProductByBarcode("3017620422003");
 const result  = calculateScore(product);
 
-result.score;              // 5.2
-result.color;              // "yellow"
-result.label;              // "Mediocre"
+result.score;              // 4.7
+result.color;              // "red"
+result.label;              // "Malo"
 result.confidence;         // "high"
-result.reasons[0];         // { label: "Azúcares: 56.3 g/100 g", impact: -1.02, ... }
+result.reasons[0];         // { label: "Azúcares: 56.3 g/100 g", impact: -0.9, ... }
 result.blocks[2].subScore; // 0  (NOVA 4)
 ```
 
@@ -180,7 +202,7 @@ Node 20 o superior. Comprueba con `node -v`.
 ### Paso 1 · Instalar y arrancar
 
 ```bash
-cd toxify
+cd toxicheck
 npm install
 npm run dev
 ```
@@ -197,7 +219,7 @@ funciona: prueba con `3017620422003` (Nutella) o `5449000000996` (Coca-Cola).
 ```bash
 npm run typecheck   # TypeScript estricto, sin errores
 npm run lint        # ESLint 9, sin errores
-npm test            # 48 tests del algoritmo
+npm test            # 56 tests del algoritmo
 npm run build       # las 7 rutas deben salir como ○ (Static)
 ```
 
@@ -282,53 +304,68 @@ npm run build   # genera ./out
 
 ---
 
-## 6. Limitación conocida del modelo
+## 6. Cómo se combinan los bloques
 
-El modelo lineal 40/40/20 que define el producto tiene un **suelo
-estructural de 4,0**.
-
-El bloque de aditivos vale el 40 % y un producto sin aditivos saca un 10 en él,
-así que aporta 4 puntos fijos pase lo que pase. Un ultraprocesado a base de
-azúcar y grasa de palma pero sin números E problemáticos —una crema de cacao,
-por ejemplo— **no puede bajar de 4,0 aunque tenga nutrición 0 y NOVA 4**. Es
-decir: con esta fórmula nunca se le podrá poner la etiqueta "Malo".
-
-Por eso `calculateScore` acepta una segunda forma de combinar los bloques:
-
-```ts
-calculateScore(product, { aggregation: "geometric" });
-```
-
-La media geométrica ponderada multiplica en lugar de sumar, así que un bloque
-muy malo arrastra la nota entera. Con un suelo blando de 1 por bloque para que
-un solo 0 no anule el resultado:
+Los tres bloques se combinan con una **media geométrica ponderada**, no con una
+suma:
 
 ```
 nota = 10 · Π (máx(subNota_i, 1) / 10) ^ peso_i
 ```
 
-Comparativa con los productos de los tests:
+**Por qué no una suma ponderada.** El bloque de aditivos pesa el 50 % y un
+producto sin números E saca un 10 en él, así que la media ponderada le regala
+**5 puntos fijos** pase lo que pase. Como la banda roja acaba justo en 5,0, un
+ultraprocesado a base de azúcar y grasa de palma pero sin aditivos
+problemáticos —una crema de cacao, por ejemplo— **jamás podría salir en rojo**,
+ni con nutrición 0 y NOVA 4. La banda roja se volvería inalcanzable para toda
+una categoría de productos.
 
-| Producto | `linear` | `geometric` |
+La media geométrica elimina ese suelo: un apartado muy malo arrastra la nota
+entera en lugar de compensarse. El `máx(subNota, 1)` es un suelo blando por
+bloque para que un único 0 no anule el resultado.
+
+Comparativa con productos reales:
+
+| Producto | geométrica | lineal |
 |---|---|---|
-| Agua mineral | 10,0 | 10,0 |
-| Lentejas cocidas | 8,3 | 8,0 |
-| Refresco de cola | 4,8 | 4,2 |
-| **Crema de cacao** | **5,2** | **3,9** |
-| Salchichas cocidas | 2,4 | 2,3 |
+| Agua mineral | 10,0 🟢 | 10,0 |
+| Lentejas cocidas | 8,4 🟢 | 8,6 |
+| Galletas sin dato NOVA | 6,7 🟠 | 7,5 |
+| Nutella | **4,7 🔴** | 6,1 🟠 |
+| Refresco de cola | **4,7 🔴** | 5,3 🟠 |
+| Salchichas cocidas | 2,4 🔴 | 2,4 |
 
-El valor por defecto es `"linear"` porque es literalmente la especificación
-acordada (y con ella "NOVA 4 = −2 puntos" se cumple al pie de la letra).
-**La recomendación es cambiar el defecto a `"geometric"`** y ajustar después
-los umbrales de `SCALE`, porque una crema de cacao con 56 g de azúcar por
-100 g calificada de "Mediocre" es un error que el usuario va a notar antes que
-cualquier otro. Ambos comportamientos están cubiertos por tests.
+Para volver al comportamiento lineal, cambia `DEFAULT_AGGREGATION` en
+`utils/calculator.ts`, o pásalo por llamada:
+
+```ts
+calculateScore(product, { aggregation: "linear" });
+```
+
+Ambos comportamientos están cubiertos por tests.
+
+---
+
+## 6 bis. Temas
+
+Tres estados, no dos: claro, oscuro y **sistema**. La preferencia se guarda en
+`localStorage` y se aplica con un atributo `data-theme` en el elemento raíz;
+`"system"` borra el atributo para que mande `prefers-color-scheme`.
+
+Un script en línea dentro del `<head>` (`THEME_INIT_SCRIPT` en `lib/theme.ts`)
+lo aplica **antes del primer pintado**. Sin él, abrir la app con el tema oscuro
+guardado produce un fotograma en blanco que en móvil se ve muchísimo.
+
+Todos los colores son tokens CSS declarados primero en `:root`. Ninguno se
+define sólo dentro de un bloque de tema: esa es justo la forma de acabar con
+texto de un tema sobre el fondo del otro.
 
 ---
 
 ## 7. Hoja de ruta
 
-- [ ] Cambiar la agregación por defecto a `geometric` y recalibrar `SCALE`.
+- [x] ~~Cambiar la agregación por defecto a `geometric` y recalibrar `SCALE`.~~
 - [ ] Revisar las 122 entradas de `additives.json` contra la EFSA y añadir
       `references` por entrada.
 - [ ] Comparador de dos productos lado a lado.
@@ -350,5 +387,5 @@ cualquier otro. Ambos comportamientos están cubiertos por tests.
 - El diccionario `additives.json` es una **simplificación pedagógica**. La EFSA
   no publica "niveles de riesgo": publica IDA y dictámenes de seguridad.
   Revisa cada entrada antes de publicar.
-- Toxify **no es consejo médico ni nutricional**. Es una herramienta de lectura
+- Toxicheck **no es consejo médico ni nutricional**. Es una herramienta de lectura
   de etiquetas.

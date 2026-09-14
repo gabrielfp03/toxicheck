@@ -2,7 +2,8 @@
 
 /**
  * Medidor circular de la nota. SVG puro: sin librerías de gráficos, sin
- * canvas, escalable y accesible.
+ * canvas, escalable y accesible. Los colores salen de los tokens del tema,
+ * salvo el del arco, que es el de la banda en la que cae la nota.
  */
 
 import type { ScoreResult } from "@/types/score";
@@ -14,17 +15,17 @@ export interface ScoreGaugeProps {
   showLabel?: boolean;
 }
 
-export function ScoreGauge({ result, size = 180, showLabel = true }: ScoreGaugeProps) {
-  const stroke = size * 0.09;
+export function ScoreGauge({ result, size = 190, showLabel = true }: ScoreGaugeProps) {
+  const stroke = size * 0.085;
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
   const filled = (result.score / 10) * circumference;
 
   return (
     <div
-      className="inline-flex flex-col items-center"
+      className="inline-flex flex-col items-center gap-3"
       role="img"
-      aria-label={`Puntuación ${result.score} sobre 10: ${result.label}`}
+      aria-label={`Puntuación ${result.score.toFixed(1)} sobre 10: ${result.label}`}
     >
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         {/* Pista */}
@@ -33,9 +34,8 @@ export function ScoreGauge({ result, size = 180, showLabel = true }: ScoreGaugeP
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="currentColor"
+          stroke="var(--surface-2)"
           strokeWidth={stroke}
-          className="text-slate-200 dark:text-slate-700"
         />
         {/* Progreso */}
         <circle
@@ -52,30 +52,31 @@ export function ScoreGauge({ result, size = 180, showLabel = true }: ScoreGaugeP
         />
         <text
           x="50%"
-          y="50%"
+          y="47%"
           textAnchor="middle"
           dominantBaseline="central"
           fontSize={size * 0.3}
           fontWeight={700}
           fill={result.hex}
+          style={{ fontVariantNumeric: "tabular-nums" }}
         >
           {result.score.toFixed(1)}
         </text>
         <text
           x="50%"
-          y="68%"
+          y="65%"
           textAnchor="middle"
-          fontSize={size * 0.09}
-          fill="currentColor"
-          className="text-slate-500"
+          fontSize={size * 0.085}
+          fontWeight={500}
+          fill="var(--muted)"
         >
-          / 10
+          sobre 10
         </text>
       </svg>
 
       {showLabel && (
         <span
-          className="mt-1 rounded-full px-3 py-1 text-sm font-semibold text-white"
+          className="rounded-full px-4 py-1.5 text-sm font-semibold text-white"
           style={{ backgroundColor: result.hex }}
         >
           {result.label}

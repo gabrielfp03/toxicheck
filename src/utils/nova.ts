@@ -42,50 +42,18 @@ export function parseNovaGroup(value: unknown): NovaGroup | null {
   return n === 1 || n === 2 || n === 3 || n === 4 ? n : null;
 }
 
-/**
- * Heurística de respaldo cuando Open Food Facts no trae el grupo NOVA.
+/*
+ * Nota de diseño: aquí hubo una heurística que ADIVINABA el grupo NOVA a
+ * partir de los aditivos cuando Open Food Facts no lo traía. Se ha retirado
+ * a propósito.
  *
- * No pretende replicar la clasificación oficial: es un suelo razonable que
- * evita puntuar de más a un producto claramente industrial. Si detecta
- * marcadores de ultraprocesado (aditivos "cosméticos" o ingredientes de uso
- * exclusivamente industrial) devuelve 4; si hay algún aditivo, 3.
+ * El motivo es que adivinar sólo puede penalizar: la heurística devolvía
+ * NOVA 4 en cuanto veía un aditivo "cosmético", de modo que un producto sin
+ * datos acababa perdiendo puntos por una suposición nuestra. Ahora, si no
+ * hay grupo NOVA, el bloque entero se excluye del cálculo (ver
+ * `buildProcessingBlock` en `calculator.ts`) y el 15 % que le corresponde se
+ * reparte entre aditivos y nutrición.
  *
- * @param additiveCodes Códigos E normalizados del producto.
- * @param ingredientsText Lista de ingredientes en texto libre, si la hay.
+ * La regla del proyecto: un dato que no tenemos nunca cuenta como un dato
+ * malo.
  */
-export function estimateNovaGroup(
-  additiveCodes: readonly string[],
-  ingredientsText: string | null,
-): NovaGroup | null {
-  /** Aditivos que en la práctica sólo aparecen en formulaciones industriales. */
-  const ULTRA_MARKERS = new Set([
-    "E102", "E110", "E122", "E124", "E129", "E131", "E133", "E150c", "E150d",
-    "E171", "E211", "E250", "E251", "E320", "E321", "E407", "E433", "E466",
-    "E471", "E472e", "E476", "E481", "E621", "E627", "E631", "E635",
-    "E950", "E951", "E952", "E954", "E955", "E961",
-  ]);
-
-  const ULTRA_INGREDIENTS = [
-    "jarabe de glucosa",
-    "jarabe de fructosa",
-    "jarabe de maíz",
-    "dextrosa",
-    "maltodextrina",
-    "proteína de soja",
-    "aislado de proteína",
-    "aceite de palma",
-    "grasa vegetal hidrogenada",
-    "aroma idéntico al natural",
-    "suero de leche en polvo",
-  ];
-
-  const hasUltraAdditive = additiveCodes.some((c) => ULTRA_MARKERS.has(c));
-  const text = ingredientsText?.toLowerCase() ?? "";
-  const hasUltraIngredient =
-    text.length > 0 && ULTRA_INGREDIENTS.some((kw) => text.includes(kw));
-
-  if (hasUltraAdditive || hasUltraIngredient) return 4;
-  if (additiveCodes.length > 0) return 3;
-  if (text.length === 0) return null; // sin datos: no inventamos
-  return null;
-}

@@ -12,7 +12,11 @@
 import type { Product } from "@/types/product";
 import type { ScoreResult } from "@/types/score";
 
-const KEY = "toxify:history:v1";
+const KEY = "toxicheck:history:v1";
+
+/** Clave de cuando la app se llamaba Toxify. Se migra una sola vez. */
+const LEGACY_KEY = "toxify:history:v1";
+
 const MAX_ENTRIES = 100;
 
 export interface HistoryEntry {
@@ -33,7 +37,21 @@ const isBrowser = () => typeof window !== "undefined";
 function read(): HistoryEntry[] {
   if (!isBrowser()) return [];
   try {
-    const raw = window.localStorage.getItem(KEY);
+    /*
+     * Migración del rebautizo Toxify → Toxicheck: si todavía existe el
+     * historial con la clave antigua y aún no hay nada con la nueva, lo
+     * movemos. Así nadie pierde sus escaneos por un cambio de nombre.
+     */
+    let raw = window.localStorage.getItem(KEY);
+    if (raw === null) {
+      const legacy = window.localStorage.getItem(LEGACY_KEY);
+      if (legacy !== null) {
+        window.localStorage.setItem(KEY, legacy);
+        window.localStorage.removeItem(LEGACY_KEY);
+        raw = legacy;
+      }
+    }
+
     if (!raw) return [];
     const parsed: unknown = JSON.parse(raw);
     return Array.isArray(parsed) ? (parsed as HistoryEntry[]) : [];
@@ -150,7 +168,7 @@ export function clearHistory(): void {
 /** Estadísticas rápidas para la pantalla de historial. */
 export function getHistoryStats(entries: HistoryEntry[] = read()) {
   if (entries.length === 0) {
-    return { total: 0, average: 0, green: 0, yellow: 0, red: 0 };
+    return { total: 0, average: 0, green: 0, orange: 0, red: 0 };
   }
 
   const total = entries.length;
@@ -160,7 +178,7 @@ export function getHistoryStats(entries: HistoryEntry[] = read()) {
     total,
     average: Math.round((sum / total) * 10) / 10,
     green: entries.filter((e) => e.color === "green").length,
-    yellow: entries.filter((e) => e.color === "yellow").length,
+    orange: entries.filter((e) => e.color === "orange").length,
     red: entries.filter((e) => e.color === "red").length,
   };
 }

@@ -7,7 +7,6 @@ import { ScoreBreakdown } from "@/components/ScoreBreakdown";
 import type { Product } from "@/types/product";
 import type { ScoreResult } from "@/types/score";
 import { calculateScore } from "@/utils/calculator";
-import { estimateNovaGroup } from "@/utils/nova";
 
 /** Construye un `Product` sintético a partir de lo que ha leído el OCR. */
 function productFromOcr(ocr: OcrResult): Product {
@@ -19,7 +18,8 @@ function productFromOcr(ocr: OcrResult): Product {
     imageUrl: null,
     ingredientsText: ocr.text,
     additiveCodes: ocr.codes,
-    novaGroup: estimateNovaGroup(ocr.codes, ocr.text),
+    // Una foto de la etiqueta no permite clasificar el grado de procesamiento.
+    novaGroup: null,
     nutriScoreGrade: null,
     // El OCR no da nutrientes: el bloque nutricional quedará excluido y los
     // pesos se renormalizarán solos.

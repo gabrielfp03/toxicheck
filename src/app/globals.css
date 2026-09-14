@@ -1,62 +1,246 @@
 @import "tailwindcss";
 
-/*
- * Tailwind v4 se configura desde CSS con @theme. No hay tailwind.config.js.
- * Definimos aquí el único sistema de color del proyecto.
- */
-@theme {
-  --color-brand-50: #ecfdf5;
-  --color-brand-100: #d1fae5;
-  --color-brand-500: #10b981;
-  --color-brand-600: #059669;
-  --color-brand-700: #047857;
+/* ==========================================================================
+   Sistema de color
+   ==========================================================================
 
-  --color-score-excellent: #15803d;
-  --color-score-good: #16a34a;
-  --color-score-medium: #eab308;
-  --color-score-bad: #dc2626;
+   Tres estados de tema, no dos:
+
+     · `data-theme="light"`  → el usuario ha elegido claro
+     · `data-theme="dark"`   → el usuario ha elegido oscuro
+     · sin atributo          → "sistema", y sólo manda `prefers-color-scheme`
+
+   Por eso los tokens oscuros se declaran DOS veces: dentro del media query
+   (guardado con `:not([data-theme="light"])` para que la elección explícita
+   de claro gane a un sistema oscuro) y dentro de `[data-theme="dark"]` para
+   que el selector gane en el otro sentido.
+
+   Regla: ningún color se define sólo dentro de un bloque de tema. Todos
+   existen primero en `:root`.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Superficies */
+  --bg: #ffffff;
+  --bg-subtle: #f4f7f6;
+  --surface: #ffffff;
+  --surface-2: #f1f5f4;
+
+  /* Texto */
+  --fg: #0f1b2a;
+  --fg-soft: #35485c;
+  --muted: #63798f;
+
+  /* Líneas */
+  --border: #e3eae8;
+  --border-strong: #cfdbd7;
+
+  /* Marca */
+  --brand: #059669;
+  --brand-strong: #047857;
+  --brand-soft: #e7f6f0;
+  --on-brand: #ffffff;
+
+  /* Barra superior */
+  --header-bg: #059669;
+  --header-fg: #ffffff;
+
+  /* Bandas de la nota */
+  --score-green: #16a34a;
+  --score-orange: #ea580c;
+  --score-red: #dc2626;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgb(15 27 42 / 0.06);
+  --shadow-md: 0 4px 16px rgb(15 27 42 / 0.1);
+  --shadow-fab: 0 6px 20px rgb(5 150 105 / 0.4);
+}
+
+/* --- Tema oscuro: azul muy oscuro ----------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --bg: #070d1a;
+    --bg-subtle: #0a1121;
+    --surface: #0e1930;
+    --surface-2: #14223c;
+
+    --fg: #e7eefa;
+    --fg-soft: #bccbe0;
+    --muted: #8ba1bd;
+
+    --border: #1b2a46;
+    --border-strong: #263957;
+
+    --brand: #34d399;
+    --brand-strong: #10b981;
+    --brand-soft: #0f2f27;
+    --on-brand: #04231a;
+
+    --header-bg: #0b2e25;
+    --header-fg: #e7f6f0;
+
+    --score-green: #22c55e;
+    --score-orange: #fb923c;
+    --score-red: #f87171;
+
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5);
+    --shadow-md: 0 4px 18px rgb(0 0 0 / 0.55);
+    --shadow-fab: 0 6px 20px rgb(0 0 0 / 0.6);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #070d1a;
+  --bg-subtle: #0a1121;
+  --surface: #0e1930;
+  --surface-2: #14223c;
+
+  --fg: #e7eefa;
+  --fg-soft: #bccbe0;
+  --muted: #8ba1bd;
+
+  --border: #1b2a46;
+  --border-strong: #263957;
+
+  --brand: #34d399;
+  --brand-strong: #10b981;
+  --brand-soft: #0f2f27;
+  --on-brand: #04231a;
+
+  --header-bg: #0b2e25;
+  --header-fg: #e7f6f0;
+
+  --score-green: #22c55e;
+  --score-orange: #fb923c;
+  --score-red: #f87171;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 18px rgb(0 0 0 / 0.55);
+  --shadow-fab: 0 6px 20px rgb(0 0 0 / 0.6);
+}
+
+/* Expone los tokens a Tailwind para poder usar `bg-surface`, `text-muted`… */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-fg-soft: var(--fg-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-on-brand: var(--on-brand);
+  --color-score-green: var(--score-green);
+  --color-score-orange: var(--score-orange);
+  --color-score-red: var(--score-red);
 
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
 }
 
-:root {
-  color-scheme: light dark;
-  --bg: #ffffff;
-  --fg: #0f172a;
-  --muted: #64748b;
-  --card: #f8fafc;
-  --border: #e2e8f0;
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+html {
+  background: var(--bg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b1120;
-    --fg: #e2e8f0;
-    --muted: #94a3b8;
-    --card: #111a2e;
-    --border: #1e293b;
-  }
-}
-
-html,
 body {
   background: var(--bg);
   color: var(--fg);
   -webkit-tap-highlight-color: transparent;
-}
-
-body {
-  /* Respeta el notch y la barra inferior en iOS instalado como PWA. */
-  padding-bottom: env(safe-area-inset-bottom);
   overscroll-behavior-y: none;
 }
 
-/* El vídeo del escáner debe llenar su contenedor sin deformarse. */
+/* La transición sólo se activa al cambiar de tema a mano (ver ThemeProvider),
+   así el primer pintado no arrastra ninguna animación. */
+:root.theme-transition,
+:root.theme-transition * {
+  transition: background-color 200ms ease, border-color 200ms ease,
+    color 200ms ease;
+}
+
+::selection {
+  background: var(--brand-soft);
+  color: var(--fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ==========================================================================
+   Componentes recurrentes
+   ========================================================================== */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: var(--on-brand);
+  border-radius: 14px;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:active { background: var(--brand-strong); }
+.btn-primary:disabled { opacity: 0.55; }
+
+.btn-ghost {
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  font-weight: 500;
+}
+.btn-ghost:active { background: var(--surface-2); }
+
+.muted { color: var(--muted); }
+
+/* Barra superior al estilo de las apps de escaneo: marca a la izquierda,
+   acciones a la derecha, respetando el notch. */
+.app-header {
+  background: var(--header-bg);
+  color: var(--header-fg);
+  padding-top: env(safe-area-inset-top);
+}
+
+/* Pestañas inferiores */
+.tabbar {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* El vídeo del escáner llena su contenedor sin deformarse. */
 .scanner-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Imagen de producto sobre fondo neutro, sin recortar la etiqueta. */
+.product-img {
+  object-fit: contain;
+  background: var(--surface-2);
 }
 
 @media (prefers-reduced-motion: reduce) {

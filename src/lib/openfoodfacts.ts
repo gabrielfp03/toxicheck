@@ -23,7 +23,7 @@ import type {
   Product,
 } from "@/types/product";
 import { normalizeAdditiveCode } from "@/utils/additives";
-import { parseNovaGroup, estimateNovaGroup } from "@/utils/nova";
+import { parseNovaGroup } from "@/utils/nova";
 
 const API_BASE = "https://world.openfoodfacts.org/api/v2";
 
@@ -32,7 +32,7 @@ const API_BASE = "https://world.openfoodfacts.org/api/v2";
  * cabecera `User-Agent` es de sólo lectura, así que enviamos el identificador
  * como parámetro de consulta, que es la alternativa que ellos documentan.
  */
-const APP_IDENTIFIER = "Toxify/0.1 (https://github.com/tu-usuario/toxify)";
+const APP_IDENTIFIER = "Toxicheck/1.0 (https://toxicheck.net)";
 
 const FIELDS = [
   "code",
@@ -160,7 +160,9 @@ export function normalizeOffProduct(off: OffProduct): Product {
   const ingredientsText =
     off.ingredients_text_es?.trim() || off.ingredients_text?.trim() || null;
 
-  const novaFromOff: NovaGroup | null = parseNovaGroup(off.nova_group);
+  // Si OFF no trae NOVA, se queda en null a propósito: el bloque de
+  // procesamiento se excluirá del cálculo en lugar de penalizar a ciegas.
+  const novaGroup: NovaGroup | null = parseNovaGroup(off.nova_group);
 
   const grade = off.nutriscore_grade?.toLowerCase();
   const nutriScoreGrade =
@@ -180,8 +182,7 @@ export function normalizeOffProduct(off: OffProduct): Product {
     imageUrl: off.image_front_url || off.image_url || null,
     ingredientsText,
     additiveCodes,
-    // Si OFF no trae NOVA, lo estimamos en local antes que dejarlo vacío.
-    novaGroup: novaFromOff ?? estimateNovaGroup(additiveCodes, ingredientsText),
+    novaGroup,
     nutriScoreGrade,
     nutrients: normalizeNutrients(off),
     isBeverage: categories.some((t) => BEVERAGE_TAGS.includes(t)),

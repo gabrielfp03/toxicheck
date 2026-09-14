@@ -1,5 +1,5 @@
 {
-  "name": "toxify",
+  "name": "toxicheck",
   "version": "0.1.0",
   "private": true,
   "description": "PWA de consumo consciente: evalúa la toxicidad y calidad nutricional de los alimentos del 0 al 10. 100% client-side, gratis e ilimitado.",

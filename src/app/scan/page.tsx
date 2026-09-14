@@ -39,12 +39,18 @@ export default function ScanPage() {
       />
 
       {message && (
-        <p className="rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">
+        <p
+          className="rounded-xl px-4 py-3 text-sm"
+          style={{
+            background: "var(--surface-2)",
+            color: "var(--score-orange)",
+          }}
+        >
           {message}
         </p>
       )}
 
-      <p className="text-center text-sm" style={{ color: "var(--muted)" }}>
+      <p className="muted text-center text-sm">
         La imagen de la cámara no sale de tu dispositivo.
       </p>
     </div>

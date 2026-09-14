@@ -76,21 +76,21 @@ describe("normalizeOffProduct", () => {
   /**
    * Caso testigo del suelo estructural del modelo lineal: este producto tiene
    * 56 g de azúcar por 100 g, grasa de palma y NOVA 4, pero como su único
-   * aditivo es lecitina (sin riesgo) el bloque de aditivos le aporta 4 puntos
-   * fijos y la nota no puede bajar de ahí.
+   * aditivo es lecitina (sin riesgo) el bloque de aditivos —que pesa el 50 %—
+   * le regala 5 puntos fijos. La nota no puede bajar de ahí, así que jamás
+   * entrará en la banda roja.
    */
-  it("con agregación lineal no baja de 4 pese al azúcar (suelo del modelo)", () => {
+  it("con agregación lineal se queda en naranja pese al azúcar", () => {
     const result = calculateScore(product, { aggregation: "linear" });
 
-    expect(result.score).toBeGreaterThanOrEqual(4);
-    expect(result.score).toBeCloseTo(5.2, 1);
-    expect(result.label).toBe("Mediocre");
+    expect(result.score).toBeGreaterThanOrEqual(5);
+    expect(result.color).toBe("orange");
   });
 
-  it("con agregación geométrica sí lo califica de malo", () => {
+  it("con agregación geométrica sí entra en la banda roja", () => {
     const result = calculateScore(product, { aggregation: "geometric" });
 
-    expect(result.score).toBeLessThan(4);
+    expect(result.score).toBeLessThan(5);
     expect(result.color).toBe("red");
   });
 });

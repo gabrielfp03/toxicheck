@@ -11,7 +11,7 @@
  *     producto, la ficha aparece al instante y se refresca en segundo plano.
  */
 
-const VERSION = "toxify-v1";
+const VERSION = "toxicheck-v2";
 const SHELL_CACHE = `${VERSION}-shell`;
 const API_CACHE = `${VERSION}-api`;
 

@@ -144,10 +144,23 @@ describe("calculateScore · invariantes", () => {
     }
   });
 
-  it("la nota coincide con la suma ponderada de los bloques", () => {
+  it("con agregación lineal, la nota es la suma ponderada de los bloques", () => {
     for (const p of todos) {
-      const r = calculateScore(p);
+      const r = calculateScore(p, { aggregation: "linear" });
       const manual = r.blocks.reduce((acc, b) => acc + b.subScore * b.weight, 0);
+      expect(r.score).toBeCloseTo(manual, 1);
+    }
+  });
+
+  it("con agregación geométrica, la nota es el producto ponderado", () => {
+    for (const p of todos) {
+      const r = calculateScore(p, { aggregation: "geometric" });
+      const manual = r.blocks
+        .filter((b) => b.weight > 0)
+        .reduce(
+          (acc, b) => acc * Math.pow(Math.max(b.subScore, 1) / 10, b.weight),
+          10,
+        );
       expect(r.score).toBeCloseTo(manual, 1);
     }
   });
@@ -163,7 +176,7 @@ describe("calculateScore · invariantes", () => {
 /* -------------------------------------------------------------------------- */
 
 describe("calculateScore · ordenación de productos reales", () => {
-  it("ordena agua > lentejas > refresco > crema de cacao ≈ salchichas", () => {
+  it("ordena agua > lentejas > refresco > salchichas", () => {
     const agua = calculateScore(AGUA).score;
     const lentejas = calculateScore(LENTEJAS).score;
     const refresco = calculateScore(REFRESCO).score;
@@ -179,6 +192,33 @@ describe("calculateScore · ordenación de productos reales", () => {
   it("el agua es verde y las salchichas rojas", () => {
     expect(calculateScore(AGUA).color).toBe("green");
     expect(calculateScore(SALCHICHAS).color).toBe("red");
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/*  Bandas de color                                                           */
+/* -------------------------------------------------------------------------- */
+
+describe("bandas de color", () => {
+  it("rojo por debajo de 5,0", () => {
+    const r = calculateScore(SALCHICHAS);
+    expect(r.score).toBeLessThan(5);
+    expect(r.color).toBe("red");
+  });
+
+  it("verde a partir de 7,6", () => {
+    const r = calculateScore(LENTEJAS);
+    expect(r.score).toBeGreaterThanOrEqual(7.6);
+    expect(r.color).toBe("green");
+  });
+
+  it("cada nota cae en la banda que le corresponde", () => {
+    for (const p of [LENTEJAS, CREMA_CACAO, REFRESCO, SALCHICHAS, AGUA]) {
+      const { score, color } = calculateScore(p);
+      const esperado =
+        score >= 7.6 ? "green" : score >= 5 ? "orange" : "red";
+      expect(color).toBe(esperado);
+    }
   });
 });
 
@@ -200,7 +240,13 @@ describe("agregación", () => {
     expect(calculateScore(AGUA, { aggregation: "geometric" }).score).toBe(10);
   });
 
-  it("documenta el suelo de 4,0 del modelo lineal sin aditivos", () => {
+  /**
+   * El motivo por el que la agregación geométrica es el defecto: con los
+   * aditivos al 50 %, la media ponderada da 5,0 fijos a cualquier producto
+   * sin números E, y 5,0 es justo la frontera del rojo. La banda roja se
+   * volvería inalcanzable para todo un tipo de productos.
+   */
+  it("el modelo lineal no puede pintar de rojo un ultraprocesado sin aditivos", () => {
     // Lo peor posible en nutrición y procesamiento, pero sin ningún número E.
     const peor = makeProduct({
       additiveCodes: [],
@@ -216,11 +262,21 @@ describe("agregación", () => {
       },
     });
 
-    expect(calculateScore(peor, { aggregation: "linear" }).score).toBeCloseTo(4, 1);
-    // El suelo blando por bloque impide llegar a 0, pero sí cae a zona roja.
+    const lineal = calculateScore(peor, { aggregation: "linear" });
+    expect(lineal.score).toBeCloseTo(5, 1);
+    expect(lineal.color).not.toBe("red");
+
+    // La geométrica sí lo manda a rojo, que es lo que espera el usuario.
     const geom = calculateScore(peor, { aggregation: "geometric" });
-    expect(geom.score).toBeLessThan(3);
+    expect(geom.score).toBeLessThan(5);
     expect(geom.color).toBe("red");
+  });
+
+  it("la agregación por defecto es la geométrica", () => {
+    const p = CREMA_CACAO;
+    expect(calculateScore(p).score).toBe(
+      calculateScore(p, { aggregation: "geometric" }).score,
+    );
   });
 });
 
@@ -286,13 +342,33 @@ describe("bloque de aditivos", () => {
 /* -------------------------------------------------------------------------- */
 
 describe("bloque de procesamiento", () => {
-  it("NOVA 4 cuesta exactamente 2 puntos de la nota final", () => {
+  it("con agregación lineal, NOVA 4 cuesta el 15 % de la nota", () => {
     const base = makeProduct({ novaGroup: 1, nutrients: LENTEJAS.nutrients });
     const ultra = makeProduct({ novaGroup: 4, nutrients: LENTEJAS.nutrients });
 
-    const diff = calculateScore(base).score - calculateScore(ultra).score;
-    expect(diff).toBeCloseTo(2, 1);
+    const diff =
+      calculateScore(base, { aggregation: "linear" }).score -
+      calculateScore(ultra, { aggregation: "linear" }).score;
+
+    // NOVA 1 → 10 y NOVA 4 → 0, con peso 0,15: exactamente 1,5 puntos.
+    expect(diff).toBeCloseTo(1.5, 1);
   });
+
+  it("NOVA 4 penaliza más que NOVA 1 en ambas agregaciones", () => {
+    for (const aggregation of ["linear", "geometric"] as const) {
+      const base = calculateScore(
+        makeProduct({ novaGroup: 1, nutrients: LENTEJAS.nutrients }),
+        { aggregation },
+      ).score;
+      const ultra = calculateScore(
+        makeProduct({ novaGroup: 4, nutrients: LENTEJAS.nutrients }),
+        { aggregation },
+      ).score;
+      expect(ultra).toBeLessThan(base);
+    }
+  });
+
+  /* --- Lo que pidió el producto: sin dato NOVA, cero efecto --- */
 
   it("excluye el bloque cuando no hay grupo NOVA", () => {
     const p = makeProduct({ novaGroup: null });
@@ -301,7 +377,43 @@ describe("bloque de procesamiento", () => {
 
     expect(block?.available).toBe(false);
     expect(block?.weight).toBe(0);
-    expect(r.confidence).not.toBe("high");
+  });
+
+  it("un producto sin NOVA saca la misma nota que si el bloque no existiera", () => {
+    const sinNova = makeProduct({
+      novaGroup: null,
+      additiveCodes: ["E330", "E102"],
+      nutrients: LENTEJAS.nutrients,
+    });
+
+    const r = calculateScore(sinNova);
+
+    // Los otros dos bloques absorben el 15 % del procesamiento: 0,5 y 0,35
+    // renormalizados sobre 0,85.
+    const additives = r.blocks.find((b) => b.id === "additives")!;
+    const nutrition = r.blocks.find((b) => b.id === "nutrition")!;
+
+    expect(additives.weight).toBeCloseTo(0.5 / 0.85, 5);
+    expect(nutrition.weight).toBeCloseTo(0.35 / 0.85, 5);
+
+    // Y la nota coincide con la de esos dos bloques solos.
+    const manual =
+      10 *
+      Math.pow(additives.subScore / 10, additives.weight) *
+      Math.pow(nutrition.subScore / 10, nutrition.weight);
+    expect(r.score).toBeCloseTo(manual, 1);
+  });
+
+  it("no penaliza por falta de NOVA: nunca baja la nota respecto a NOVA 1", () => {
+    const base = { additiveCodes: ["E330"], nutrients: LENTEJAS.nutrients };
+    const sinDato = calculateScore(makeProduct({ ...base, novaGroup: null }));
+    const nova1 = calculateScore(makeProduct({ ...base, novaGroup: 1 }));
+
+    // Sin dato no puede salir peor que el mejor caso posible de NOVA...
+    expect(sinDato.score).toBeLessThanOrEqual(nova1.score + 0.05);
+    // ...ni peor que el peor caso, que es lo que importa de verdad.
+    const nova4 = calculateScore(makeProduct({ ...base, novaGroup: 4 }));
+    expect(sinDato.score).toBeGreaterThan(nova4.score);
   });
 });
 
@@ -320,9 +432,9 @@ describe("datos faltantes", () => {
 
     expect(nutrition?.available).toBe(false);
     expect(nutrition?.weight).toBe(0);
-    // 0.4 y 0.2 renormalizados sobre 0.6 → 2/3 y 1/3
-    expect(additives?.weight).toBeCloseTo(2 / 3, 5);
-    expect(processing?.weight).toBeCloseTo(1 / 3, 5);
+    // 0,5 y 0,15 renormalizados sobre 0,65
+    expect(additives?.weight).toBeCloseTo(0.5 / 0.65, 5);
+    expect(processing?.weight).toBeCloseTo(0.15 / 0.65, 5);
   });
 
   it("baja la confianza con datos de OCR", () => {

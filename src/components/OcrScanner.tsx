@@ -94,7 +94,7 @@ export function OcrScanner({ onResult }: OcrScannerProps) {
         type="button"
         onClick={() => inputRef.current?.click()}
         disabled={phase === "loading" || phase === "recognizing"}
-        className="w-full rounded-xl bg-brand-600 px-5 py-4 font-semibold text-white disabled:opacity-50"
+        className="btn-primary w-full px-5 py-4"
       >
         {phase === "idle" || phase === "done" || phase === "error"
           ? "Fotografiar los ingredientes"
@@ -119,9 +119,9 @@ export function OcrScanner({ onResult }: OcrScannerProps) {
 
       {phase === "recognizing" && (
         <div>
-          <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200">
+          <div className="h-2 w-full overflow-hidden rounded-full bg-[var(--surface-2)]">
             <div
-              className="h-full bg-brand-500 transition-[width]"
+              className="h-full bg-[var(--brand)] transition-[width]"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -131,7 +131,11 @@ export function OcrScanner({ onResult }: OcrScannerProps) {
         </div>
       )}
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && (
+        <p className="text-sm" style={{ color: "var(--score-red)" }}>
+          {error}
+        </p>
+      )}
     </div>
   );
 }

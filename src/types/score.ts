@@ -104,7 +104,13 @@ export interface ScoreBlock {
   reasons: ScoreReason[];
 }
 
-export type ScoreColor = "green" | "yellow" | "red";
+/**
+ * Bandas de color de la nota:
+ *   rojo    → 0 a 4,9
+ *   naranja → 5,0 a 7,5
+ *   verde   → 7,6 a 10
+ */
+export type ScoreColor = "green" | "orange" | "red";
 
 /** Etiqueta cualitativa de 4 niveles (más granular que el color). */
 export type ScoreLabel = "Excelente" | "Bueno" | "Mediocre" | "Malo";
