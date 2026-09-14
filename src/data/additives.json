@@ -1,0 +1,1065 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-09-14",
+  "disclaimer": "Diccionario semilla. Cada clasificación debe revisarse contra el dictamen EFSA vigente antes de publicar en producción. La clasificación es una simplificación pedagógica: la EFSA no publica niveles de 'riesgo' sino IDA y dictámenes de seguridad.",
+  "sources": [
+    "https://www.efsa.europa.eu/en/topics/topic/food-additives",
+    "https://monographs.iarc.who.int/",
+    "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32008R1333",
+    "https://world.openfoodfacts.org/"
+  ],
+  "penalties": {
+    "none": 0,
+    "low": 0.5,
+    "moderate": 1.5,
+    "high": 3
+  },
+  "additives": {
+    "E100": {
+      "code": "E100",
+      "name": "Curcumina",
+      "category": "colorante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Pigmento amarillo extraído de la cúrcuma. Sin riesgo conocido a las dosis autorizadas.",
+      "efsaAdi": "3 mg/kg de peso corporal al día"
+    },
+    "E101": {
+      "code": "E101",
+      "name": "Riboflavina (vitamina B2)",
+      "category": "colorante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Es una vitamina del grupo B usada como colorante amarillo. Nutriente esencial."
+    },
+    "E102": {
+      "code": "E102",
+      "name": "Tartrazina",
+      "category": "colorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Colorante azoico amarillo. La UE obliga a advertir en la etiqueta que 'puede afectar a la actividad y la atención de los niños'.",
+      "flags": ["southampton-six", "etiquetado-obligatorio-ue", "posible-alergeno"],
+      "efsaAdi": "7,5 mg/kg de peso corporal al día"
+    },
+    "E104": {
+      "code": "E104",
+      "name": "Amarillo de quinoleína",
+      "category": "colorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Colorante sintético con la advertencia europea sobre actividad y atención en niños. Prohibido en alimentos en varios países fuera de la UE.",
+      "flags": ["southampton-six", "etiquetado-obligatorio-ue"]
+    },
+    "E110": {
+      "code": "E110",
+      "name": "Amarillo ocaso FCF",
+      "category": "colorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Colorante azoico naranja con advertencia obligatoria en la UE por su posible efecto sobre la atención infantil.",
+      "flags": ["southampton-six", "etiquetado-obligatorio-ue", "posible-alergeno"]
+    },
+    "E120": {
+      "code": "E120",
+      "name": "Cochinilla / ácido carmínico",
+      "category": "colorante",
+      "risk": "low",
+      "origin": "natural",
+      "description": "Rojo obtenido del insecto cochinilla. Seguro, pero puede desencadenar reacciones alérgicas y no es apto para veganos.",
+      "flags": ["posible-alergeno", "no-vegano"]
+    },
+    "E122": {
+      "code": "E122",
+      "name": "Azorrubina (carmoisina)",
+      "category": "colorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Colorante azoico rojo con advertencia obligatoria en la UE sobre actividad y atención en niños.",
+      "flags": ["southampton-six", "etiquetado-obligatorio-ue"]
+    },
+    "E123": {
+      "code": "E123",
+      "name": "Amaranto",
+      "category": "colorante",
+      "risk": "high",
+      "origin": "sintético",
+      "description": "Colorante azoico rojo prohibido en Estados Unidos desde 1976 y con uso muy restringido en la UE (prácticamente sólo bebidas espirituosas y huevas de pescado).",
+      "flags": ["prohibido-eeuu", "uso-restringido-ue"]
+    },
+    "E124": {
+      "code": "E124",
+      "name": "Ponceau 4R",
+      "category": "colorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Colorante azoico rojo con advertencia obligatoria en la UE. Prohibido en alimentos en Estados Unidos.",
+      "flags": ["southampton-six", "etiquetado-obligatorio-ue", "prohibido-eeuu"]
+    },
+    "E127": {
+      "code": "E127",
+      "name": "Eritrosina",
+      "category": "colorante",
+      "risk": "high",
+      "origin": "sintético",
+      "description": "Colorante rojo yodado con uso muy restringido en la UE (cerezas en conserva y confitadas) por sus efectos observados sobre la función tiroidea en estudios animales.",
+      "flags": ["uso-restringido-ue"]
+    },
+    "E129": {
+      "code": "E129",
+      "name": "Rojo allura AC",
+      "category": "colorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Colorante azoico rojo con advertencia obligatoria en la UE sobre actividad y atención en niños.",
+      "flags": ["southampton-six", "etiquetado-obligatorio-ue"]
+    },
+    "E131": {
+      "code": "E131",
+      "name": "Azul patente V",
+      "category": "colorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Colorante azul sintético asociado a reacciones de hipersensibilidad en personas sensibles.",
+      "flags": ["posible-alergeno"]
+    },
+    "E132": {
+      "code": "E132",
+      "name": "Indigotina (carmín de índigo)",
+      "category": "colorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Colorante azul sintético con casos descritos de reacciones alérgicas.",
+      "flags": ["posible-alergeno"]
+    },
+    "E133": {
+      "code": "E133",
+      "name": "Azul brillante FCF",
+      "category": "colorante",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Colorante azul sintético. Reevaluado por la EFSA sin problemas de seguridad a las dosis de uso."
+    },
+    "E140": {
+      "code": "E140",
+      "name": "Clorofilas y clorofilinas",
+      "category": "colorante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Pigmento verde extraído de plantas. Sin riesgo conocido."
+    },
+    "E141": {
+      "code": "E141",
+      "name": "Complejos cúpricos de clorofilas",
+      "category": "colorante",
+      "risk": "low",
+      "origin": "mixto",
+      "description": "Clorofila estabilizada con cobre. Segura a las dosis autorizadas; aporta cobre en cantidades muy pequeñas."
+    },
+    "E150a": {
+      "code": "E150a",
+      "name": "Caramelo natural",
+      "category": "colorante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Azúcar caramelizado sin reactivos. El más inocuo de los cuatro caramelos."
+    },
+    "E150c": {
+      "code": "E150c",
+      "name": "Caramelo amónico",
+      "category": "colorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Obtenido con compuestos de amonio. Puede contener 4-metilimidazol (4-MEI), sustancia bajo vigilancia toxicológica.",
+      "flags": ["4-mei"]
+    },
+    "E150d": {
+      "code": "E150d",
+      "name": "Caramelo sulfito amónico",
+      "category": "colorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "El caramelo típico de los refrescos de cola. Puede contener 4-metilimidazol (4-MEI), clasificado por la IARC en el grupo 2B.",
+      "flags": ["4-mei", "iarc-2b"]
+    },
+    "E153": {
+      "code": "E153",
+      "name": "Carbón vegetal",
+      "category": "colorante",
+      "risk": "low",
+      "origin": "natural",
+      "description": "Colorante negro de origen vegetal. Puede reducir la absorción de medicamentos si se consume en cantidad."
+    },
+    "E160a": {
+      "code": "E160a",
+      "name": "Carotenos",
+      "category": "colorante",
+      "risk": "none",
+      "origin": "mixto",
+      "description": "Precursores de la vitamina A. Sin riesgo conocido en alimentos."
+    },
+    "E160b": {
+      "code": "E160b",
+      "name": "Annatto / bixina (achiote)",
+      "category": "colorante",
+      "risk": "low",
+      "origin": "natural",
+      "description": "Colorante naranja natural. Descritas reacciones de hipersensibilidad en personas sensibles.",
+      "flags": ["posible-alergeno"]
+    },
+    "E160c": {
+      "code": "E160c",
+      "name": "Extracto de pimentón (capsantina)",
+      "category": "colorante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Pigmento rojo del pimiento. Sin riesgo conocido."
+    },
+    "E161b": {
+      "code": "E161b",
+      "name": "Luteína",
+      "category": "colorante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Carotenoide amarillo presente de forma natural en vegetales de hoja verde."
+    },
+    "E162": {
+      "code": "E162",
+      "name": "Rojo de remolacha (betanina)",
+      "category": "colorante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Pigmento natural de la remolacha. Sin riesgo conocido."
+    },
+    "E163": {
+      "code": "E163",
+      "name": "Antocianinas",
+      "category": "colorante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Pigmentos de frutos rojos y uva. Sin riesgo conocido; con actividad antioxidante."
+    },
+    "E170": {
+      "code": "E170",
+      "name": "Carbonato de calcio",
+      "category": "colorante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Mineral usado como colorante blanco y antiaglomerante. Fuente de calcio."
+    },
+    "E171": {
+      "code": "E171",
+      "name": "Dióxido de titanio",
+      "category": "colorante",
+      "risk": "high",
+      "origin": "sintético",
+      "description": "En 2021 la EFSA concluyó que ya no puede considerarse seguro como aditivo alimentario por no poder descartarse genotoxicidad. Prohibido en alimentos en la UE desde 2022.",
+      "flags": ["prohibido-ue", "genotoxicidad-no-descartada"]
+    },
+    "E172": {
+      "code": "E172",
+      "name": "Óxidos e hidróxidos de hierro",
+      "category": "colorante",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Pigmentos minerales usados sobre todo en recubrimientos. Absorción muy baja."
+    },
+    "E200": {
+      "code": "E200",
+      "name": "Ácido sórbico",
+      "category": "conservante",
+      "risk": "low",
+      "origin": "mixto",
+      "description": "Conservante antifúngico de baja toxicidad. Puede irritar la piel en personas sensibles."
+    },
+    "E202": {
+      "code": "E202",
+      "name": "Sorbato potásico",
+      "category": "conservante",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "El conservante antifúngico más habitual. Bien tolerado; ocasionalmente asociado a reacciones cutáneas."
+    },
+    "E203": {
+      "code": "E203",
+      "name": "Sorbato cálcico",
+      "category": "conservante",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Variante cálcica del sorbato, con el mismo perfil de seguridad."
+    },
+    "E210": {
+      "code": "E210",
+      "name": "Ácido benzoico",
+      "category": "conservante",
+      "risk": "moderate",
+      "origin": "mixto",
+      "description": "Conservante asociado a reacciones pseudoalérgicas en personas sensibles (asma, urticaria).",
+      "flags": ["posible-alergeno"]
+    },
+    "E211": {
+      "code": "E211",
+      "name": "Benzoato sódico",
+      "category": "conservante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "En presencia de vitamina C (E300) y calor puede formar trazas de benceno. Muy frecuente en refrescos.",
+      "flags": ["forma-benceno-con-e300", "posible-alergeno"]
+    },
+    "E212": {
+      "code": "E212",
+      "name": "Benzoato potásico",
+      "category": "conservante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Mismo perfil que el benzoato sódico, incluida la posible formación de benceno junto a vitamina C.",
+      "flags": ["forma-benceno-con-e300"]
+    },
+    "E220": {
+      "code": "E220",
+      "name": "Dióxido de azufre",
+      "category": "conservante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Sulfito de declaración obligatoria como alérgeno. Puede provocar crisis asmáticas en personas sensibles.",
+      "flags": ["alergeno-declarable", "riesgo-asma"]
+    },
+    "E221": {
+      "code": "E221",
+      "name": "Sulfito sódico",
+      "category": "conservante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Sulfito de declaración obligatoria. Destruye parte de la vitamina B1 del alimento.",
+      "flags": ["alergeno-declarable"]
+    },
+    "E223": {
+      "code": "E223",
+      "name": "Metabisulfito sódico",
+      "category": "conservante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Sulfito muy usado en vinos, frutos secos y crustáceos. Alérgeno de declaración obligatoria.",
+      "flags": ["alergeno-declarable", "riesgo-asma"]
+    },
+    "E224": {
+      "code": "E224",
+      "name": "Metabisulfito potásico",
+      "category": "conservante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Sulfito habitual en vinificación. Alérgeno de declaración obligatoria.",
+      "flags": ["alergeno-declarable"]
+    },
+    "E234": {
+      "code": "E234",
+      "name": "Nisina",
+      "category": "conservante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Bacteriocina producida por fermentación. Se digiere como una proteína más."
+    },
+    "E235": {
+      "code": "E235",
+      "name": "Natamicina (pimaricina)",
+      "category": "conservante",
+      "risk": "low",
+      "origin": "natural",
+      "description": "Antifúngico de superficie en quesos y embutidos. Es un medicamento antifúngico, lo que abre el debate sobre resistencias."
+    },
+    "E249": {
+      "code": "E249",
+      "name": "Nitrito potásico",
+      "category": "conservante",
+      "risk": "high",
+      "origin": "sintético",
+      "description": "En carnes puede formar nitrosaminas. La IARC clasifica la carne procesada como cancerígena para humanos (grupo 1).",
+      "flags": ["nitrosaminas", "iarc-grupo-1-carne-procesada"]
+    },
+    "E250": {
+      "code": "E250",
+      "name": "Nitrito sódico",
+      "category": "conservante",
+      "risk": "high",
+      "origin": "sintético",
+      "description": "El conservante típico de embutidos y jamón cocido. Puede formar nitrosaminas durante la digestión o la cocción a alta temperatura.",
+      "flags": ["nitrosaminas", "iarc-grupo-1-carne-procesada"]
+    },
+    "E251": {
+      "code": "E251",
+      "name": "Nitrato sódico",
+      "category": "conservante",
+      "risk": "high",
+      "origin": "sintético",
+      "description": "Se reduce a nitrito en el organismo, con el mismo riesgo de formación de nitrosaminas.",
+      "flags": ["nitrosaminas"]
+    },
+    "E252": {
+      "code": "E252",
+      "name": "Nitrato potásico (salitre)",
+      "category": "conservante",
+      "risk": "high",
+      "origin": "sintético",
+      "description": "Conservante de curados tradicionales. Se reduce a nitrito en el organismo.",
+      "flags": ["nitrosaminas"]
+    },
+    "E280": {
+      "code": "E280",
+      "name": "Ácido propiónico",
+      "category": "conservante",
+      "risk": "low",
+      "origin": "mixto",
+      "description": "Antimoho del pan industrial. Se metaboliza como un ácido graso de cadena corta."
+    },
+    "E282": {
+      "code": "E282",
+      "name": "Propionato cálcico",
+      "category": "conservante",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Antimoho habitual en panadería industrial. Perfil de seguridad favorable; existe debate menor sobre efectos conductuales."
+    },
+    "E260": {
+      "code": "E260",
+      "name": "Ácido acético",
+      "category": "acidulante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Es el ácido del vinagre. Sin riesgo conocido."
+    },
+    "E270": {
+      "code": "E270",
+      "name": "Ácido láctico",
+      "category": "acidulante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Producto natural de la fermentación. Sin riesgo conocido."
+    },
+    "E290": {
+      "code": "E290",
+      "name": "Dióxido de carbono",
+      "category": "otro",
+      "risk": "none",
+      "origin": "natural",
+      "description": "El gas de las bebidas carbonatadas. Sin riesgo conocido."
+    },
+    "E296": {
+      "code": "E296",
+      "name": "Ácido málico",
+      "category": "acidulante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Ácido natural de la manzana. Sin riesgo conocido."
+    },
+    "E300": {
+      "code": "E300",
+      "name": "Ácido ascórbico (vitamina C)",
+      "category": "antioxidante",
+      "risk": "none",
+      "origin": "mixto",
+      "description": "Es vitamina C. Sin riesgo; ojo sólo a la combinación con benzoatos (E211/E212)."
+    },
+    "E301": {
+      "code": "E301",
+      "name": "Ascorbato sódico",
+      "category": "antioxidante",
+      "risk": "none",
+      "origin": "sintético",
+      "description": "Sal de la vitamina C usada como antioxidante. Sin riesgo conocido."
+    },
+    "E306": {
+      "code": "E306",
+      "name": "Extracto rico en tocoferoles",
+      "category": "antioxidante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Vitamina E natural extraída de aceites vegetales. Sin riesgo conocido."
+    },
+    "E307": {
+      "code": "E307",
+      "name": "Alfa-tocoferol",
+      "category": "antioxidante",
+      "risk": "none",
+      "origin": "mixto",
+      "description": "Forma principal de la vitamina E. Sin riesgo conocido a dosis alimentarias."
+    },
+    "E316": {
+      "code": "E316",
+      "name": "Eritorbato sódico",
+      "category": "antioxidante",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Isómero de la vitamina C sin actividad vitamínica. Suele acompañar a los nitritos en embutidos."
+    },
+    "E320": {
+      "code": "E320",
+      "name": "BHA (butilhidroxianisol)",
+      "category": "antioxidante",
+      "risk": "high",
+      "origin": "sintético",
+      "description": "Antioxidante sintético clasificado por la IARC en el grupo 2B (posible cancerígeno para humanos) y con actividad de disruptor endocrino en estudios.",
+      "flags": ["iarc-2b", "disruptor-endocrino"]
+    },
+    "E321": {
+      "code": "E321",
+      "name": "BHT (butilhidroxitolueno)",
+      "category": "antioxidante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Antioxidante sintético emparentado con el BHA. Reevaluado por la EFSA con IDA establecida, pero sigue siendo objeto de debate.",
+      "efsaAdi": "0,25 mg/kg de peso corporal al día"
+    },
+    "E322": {
+      "code": "E322",
+      "name": "Lecitinas",
+      "category": "emulgente",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Emulgente natural de soja o girasol. Sin riesgo conocido; si es de soja, es alérgeno declarable.",
+      "flags": ["posible-soja"]
+    },
+    "E325": {
+      "code": "E325",
+      "name": "Lactato sódico",
+      "category": "otro",
+      "risk": "none",
+      "origin": "sintético",
+      "description": "Sal del ácido láctico usada como humectante y regulador de acidez."
+    },
+    "E330": {
+      "code": "E330",
+      "name": "Ácido cítrico",
+      "category": "acidulante",
+      "risk": "none",
+      "origin": "mixto",
+      "description": "El acidulante más común del mundo. Sin riesgo conocido; puede erosionar el esmalte dental en bebidas ácidas."
+    },
+    "E331": {
+      "code": "E331",
+      "name": "Citratos de sodio",
+      "category": "estabilizante",
+      "risk": "none",
+      "origin": "sintético",
+      "description": "Regulador de acidez y secuestrante. Sin riesgo conocido."
+    },
+    "E333": {
+      "code": "E333",
+      "name": "Citratos de calcio",
+      "category": "estabilizante",
+      "risk": "none",
+      "origin": "sintético",
+      "description": "Regulador de acidez que además aporta calcio."
+    },
+    "E334": {
+      "code": "E334",
+      "name": "Ácido tartárico",
+      "category": "acidulante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Ácido natural de la uva. Sin riesgo conocido."
+    },
+    "E338": {
+      "code": "E338",
+      "name": "Ácido fosfórico",
+      "category": "acidulante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Acidulante de los refrescos de cola. Un aporte alto de fósforo se ha asociado a peor salud ósea y renal, sobre todo con ingestas elevadas.",
+      "flags": ["exposicion-fosfatos"]
+    },
+    "E339": {
+      "code": "E339",
+      "name": "Fosfatos de sodio",
+      "category": "estabilizante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "La EFSA estableció en 2019 una IDA de grupo para los fosfatos porque la exposición total supera el límite en parte de la población.",
+      "flags": ["exposicion-fosfatos"],
+      "efsaAdi": "40 mg/kg de peso corporal al día (IDA de grupo, expresada como fósforo)"
+    },
+    "E340": {
+      "code": "E340",
+      "name": "Fosfatos de potasio",
+      "category": "estabilizante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Incluido en la IDA de grupo de los fosfatos establecida por la EFSA en 2019.",
+      "flags": ["exposicion-fosfatos"]
+    },
+    "E341": {
+      "code": "E341",
+      "name": "Fosfatos de calcio",
+      "category": "estabilizante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Antiaglomerante y enriquecedor. Incluido en la IDA de grupo de los fosfatos.",
+      "flags": ["exposicion-fosfatos"]
+    },
+    "E385": {
+      "code": "E385",
+      "name": "EDTA cálcico disódico",
+      "category": "estabilizante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Quelante que puede interferir en la absorción de minerales como el zinc y el hierro.",
+      "efsaAdi": "2,5 mg/kg de peso corporal al día"
+    },
+    "E401": {
+      "code": "E401",
+      "name": "Alginato sódico",
+      "category": "espesante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Fibra extraída de algas pardas. Sin riesgo conocido."
+    },
+    "E406": {
+      "code": "E406",
+      "name": "Agar-agar",
+      "category": "espesante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Gelificante de algas rojas. Fibra no digerible, sin riesgo conocido."
+    },
+    "E407": {
+      "code": "E407",
+      "name": "Carragenanos",
+      "category": "espesante",
+      "risk": "moderate",
+      "origin": "natural",
+      "description": "Extraído de algas. Estudios en animales lo asocian a inflamación intestinal y la EFSA pidió más datos sobre el peso molecular del producto comercial.",
+      "flags": ["inflamacion-intestinal-estudios-animales"]
+    },
+    "E410": {
+      "code": "E410",
+      "name": "Goma garrofín (algarroba)",
+      "category": "espesante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Fibra soluble de la semilla del algarrobo. Sin riesgo conocido."
+    },
+    "E412": {
+      "code": "E412",
+      "name": "Goma guar",
+      "category": "espesante",
+      "risk": "low",
+      "origin": "natural",
+      "description": "Fibra soluble. En cantidades altas puede causar molestias digestivas y gases."
+    },
+    "E414": {
+      "code": "E414",
+      "name": "Goma arábiga (acacia)",
+      "category": "espesante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Fibra prebiótica de la acacia. Muy bien tolerada."
+    },
+    "E415": {
+      "code": "E415",
+      "name": "Goma xantana",
+      "category": "espesante",
+      "risk": "low",
+      "origin": "natural",
+      "description": "Obtenida por fermentación bacteriana. En cantidades altas puede tener efecto laxante."
+    },
+    "E418": {
+      "code": "E418",
+      "name": "Goma gellan",
+      "category": "espesante",
+      "risk": "low",
+      "origin": "natural",
+      "description": "Gelificante de fermentación. Bien tolerado a las dosis de uso."
+    },
+    "E420": {
+      "code": "E420",
+      "name": "Sorbitol",
+      "category": "edulcorante",
+      "risk": "low",
+      "origin": "mixto",
+      "description": "Poliol edulcorante. Por encima de 10 g al día produce efecto laxante; la etiqueta debe advertirlo.",
+      "flags": ["efecto-laxante"]
+    },
+    "E421": {
+      "code": "E421",
+      "name": "Manitol",
+      "category": "edulcorante",
+      "risk": "low",
+      "origin": "mixto",
+      "description": "Poliol con efecto laxante en cantidades moderadas.",
+      "flags": ["efecto-laxante"]
+    },
+    "E422": {
+      "code": "E422",
+      "name": "Glicerol (glicerina)",
+      "category": "otro",
+      "risk": "none",
+      "origin": "mixto",
+      "description": "Humectante presente de forma natural en las grasas. Sin riesgo conocido en alimentos."
+    },
+    "E432": {
+      "code": "E432",
+      "name": "Polisorbato 20",
+      "category": "emulgente",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Emulgente sintético. Los polisorbatos han mostrado alteración de la microbiota e inflamación intestinal en modelos animales.",
+      "flags": ["microbiota-estudios-animales"]
+    },
+    "E433": {
+      "code": "E433",
+      "name": "Polisorbato 80",
+      "category": "emulgente",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Emulgente sintético con estudios animales que apuntan a alteración de la microbiota y de la barrera intestinal.",
+      "flags": ["microbiota-estudios-animales"]
+    },
+    "E440": {
+      "code": "E440",
+      "name": "Pectinas",
+      "category": "espesante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Fibra soluble de frutas, la base de las mermeladas. Sin riesgo conocido."
+    },
+    "E450": {
+      "code": "E450",
+      "name": "Difosfatos",
+      "category": "estabilizante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Gasificante y retenedor de agua. Incluido en la IDA de grupo de los fosfatos (EFSA 2019).",
+      "flags": ["exposicion-fosfatos"]
+    },
+    "E451": {
+      "code": "E451",
+      "name": "Trifosfatos",
+      "category": "estabilizante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Retenedor de agua en carnes y pescados procesados. Incluido en la IDA de grupo de los fosfatos.",
+      "flags": ["exposicion-fosfatos"]
+    },
+    "E452": {
+      "code": "E452",
+      "name": "Polifosfatos",
+      "category": "estabilizante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Muy usados en quesos fundidos y carnes. Incluidos en la IDA de grupo de los fosfatos.",
+      "flags": ["exposicion-fosfatos"]
+    },
+    "E460": {
+      "code": "E460",
+      "name": "Celulosa",
+      "category": "espesante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Fibra vegetal no digerible. Sin riesgo conocido."
+    },
+    "E466": {
+      "code": "E466",
+      "name": "Carboximetilcelulosa (CMC)",
+      "category": "espesante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Emulgente sintético asociado en estudios recientes a cambios en la microbiota intestinal humana.",
+      "flags": ["microbiota"]
+    },
+    "E471": {
+      "code": "E471",
+      "name": "Mono y diglicéridos de ácidos grasos",
+      "category": "emulgente",
+      "risk": "low",
+      "origin": "mixto",
+      "description": "El emulgente más usado en bollería industrial. Se digiere como una grasa; puede contener grasas trans residuales según el proceso.",
+      "flags": ["marcador-ultraprocesado"]
+    },
+    "E472e": {
+      "code": "E472e",
+      "name": "Ésteres tartáricos de mono y diglicéridos (DATEM)",
+      "category": "emulgente",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Mejorante de panificación industrial. Perfil de seguridad favorable, marcador claro de ultraprocesado.",
+      "flags": ["marcador-ultraprocesado"]
+    },
+    "E476": {
+      "code": "E476",
+      "name": "Poliricinoleato de poliglicerol (PGPR)",
+      "category": "emulgente",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Reduce la viscosidad del chocolate y permite usar menos manteca de cacao. Marcador de producto reformulado a la baja.",
+      "flags": ["marcador-ultraprocesado"]
+    },
+    "E481": {
+      "code": "E481",
+      "name": "Estearoil-2-lactilato sódico",
+      "category": "emulgente",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Emulgente de panificación industrial con IDA establecida y sin alertas relevantes.",
+      "flags": ["marcador-ultraprocesado"]
+    },
+    "E491": {
+      "code": "E491",
+      "name": "Monoestearato de sorbitano",
+      "category": "emulgente",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Emulgente sintético del grupo de los ésteres de sorbitano. IDA de grupo establecida por la EFSA."
+    },
+    "E500": {
+      "code": "E500",
+      "name": "Carbonatos de sodio (bicarbonato)",
+      "category": "otro",
+      "risk": "none",
+      "origin": "sintético",
+      "description": "Gasificante de toda la vida. Sin riesgo conocido; aporta sodio."
+    },
+    "E501": {
+      "code": "E501",
+      "name": "Carbonatos de potasio",
+      "category": "otro",
+      "risk": "none",
+      "origin": "sintético",
+      "description": "Regulador de acidez sin riesgo conocido."
+    },
+    "E503": {
+      "code": "E503",
+      "name": "Carbonatos de amonio",
+      "category": "otro",
+      "risk": "none",
+      "origin": "sintético",
+      "description": "Gasificante clásico de galletería. Sin riesgo conocido."
+    },
+    "E504": {
+      "code": "E504",
+      "name": "Carbonatos de magnesio",
+      "category": "otro",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Antiaglomerante mineral. Sin riesgo conocido."
+    },
+    "E509": {
+      "code": "E509",
+      "name": "Cloruro cálcico",
+      "category": "estabilizante",
+      "risk": "none",
+      "origin": "sintético",
+      "description": "Endurecedor usado en conservas vegetales y quesería. Sin riesgo conocido."
+    },
+    "E524": {
+      "code": "E524",
+      "name": "Hidróxido sódico",
+      "category": "otro",
+      "risk": "none",
+      "origin": "sintético",
+      "description": "Regulador de acidez. Se neutraliza durante el proceso; sin riesgo en el producto final."
+    },
+    "E551": {
+      "code": "E551",
+      "name": "Dióxido de silicio (sílice)",
+      "category": "otro",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Antiaglomerante. La EFSA no pudo concluir sobre su seguridad en 2018 por falta de datos sobre la fracción nanoparticulada.",
+      "flags": ["nanoparticulas", "datos-insuficientes-efsa"]
+    },
+    "E553b": {
+      "code": "E553b",
+      "name": "Talco",
+      "category": "otro",
+      "risk": "moderate",
+      "origin": "natural",
+      "description": "Antiaglomerante mineral. Su uso alimentario es marginal pero genera debate por la contaminación histórica con amianto.",
+      "flags": ["debate-abierto"]
+    },
+    "E570": {
+      "code": "E570",
+      "name": "Ácidos grasos (ácido esteárico)",
+      "category": "otro",
+      "risk": "none",
+      "origin": "mixto",
+      "description": "Grasa usada como antiaglomerante y agente de recubrimiento. Sin riesgo conocido."
+    },
+    "E575": {
+      "code": "E575",
+      "name": "Glucono-delta-lactona",
+      "category": "acidulante",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Acidificante lento derivado de la glucosa. Sin riesgo conocido."
+    },
+    "E620": {
+      "code": "E620",
+      "name": "Ácido glutámico",
+      "category": "potenciador",
+      "risk": "low",
+      "origin": "mixto",
+      "description": "Aminoácido presente de forma natural en muchos alimentos. Como aditivo, marcador de ultraprocesado."
+    },
+    "E621": {
+      "code": "E621",
+      "name": "Glutamato monosódico (MSG)",
+      "category": "potenciador",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Potenciador del sabor considerado seguro por la EFSA, que en 2017 rebajó la IDA. Su presencia es un buen indicador de ultraprocesado.",
+      "flags": ["marcador-ultraprocesado"],
+      "efsaAdi": "30 mg/kg de peso corporal al día (IDA de grupo para glutamatos)"
+    },
+    "E627": {
+      "code": "E627",
+      "name": "Guanilato disódico",
+      "category": "potenciador",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Potenciador derivado de nucleótidos. Aumenta la carga de purinas: desaconsejado en gota e hiperuricemia.",
+      "flags": ["purinas", "marcador-ultraprocesado"]
+    },
+    "E631": {
+      "code": "E631",
+      "name": "Inosinato disódico",
+      "category": "potenciador",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Potenciador que aporta purinas; desaconsejado en personas con gota. Suele acompañar al E621.",
+      "flags": ["purinas", "marcador-ultraprocesado"]
+    },
+    "E635": {
+      "code": "E635",
+      "name": "Ribonucleótidos de sodio",
+      "category": "potenciador",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Mezcla de E627 y E631, con el mismo aporte de purinas.",
+      "flags": ["purinas", "marcador-ultraprocesado"]
+    },
+    "E950": {
+      "code": "E950",
+      "name": "Acesulfamo K",
+      "category": "edulcorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Edulcorante intensivo con IDA vigente, pero en revisión por la EFSA y con estudios que sugieren efectos sobre la microbiota.",
+      "flags": ["microbiota", "revision-abierta"]
+    },
+    "E951": {
+      "code": "E951",
+      "name": "Aspartamo",
+      "category": "edulcorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "En 2023 la IARC lo clasificó en el grupo 2B (posible cancerígeno) mientras el JECFA mantuvo la IDA. Contraindicado en fenilcetonuria.",
+      "flags": ["iarc-2b", "fenilcetonuria"],
+      "efsaAdi": "40 mg/kg de peso corporal al día"
+    },
+    "E952": {
+      "code": "E952",
+      "name": "Ciclamato",
+      "category": "edulcorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Edulcorante prohibido en Estados Unidos desde 1970, autorizado en la UE con IDA reducida.",
+      "flags": ["prohibido-eeuu"]
+    },
+    "E954": {
+      "code": "E954",
+      "name": "Sacarina",
+      "category": "edulcorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "El edulcorante más antiguo. La sospecha de cáncer de vejiga en rata se descartó para humanos, pero hay estudios sobre efectos en la microbiota.",
+      "flags": ["microbiota"]
+    },
+    "E955": {
+      "code": "E955",
+      "name": "Sucralosa",
+      "category": "edulcorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Edulcorante clorado. Debate abierto sobre efectos en la microbiota y sobre compuestos formados al calentarla por encima de 120 °C.",
+      "flags": ["microbiota", "no-apta-para-hornear"]
+    },
+    "E960": {
+      "code": "E960",
+      "name": "Glucósidos de esteviol (estevia)",
+      "category": "edulcorante",
+      "risk": "low",
+      "origin": "natural",
+      "description": "Extracto purificado de la hoja de estevia, con IDA establecida y buen perfil de seguridad.",
+      "efsaAdi": "4 mg/kg de peso corporal al día (como esteviol)"
+    },
+    "E961": {
+      "code": "E961",
+      "name": "Neotamo",
+      "category": "edulcorante",
+      "risk": "moderate",
+      "origin": "sintético",
+      "description": "Derivado del aspartamo unas 10.000 veces más dulce que el azúcar. Estudios recientes plantean dudas sobre la barrera intestinal.",
+      "flags": ["microbiota"]
+    },
+    "E965": {
+      "code": "E965",
+      "name": "Maltitol",
+      "category": "edulcorante",
+      "risk": "low",
+      "origin": "sintético",
+      "description": "Poliol con efecto laxante por encima de unos 20-30 g al día.",
+      "flags": ["efecto-laxante"]
+    },
+    "E967": {
+      "code": "E967",
+      "name": "Xilitol",
+      "category": "edulcorante",
+      "risk": "low",
+      "origin": "mixto",
+      "description": "Poliol con efecto anticaries reconocido. Laxante en cantidad y muy tóxico para los perros.",
+      "flags": ["efecto-laxante", "toxico-para-perros"]
+    },
+    "E968": {
+      "code": "E968",
+      "name": "Eritritol",
+      "category": "edulcorante",
+      "risk": "moderate",
+      "origin": "natural",
+      "description": "Poliol muy bien tolerado a nivel digestivo, pero estudios publicados desde 2023 lo asocian a un mayor riesgo trombótico. Evidencia aún en discusión.",
+      "flags": ["debate-abierto"]
+    },
+    "E901": {
+      "code": "E901",
+      "name": "Cera de abejas",
+      "category": "otro",
+      "risk": "none",
+      "origin": "natural",
+      "description": "Agente de recubrimiento. Sin riesgo conocido; no apto para veganos.",
+      "flags": ["no-vegano"]
+    },
+    "E903": {
+      "code": "E903",
+      "name": "Cera de carnauba",
+      "category": "otro",
+      "risk": "low",
+      "origin": "natural",
+      "description": "Cera vegetal de recubrimiento, no digerible. IDA establecida por la EFSA."
+    },
+    "E904": {
+      "code": "E904",
+      "name": "Goma laca",
+      "category": "otro",
+      "risk": "low",
+      "origin": "natural",
+      "description": "Resina de origen animal usada como agente de recubrimiento brillante.",
+      "flags": ["no-vegano"]
+    },
+    "E920": {
+      "code": "E920",
+      "name": "L-cisteína",
+      "category": "otro",
+      "risk": "none",
+      "origin": "mixto",
+      "description": "Aminoácido usado como mejorante de harinas. Sin riesgo conocido."
+    }
+  }
+}
