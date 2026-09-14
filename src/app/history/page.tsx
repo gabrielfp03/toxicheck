@@ -30,7 +30,7 @@ export default function HistoryPage() {
   }, []);
 
   return (
-    <div className="space-y-5 pb-24">
+    <div className="space-y-5 pb-4">
       <header className="flex items-center justify-between">
         <h1 className="text-xl font-bold">Historial</h1>
         {!vacio && (

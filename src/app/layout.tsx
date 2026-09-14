@@ -3,6 +3,7 @@ import "./globals.css";
 import { AppHeader } from "@/components/AppHeader";
 import { BottomNav } from "@/components/BottomNav";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL as SITE } from "@/lib/site";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
@@ -82,8 +83,14 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-dvh flex-col antialiased">
         <AppHeader />
-        <main className="mx-auto w-full max-w-lg flex-1 px-4 pt-5">
-          {children}
+        {/*
+          El pie va dentro de `main` y no después: así queda por encima de la
+          barra de pestañas, que es fija, y se desplaza con el contenido en
+          lugar de robarle sitio a la pantalla.
+        */}
+        <main className="mx-auto flex w-full max-w-lg flex-1 flex-col px-4 pt-5">
+          <div className="flex-1">{children}</div>
+          <SiteFooter />
         </main>
         <BottomNav />
         <ServiceWorkerRegister />

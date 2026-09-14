@@ -363,23 +363,7 @@ texto de un tema sobre el fondo del otro.
 
 ---
 
-## 7. Hoja de ruta
-
-- [x] ~~Cambiar la agregación por defecto a `geometric` y recalibrar `SCALE`.~~
-- [ ] Revisar las 122 entradas de `additives.json` contra la EFSA y añadir
-      `references` por entrada.
-- [ ] Comparador de dos productos lado a lado.
-- [ ] Alternativas mejores dentro de la misma categoría (usando
-      `categories_tags` de Open Food Facts).
-- [ ] Perfiles: sin gluten, sin lactosa, vegano, gota/purinas, fenilcetonuria.
-      Los `flags` del diccionario ya están preparados para esto.
-- [ ] OCR: reconocer aditivos escritos por su nombre, no sólo por su número E.
-- [ ] Contribuir de vuelta a Open Food Facts desde la propia app.
-- [ ] App nativa: `utils/` y `types/` son portables tal cual a React Native.
-
----
-
-## 8. Licencias y aviso legal
+## 7. Licencias y aviso legal
 
 - Datos de producto: **Open Food Facts**, bajo licencia
   [ODbL](https://opendatacommons.org/licenses/odbl/). La atribución es

@@ -107,10 +107,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <p className="muted text-center text-xs text-balance">
-        Datos de Open Food Facts (ODbL). Todo el cálculo ocurre en tu móvil: no
-        enviamos nada a ningún servidor. Esto no es consejo médico.
-      </p>
     </div>
   );
 }
