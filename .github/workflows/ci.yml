@@ -1,0 +1,68 @@
+name: CI
+
+# Se ejecuta en cada push a main y en cada pull request. Vercel despliega en
+# paralelo, así que esto no bloquea el despliegue: sirve para enterarte de que
+# algo se rompió, y para poder exigir que pase antes de fusionar una rama.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Si empujas dos veces seguidas, cancela la ejecución anterior en lugar de
+# hacer cola: ahorra minutos y el resultado de la vieja ya no interesa.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verificar:
+    name: Tipos, lint, tests y build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          # Next.js 16 exige 20.9 como mínimo. Fijamos la 22 LTS para que el
+          # CI y Vercel compilen con la misma versión.
+          node-version: 22
+          cache: npm
+
+      # `npm ci` en lugar de `npm install`: instala exactamente lo que dice
+      # package-lock.json y falla si el lock está desincronizado.
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Comprobar tipos
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Tests
+        run: npm test
+
+      - name: Build de producción
+        run: npm run build
+
+      # La premisa del proyecto es que ninguna ruta invoque una función
+      # serverless. Si alguien introduce una ruta dinámica sin querer, esto lo
+      # caza aquí en vez de en la factura.
+      - name: Comprobar que ninguna ruta es dinámica
+        run: |
+          if grep -rEl '^\s*export\s+(async\s+)?function\s+generateStaticParams' src/app > /dev/null 2>&1; then
+            echo "Aviso: hay generateStaticParams, revisa que siga siendo estático."
+          fi
+          if find src/app -type d -name '\[*\]' | grep -q .; then
+            echo "::error::Se ha encontrado una ruta dinámica en src/app."
+            find src/app -type d -name '[*]'
+            echo "Las rutas dinámicas hacen que Vercel levante una función en cada visita."
+            echo "Usa un parámetro de consulta, como /product?code=XXXX."
+            exit 1
+          fi
+          echo "Todas las rutas son estáticas."

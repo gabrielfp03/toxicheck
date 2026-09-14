@@ -36,6 +36,37 @@ export type AdditiveCategory =
   | "acidulante"
   | "otro";
 
+/** Organismo que respalda una evidencia. */
+export type EvidenceBody =
+  | "EFSA"
+  | "IARC"
+  | "Comisión Europea"
+  | "FDA"
+  | "JECFA";
+
+/**
+ * Una evidencia citable detrás de la clasificación de un aditivo.
+ *
+ * Existe porque el campo `risk` **no es un dato, es una conclusión**. La EFSA
+ * no publica "niveles de riesgo": publica dictámenes e ingestas diarias
+ * admisibles, y la IARC publica clasificaciones de la solidez de la evidencia.
+ * Poner "riesgo alto" sin decir de dónde sale es una opinión disfrazada de
+ * dato.
+ *
+ * Con este campo, cada clasificación grave apunta a algo que cualquiera puede
+ * comprobar, y la regla que convierte evidencias en nivel de riesgo está
+ * escrita en `docs/REVISION-ADITIVOS.md`.
+ */
+export interface Evidence {
+  body: EvidenceBody;
+  /** `dictamen` (EFSA/JECFA), `clasificacion` (IARC) o `norma` (UE/FDA). */
+  type: "dictamen" | "clasificacion" | "norma";
+  year: number;
+  /** Qué dice exactamente la fuente, en una o dos frases. */
+  finding: string;
+  url: string;
+}
+
 /** Una entrada del diccionario local `data/additives.json`. */
 export interface Additive {
   /** Código E normalizado en mayúsculas: `"E171"`. */
@@ -53,6 +84,13 @@ export interface Additive {
   flags?: string[];
   /** Enlaces a la fuente (dictámenes EFSA, monografías IARC…). */
   references?: string[];
+  /**
+   * Fuentes que sostienen la clasificación. Obligatorio para `risk: "high"`:
+   * hay un test que falla si falta.
+   */
+  evidence?: Evidence[];
+  /** Fecha ISO de la última revisión contra fuentes primarias. */
+  reviewedAt?: string;
 }
 
 /** Estructura completa del fichero `additives.json`. */
@@ -87,6 +125,12 @@ export interface ScoreReason {
    */
   impact: number;
   severity: RiskLevel;
+  /**
+   * Fuentes que respaldan este motivo, cuando las hay. Se muestran en la
+   * ficha: una afirmación sobre salud que no se puede rastrear hasta su
+   * origen no debería estar en pantalla.
+   */
+  sources?: Evidence[];
 }
 
 /** Resultado de uno de los tres bloques. */

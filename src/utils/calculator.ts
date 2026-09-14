@@ -150,6 +150,7 @@ function buildAdditivesBlock(product: Product): ScoreBlock {
         "Aditivo no catalogado todavía en nuestra base de datos. Lo tratamos con prudencia.",
       impact: round2(-penalty * weight),
       severity: item.risk,
+      sources: item.additive?.evidence,
     });
   }
 

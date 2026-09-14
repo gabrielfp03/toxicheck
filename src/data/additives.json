@@ -38,9 +38,30 @@
       "category": "colorante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Colorante azoico amarillo. La UE obliga a advertir en la etiqueta que 'puede afectar a la actividad y la atención de los niños'.",
-      "flags": ["southampton-six", "etiquetado-obligatorio-ue", "posible-alergeno"],
-      "efsaAdi": "7,5 mg/kg de peso corporal al día"
+      "description": "Colorante azoico amarillo. La EFSA reevaluó su seguridad en 2009 y mantuvo la IDA de 7,5 mg/kg peso corporal/día. En la UE los alimentos que lo contienen deben llevar la advertencia obligatoria «puede tener efectos negativos sobre la actividad y la atención de los niños» (Reg. 1333/2008, anexo V). La IARC no lo ha clasificado. Se han descrito reacciones de intolerancia en una fracción pequeña de la población.",
+      "flags": [
+        "southampton-six",
+        "etiquetado-obligatorio-ue",
+        "colorante-azoico"
+      ],
+      "efsaAdi": "7,5 mg/kg de peso corporal al día",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2009,
+          "finding": "El Panel concluye que la base de datos actual no da motivos para revisar la IDA de 7,5 mg/kg pc/día y que Tartrazina puede provocar reacciones de intolerancia en una fracción pequeña de la población expuesta.",
+          "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2009.1331"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2008,
+          "finding": "Reg. 1333/2008, anexo V: los alimentos que contengan Tartrazina (E 102) deben etiquetarse con la mención «puede tener efectos negativos sobre la actividad y la atención de los niños».",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E104": {
       "code": "E104",
@@ -48,8 +69,38 @@
       "category": "colorante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Colorante sintético con la advertencia europea sobre actividad y atención en niños. Prohibido en alimentos en varios países fuera de la UE.",
-      "flags": ["southampton-six", "etiquetado-obligatorio-ue"]
+      "description": "Colorante amarillo del grupo de las quinoleínas. En 2009 la EFSA rebajó la IDA de 10 a 0,5 mg/kg peso corporal/día. La EFSA advirtió entonces de que la ingesta estimada superaba la nueva IDA, y la UE respondió en 2012 reduciendo los niveles máximos de uso. Lleva además la advertencia obligatoria de hiperactividad en la UE. La IARC no lo ha clasificado.",
+      "flags": [
+        "southampton-six",
+        "etiquetado-obligatorio-ue",
+        "ida-reducida-efsa",
+        "exposicion-supera-ida"
+      ],
+      "efsaAdi": "0,5 mg/kg de peso corporal al día",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2009,
+          "finding": "Aplicando un factor de incertidumbre de 100 al NOAEL de 50 mg/kg pc/día, el Panel establece una IDA de 0,5 mg/kg pc/día y señala que las estimaciones de ingesta refinadas están generalmente muy por encima de esa IDA.",
+          "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2009.1329"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2008,
+          "finding": "Reg. 1333/2008, anexo V: los alimentos que contengan Amarillo de quinoleína (E 104) deben etiquetarse con la mención «puede tener efectos negativos sobre la actividad y la atención de los niños».",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2012,
+          "finding": "El Reglamento (UE) 232/2012 modifica el anexo II del Reglamento 1333/2008 y reduce las condiciones y los niveles de uso de E 104, E 110 y E 124, en respuesta a las IDA rebajadas por la EFSA en 2009.",
+          "url": "https://eur-lex.europa.eu/eli/reg/2012/232/oj"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E110": {
       "code": "E110",
@@ -57,8 +108,37 @@
       "category": "colorante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Colorante azoico naranja con advertencia obligatoria en la UE por su posible efecto sobre la atención infantil.",
-      "flags": ["southampton-six", "etiquetado-obligatorio-ue", "posible-alergeno"]
+      "description": "Colorante azoico amarillo-naranja. La EFSA fijó en 2009 una IDA temporal de 1 mg/kg pc/día y en 2014, tras nuevos estudios, la restableció a 4 mg/kg pc/día concluyendo que los usos declarados no plantean preocupación de seguridad. Sigue con la advertencia obligatoria de hiperactividad en la UE.",
+      "flags": [
+        "southampton-six",
+        "etiquetado-obligatorio-ue",
+        "colorante-azoico"
+      ],
+      "efsaAdi": "4 mg/kg de peso corporal al día",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2014,
+          "finding": "El Panel concluyó que, con un NOAEL de 375 mg/kg pc/día y un factor de incertidumbre de 100, se puede establecer una nueva IDA de 4 mg/kg pc/día para Sunset Yellow FCF y que las estimaciones de exposición están muy por debajo de esa IDA.",
+          "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2014.3765"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2008,
+          "finding": "Reg. 1333/2008, anexo V: los alimentos que contengan Sunset Yellow (E 110) deben etiquetarse con la mención «puede tener efectos negativos sobre la actividad y la atención de los niños».",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2012,
+          "finding": "El Reglamento (UE) 232/2012 modifica el anexo II del Reglamento 1333/2008 y reduce las condiciones y los niveles de uso de E 104, E 110 y E 124, en respuesta a las IDA rebajadas por la EFSA en 2009.",
+          "url": "https://eur-lex.europa.eu/eli/reg/2012/232/oj"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E120": {
       "code": "E120",
@@ -67,7 +147,10 @@
       "risk": "low",
       "origin": "natural",
       "description": "Rojo obtenido del insecto cochinilla. Seguro, pero puede desencadenar reacciones alérgicas y no es apto para veganos.",
-      "flags": ["posible-alergeno", "no-vegano"]
+      "flags": [
+        "posible-alergeno",
+        "no-vegano"
+      ]
     },
     "E122": {
       "code": "E122",
@@ -75,8 +158,30 @@
       "category": "colorante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Colorante azoico rojo con advertencia obligatoria en la UE sobre actividad y atención en niños.",
-      "flags": ["southampton-six", "etiquetado-obligatorio-ue"]
+      "description": "Colorante azoico rojo, también llamado carmoisina. La EFSA mantuvo en 2009 la IDA de 4 mg/kg pc/día. Las estimaciones de ingesta están por debajo salvo en niños de 1 a 10 años, donde el percentil alto puede quedar ligeramente por encima. Etiquetado obligatorio de hiperactividad en la UE.",
+      "flags": [
+        "southampton-six",
+        "etiquetado-obligatorio-ue",
+        "colorante-azoico"
+      ],
+      "efsaAdi": "4 mg/kg de peso corporal al día",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2009,
+          "finding": "El Panel concluye que la base de datos actual no da motivos para revisar la IDA de 4 mg/kg pc/día, aunque en niños de 1 a 10 años el percentil alto de exposición puede ser ligeramente superior a la IDA.",
+          "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2009.1332"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2008,
+          "finding": "Reg. 1333/2008, anexo V: los alimentos que contengan Carmoisine (E 122) deben etiquetarse con la mención «puede tener efectos negativos sobre la actividad y la atención de los niños».",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E123": {
       "code": "E123",
@@ -84,8 +189,23 @@
       "category": "colorante",
       "risk": "high",
       "origin": "sintético",
-      "description": "Colorante azoico rojo prohibido en Estados Unidos desde 1976 y con uso muy restringido en la UE (prácticamente sólo bebidas espirituosas y huevas de pescado).",
-      "flags": ["prohibido-eeuu", "uso-restringido-ue"]
+      "description": "Colorante azoico rojo. La EFSA rebajó su ingesta diaria admisible más de cincuenta veces en 2010, hasta 0,015 mg/kg de peso corporal. En la UE sólo se autoriza en unos pocos usos y en Estados Unidos está prohibido desde 1976.",
+      "flags": [
+        "prohibido-eeuu",
+        "uso-restringido-ue",
+        "ida-muy-baja"
+      ],
+      "efsaAdi": "0,015 mg/kg de peso corporal al día",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2010,
+          "finding": "Rebaja la IDA de 0,8 a 0,015 mg/kg de peso corporal al día a partir de estudios de toxicidad reproductiva y de calcificación e hiperplasia renal en rata.",
+          "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2010.1649"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E124": {
       "code": "E124",
@@ -93,8 +213,39 @@
       "category": "colorante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Colorante azoico rojo con advertencia obligatoria en la UE. Prohibido en alimentos en Estados Unidos.",
-      "flags": ["southampton-six", "etiquetado-obligatorio-ue", "prohibido-eeuu"]
+      "description": "Colorante azoico rojo. La EFSA rebajó en 2009 la IDA de 4 a 0,7 mg/kg pc/día y advirtió de que la ingesta estimada superaba entonces la nueva IDA en adultos con consumo alto y en niños; la UE respondió en 2012 reduciendo los niveles máximos de uso. Lleva la advertencia obligatoria de hiperactividad en la UE.",
+      "flags": [
+        "southampton-six",
+        "etiquetado-obligatorio-ue",
+        "colorante-azoico",
+        "ida-reducida-efsa",
+        "exposicion-supera-ida"
+      ],
+      "efsaAdi": "0,7 mg/kg de peso corporal al día",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2009,
+          "finding": "El Panel establece una IDA de 0,7 mg/kg pc/día y concluye que las estimaciones de ingesta para adultos y para niños de 1 a 10 años están generalmente por encima de la IDA incluso en las estimaciones refinadas.",
+          "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2009.1328"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2008,
+          "finding": "Reg. 1333/2008, anexo V: los alimentos que contengan Ponceau 4R (E 124) deben etiquetarse con la mención «puede tener efectos negativos sobre la actividad y la atención de los niños».",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2012,
+          "finding": "El Reglamento (UE) 232/2012 modifica el anexo II del Reglamento 1333/2008 y reduce las condiciones y los niveles de uso de E 104, E 110 y E 124, en respuesta a las IDA rebajadas por la EFSA en 2009.",
+          "url": "https://eur-lex.europa.eu/eli/reg/2012/232/oj"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E127": {
       "code": "E127",
@@ -102,8 +253,21 @@
       "category": "colorante",
       "risk": "high",
       "origin": "sintético",
-      "description": "Colorante rojo yodado con uso muy restringido en la UE (cerezas en conserva y confitadas) por sus efectos observados sobre la función tiroidea en estudios animales.",
-      "flags": ["uso-restringido-ue"]
+      "description": "Colorante rojo yodado. En la UE su uso está restringido a cerezas en conserva y confitadas. En enero de 2025 la FDA revocó su autorización en alimentos en Estados Unidos por la cláusula Delaney, al inducir cáncer en ratas macho.",
+      "flags": [
+        "uso-restringido-ue",
+        "retirado-eeuu-2025"
+      ],
+      "evidence": [
+        {
+          "body": "FDA",
+          "type": "norma",
+          "year": 2025,
+          "finding": "Revoca la autorización del FD&C Red No. 3 en alimentos (plazo de adaptación hasta enero de 2027) al amparo de la cláusula Delaney. La propia FDA señala que el mecanismo observado en ratas macho no se ha demostrado en humanos.",
+          "url": "https://www.fda.gov/industry/color-additives/fdc-red-no-3"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E129": {
       "code": "E129",
@@ -111,8 +275,30 @@
       "category": "colorante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Colorante azoico rojo con advertencia obligatoria en la UE sobre actividad y atención en niños.",
-      "flags": ["southampton-six", "etiquetado-obligatorio-ue"]
+      "description": "Colorante azoico rojo. La EFSA mantuvo en 2009 la IDA de 7 mg/kg pc/día; las estimaciones están por debajo salvo en niños de 1 a 10 años, donde el percentil alto puede quedar ligeramente por encima. Lleva la advertencia obligatoria de hiperactividad en la UE. La IARC no lo ha clasificado.",
+      "flags": [
+        "southampton-six",
+        "etiquetado-obligatorio-ue",
+        "colorante-azoico"
+      ],
+      "efsaAdi": "7 mg/kg de peso corporal al día",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2009,
+          "finding": "El Panel concluyó que la base de datos actual no da motivos para revisar la IDA de 7 mg/kg pc/día y que las estimaciones de ingesta refinadas están generalmente por debajo de la IDA.",
+          "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2009.1327"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2008,
+          "finding": "Reg. 1333/2008, anexo V: los alimentos que contengan Allura Red (E 129) deben etiquetarse con la mención «puede tener efectos negativos sobre la actividad y la atención de los niños».",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E131": {
       "code": "E131",
@@ -121,7 +307,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Colorante azul sintético asociado a reacciones de hipersensibilidad en personas sensibles.",
-      "flags": ["posible-alergeno"]
+      "flags": [
+        "posible-alergeno"
+      ]
     },
     "E132": {
       "code": "E132",
@@ -130,7 +318,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Colorante azul sintético con casos descritos de reacciones alérgicas.",
-      "flags": ["posible-alergeno"]
+      "flags": [
+        "posible-alergeno"
+      ]
     },
     "E133": {
       "code": "E133",
@@ -171,7 +361,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Obtenido con compuestos de amonio. Puede contener 4-metilimidazol (4-MEI), sustancia bajo vigilancia toxicológica.",
-      "flags": ["4-mei"]
+      "flags": [
+        "4-mei"
+      ]
     },
     "E150d": {
       "code": "E150d",
@@ -180,7 +372,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "El caramelo típico de los refrescos de cola. Puede contener 4-metilimidazol (4-MEI), clasificado por la IARC en el grupo 2B.",
-      "flags": ["4-mei", "iarc-2b"]
+      "flags": [
+        "4-mei",
+        "iarc-2b"
+      ]
     },
     "E153": {
       "code": "E153",
@@ -205,7 +400,9 @@
       "risk": "low",
       "origin": "natural",
       "description": "Colorante naranja natural. Descritas reacciones de hipersensibilidad en personas sensibles.",
-      "flags": ["posible-alergeno"]
+      "flags": [
+        "posible-alergeno"
+      ]
     },
     "E160c": {
       "code": "E160c",
@@ -253,8 +450,29 @@
       "category": "colorante",
       "risk": "high",
       "origin": "sintético",
-      "description": "En 2021 la EFSA concluyó que ya no puede considerarse seguro como aditivo alimentario por no poder descartarse genotoxicidad. Prohibido en alimentos en la UE desde 2022.",
-      "flags": ["prohibido-ue", "genotoxicidad-no-descartada"]
+      "description": "En 2021 la EFSA concluyó que ya no puede considerarse seguro como aditivo alimentario: no se pudo descartar la genotoxicidad y no procedía fijar una ingesta diaria admisible. Prohibido en alimentos en la UE desde 2022.",
+      "flags": [
+        "prohibido-ue",
+        "genotoxicidad-no-descartada"
+      ],
+      "efsaAdi": "No se ha podido establecer",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2021,
+          "finding": "El dióxido de titanio ya no puede considerarse seguro como aditivo alimentario; no se puede descartar la genotoxicidad y no procede establecer una IDA.",
+          "url": "https://www.efsa.europa.eu/en/news/titanium-dioxide-e171-no-longer-considered-safe-when-used-food-additive"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2022,
+          "finding": "El Reglamento (UE) 2022/63 retira el E171 de la lista de aditivos autorizados en alimentos.",
+          "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32022R0063"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E172": {
       "code": "E172",
@@ -295,7 +513,9 @@
       "risk": "moderate",
       "origin": "mixto",
       "description": "Conservante asociado a reacciones pseudoalérgicas en personas sensibles (asma, urticaria).",
-      "flags": ["posible-alergeno"]
+      "flags": [
+        "posible-alergeno"
+      ]
     },
     "E211": {
       "code": "E211",
@@ -304,7 +524,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "En presencia de vitamina C (E300) y calor puede formar trazas de benceno. Muy frecuente en refrescos.",
-      "flags": ["forma-benceno-con-e300", "posible-alergeno"]
+      "flags": [
+        "forma-benceno-con-e300",
+        "posible-alergeno"
+      ]
     },
     "E212": {
       "code": "E212",
@@ -313,7 +536,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Mismo perfil que el benzoato sódico, incluida la posible formación de benceno junto a vitamina C.",
-      "flags": ["forma-benceno-con-e300"]
+      "flags": [
+        "forma-benceno-con-e300"
+      ]
     },
     "E220": {
       "code": "E220",
@@ -322,7 +547,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Sulfito de declaración obligatoria como alérgeno. Puede provocar crisis asmáticas en personas sensibles.",
-      "flags": ["alergeno-declarable", "riesgo-asma"]
+      "flags": [
+        "alergeno-declarable",
+        "riesgo-asma"
+      ]
     },
     "E221": {
       "code": "E221",
@@ -331,7 +559,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Sulfito de declaración obligatoria. Destruye parte de la vitamina B1 del alimento.",
-      "flags": ["alergeno-declarable"]
+      "flags": [
+        "alergeno-declarable"
+      ]
     },
     "E223": {
       "code": "E223",
@@ -340,7 +570,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Sulfito muy usado en vinos, frutos secos y crustáceos. Alérgeno de declaración obligatoria.",
-      "flags": ["alergeno-declarable", "riesgo-asma"]
+      "flags": [
+        "alergeno-declarable",
+        "riesgo-asma"
+      ]
     },
     "E224": {
       "code": "E224",
@@ -349,7 +582,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Sulfito habitual en vinificación. Alérgeno de declaración obligatoria.",
-      "flags": ["alergeno-declarable"]
+      "flags": [
+        "alergeno-declarable"
+      ]
     },
     "E234": {
       "code": "E234",
@@ -373,8 +608,36 @@
       "category": "conservante",
       "risk": "high",
       "origin": "sintético",
-      "description": "En carnes puede formar nitrosaminas. La IARC clasifica la carne procesada como cancerígena para humanos (grupo 1).",
-      "flags": ["nitrosaminas", "iarc-grupo-1-carne-procesada"]
+      "description": "Nitrito potásico, equivalente al nitrito sódico en uso y en riesgo: puede formar nitrosaminas en productos cárnicos. La IARC clasifica la carne procesada en el grupo 1 y la UE redujo los límites máximos en 2023.",
+      "flags": [
+        "nitrosaminas",
+        "iarc-2a-nitrosacion",
+        "limites-reducidos-ue-2023"
+      ],
+      "evidence": [
+        {
+          "body": "IARC",
+          "type": "clasificacion",
+          "year": 2010,
+          "finding": "Volumen 94: la ingesta de nitrato o nitrito en condiciones que producen nitrosación endógena es probablemente cancerígena para humanos (grupo 2A).",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK326535/"
+        },
+        {
+          "body": "IARC",
+          "type": "clasificacion",
+          "year": 2015,
+          "finding": "Volumen 114: la carne procesada es cancerígena para humanos (grupo 1). Es una clasificación de la solidez de la evidencia, no una medida de cuánto riesgo supone una ración.",
+          "url": "https://www.who.int/news-room/questions-and-answers/item/cancer-carcinogenicity-of-the-consumption-of-red-meat-and-processed-meat"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2023,
+          "finding": "El Reglamento (UE) 2023/2108 reduce los límites máximos de nitritos y nitratos en nueve categorías de alimentos para bajar la exposición a nitrosaminas.",
+          "url": "https://eur-lex.europa.eu/eli/reg/2023/2108/oj"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E250": {
       "code": "E250",
@@ -382,8 +645,36 @@
       "category": "conservante",
       "risk": "high",
       "origin": "sintético",
-      "description": "El conservante típico de embutidos y jamón cocido. Puede formar nitrosaminas durante la digestión o la cocción a alta temperatura.",
-      "flags": ["nitrosaminas", "iarc-grupo-1-carne-procesada"]
+      "description": "El conservante típico de embutidos y jamón cocido. Protege frente a Clostridium botulinum, pero en presencia de aminas puede formar nitrosaminas. La IARC clasifica la carne procesada en el grupo 1 y la UE redujo los límites máximos en 2023.",
+      "flags": [
+        "nitrosaminas",
+        "iarc-2a-nitrosacion",
+        "limites-reducidos-ue-2023"
+      ],
+      "evidence": [
+        {
+          "body": "IARC",
+          "type": "clasificacion",
+          "year": 2010,
+          "finding": "Volumen 94: la ingesta de nitrato o nitrito en condiciones que producen nitrosación endógena es probablemente cancerígena para humanos (grupo 2A).",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK326535/"
+        },
+        {
+          "body": "IARC",
+          "type": "clasificacion",
+          "year": 2015,
+          "finding": "Volumen 114: la carne procesada es cancerígena para humanos (grupo 1). Es una clasificación de la solidez de la evidencia, no una medida de cuánto riesgo supone una ración.",
+          "url": "https://www.who.int/news-room/questions-and-answers/item/cancer-carcinogenicity-of-the-consumption-of-red-meat-and-processed-meat"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2023,
+          "finding": "El Reglamento (UE) 2023/2108 reduce los límites máximos de nitritos y nitratos en nueve categorías de alimentos para bajar la exposición a nitrosaminas.",
+          "url": "https://eur-lex.europa.eu/eli/reg/2023/2108/oj"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E251": {
       "code": "E251",
@@ -391,8 +682,36 @@
       "category": "conservante",
       "risk": "high",
       "origin": "sintético",
-      "description": "Se reduce a nitrito en el organismo, con el mismo riesgo de formación de nitrosaminas.",
-      "flags": ["nitrosaminas"]
+      "description": "Nitrato sódico. El organismo lo reduce a nitrito, con el mismo riesgo de formación de nitrosaminas. La IARC clasifica la carne procesada en el grupo 1 y la UE redujo los límites máximos en 2023.",
+      "flags": [
+        "nitrosaminas",
+        "iarc-2a-nitrosacion",
+        "limites-reducidos-ue-2023"
+      ],
+      "evidence": [
+        {
+          "body": "IARC",
+          "type": "clasificacion",
+          "year": 2010,
+          "finding": "Volumen 94: la ingesta de nitrato o nitrito en condiciones que producen nitrosación endógena es probablemente cancerígena para humanos (grupo 2A).",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK326535/"
+        },
+        {
+          "body": "IARC",
+          "type": "clasificacion",
+          "year": 2015,
+          "finding": "Volumen 114: la carne procesada es cancerígena para humanos (grupo 1). Es una clasificación de la solidez de la evidencia, no una medida de cuánto riesgo supone una ración.",
+          "url": "https://www.who.int/news-room/questions-and-answers/item/cancer-carcinogenicity-of-the-consumption-of-red-meat-and-processed-meat"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2023,
+          "finding": "El Reglamento (UE) 2023/2108 reduce los límites máximos de nitritos y nitratos en nueve categorías de alimentos para bajar la exposición a nitrosaminas.",
+          "url": "https://eur-lex.europa.eu/eli/reg/2023/2108/oj"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E252": {
       "code": "E252",
@@ -400,8 +719,36 @@
       "category": "conservante",
       "risk": "high",
       "origin": "sintético",
-      "description": "Conservante de curados tradicionales. Se reduce a nitrito en el organismo.",
-      "flags": ["nitrosaminas"]
+      "description": "Nitrato potásico, el salitre de los curados tradicionales. Se reduce a nitrito en el organismo. La IARC clasifica la carne procesada en el grupo 1 y la UE redujo los límites máximos en 2023.",
+      "flags": [
+        "nitrosaminas",
+        "iarc-2a-nitrosacion",
+        "limites-reducidos-ue-2023"
+      ],
+      "evidence": [
+        {
+          "body": "IARC",
+          "type": "clasificacion",
+          "year": 2010,
+          "finding": "Volumen 94: la ingesta de nitrato o nitrito en condiciones que producen nitrosación endógena es probablemente cancerígena para humanos (grupo 2A).",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK326535/"
+        },
+        {
+          "body": "IARC",
+          "type": "clasificacion",
+          "year": 2015,
+          "finding": "Volumen 114: la carne procesada es cancerígena para humanos (grupo 1). Es una clasificación de la solidez de la evidencia, no una medida de cuánto riesgo supone una ración.",
+          "url": "https://www.who.int/news-room/questions-and-answers/item/cancer-carcinogenicity-of-the-consumption-of-red-meat-and-processed-meat"
+        },
+        {
+          "body": "Comisión Europea",
+          "type": "norma",
+          "year": 2023,
+          "finding": "El Reglamento (UE) 2023/2108 reduce los límites máximos de nitritos y nitratos en nueve categorías de alimentos para bajar la exposición a nitrosaminas.",
+          "url": "https://eur-lex.europa.eu/eli/reg/2023/2108/oj"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E280": {
       "code": "E280",
@@ -495,10 +842,30 @@
       "code": "E320",
       "name": "BHA (butilhidroxianisol)",
       "category": "antioxidante",
-      "risk": "high",
+      "risk": "moderate",
       "origin": "sintético",
-      "description": "Antioxidante sintético clasificado por la IARC en el grupo 2B (posible cancerígeno para humanos) y con actividad de disruptor endocrino en estudios.",
-      "flags": ["iarc-2b", "disruptor-endocrino"]
+      "description": "Antioxidante sintético. La IARC lo clasificó en 1986 en el grupo 2B (posible cancerígeno para humanos), pero la reevaluación de la EFSA de 2011 fue favorable: subió la ingesta diaria admisible a 1 mg/kg y descartó problemas de genotoxicidad.",
+      "flags": [
+        "iarc-2b"
+      ],
+      "efsaAdi": "1,0 mg/kg de peso corporal al día",
+      "evidence": [
+        {
+          "body": "IARC",
+          "type": "clasificacion",
+          "year": 1986,
+          "finding": "Volumen 40: el butilhidroxianisol es posiblemente cancerígeno para humanos (grupo 2B).",
+          "url": "https://monographs.iarc.who.int/agents-classified-by-the-iarc/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2011,
+          "finding": "Establece una IDA de 1,0 mg/kg de peso corporal al día, superior a la temporal anterior de 0,5, y concluye que el BHA no plantea preocupación por genotoxicidad.",
+          "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2392"
+        }
+      ],
+      "reviewedAt": "2026-09-14"
     },
     "E321": {
       "code": "E321",
@@ -516,7 +883,9 @@
       "risk": "none",
       "origin": "natural",
       "description": "Emulgente natural de soja o girasol. Sin riesgo conocido; si es de soja, es alérgeno declarable.",
-      "flags": ["posible-soja"]
+      "flags": [
+        "posible-soja"
+      ]
     },
     "E325": {
       "code": "E325",
@@ -565,7 +934,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Acidulante de los refrescos de cola. Un aporte alto de fósforo se ha asociado a peor salud ósea y renal, sobre todo con ingestas elevadas.",
-      "flags": ["exposicion-fosfatos"]
+      "flags": [
+        "exposicion-fosfatos"
+      ]
     },
     "E339": {
       "code": "E339",
@@ -574,7 +945,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "La EFSA estableció en 2019 una IDA de grupo para los fosfatos porque la exposición total supera el límite en parte de la población.",
-      "flags": ["exposicion-fosfatos"],
+      "flags": [
+        "exposicion-fosfatos"
+      ],
       "efsaAdi": "40 mg/kg de peso corporal al día (IDA de grupo, expresada como fósforo)"
     },
     "E340": {
@@ -584,7 +957,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Incluido en la IDA de grupo de los fosfatos establecida por la EFSA en 2019.",
-      "flags": ["exposicion-fosfatos"]
+      "flags": [
+        "exposicion-fosfatos"
+      ]
     },
     "E341": {
       "code": "E341",
@@ -593,7 +968,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Antiaglomerante y enriquecedor. Incluido en la IDA de grupo de los fosfatos.",
-      "flags": ["exposicion-fosfatos"]
+      "flags": [
+        "exposicion-fosfatos"
+      ]
     },
     "E385": {
       "code": "E385",
@@ -627,7 +1004,9 @@
       "risk": "moderate",
       "origin": "natural",
       "description": "Extraído de algas. Estudios en animales lo asocian a inflamación intestinal y la EFSA pidió más datos sobre el peso molecular del producto comercial.",
-      "flags": ["inflamacion-intestinal-estudios-animales"]
+      "flags": [
+        "inflamacion-intestinal-estudios-animales"
+      ]
     },
     "E410": {
       "code": "E410",
@@ -676,7 +1055,9 @@
       "risk": "low",
       "origin": "mixto",
       "description": "Poliol edulcorante. Por encima de 10 g al día produce efecto laxante; la etiqueta debe advertirlo.",
-      "flags": ["efecto-laxante"]
+      "flags": [
+        "efecto-laxante"
+      ]
     },
     "E421": {
       "code": "E421",
@@ -685,7 +1066,9 @@
       "risk": "low",
       "origin": "mixto",
       "description": "Poliol con efecto laxante en cantidades moderadas.",
-      "flags": ["efecto-laxante"]
+      "flags": [
+        "efecto-laxante"
+      ]
     },
     "E422": {
       "code": "E422",
@@ -702,7 +1085,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Emulgente sintético. Los polisorbatos han mostrado alteración de la microbiota e inflamación intestinal en modelos animales.",
-      "flags": ["microbiota-estudios-animales"]
+      "flags": [
+        "microbiota-estudios-animales"
+      ]
     },
     "E433": {
       "code": "E433",
@@ -711,7 +1096,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Emulgente sintético con estudios animales que apuntan a alteración de la microbiota y de la barrera intestinal.",
-      "flags": ["microbiota-estudios-animales"]
+      "flags": [
+        "microbiota-estudios-animales"
+      ]
     },
     "E440": {
       "code": "E440",
@@ -728,7 +1115,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Gasificante y retenedor de agua. Incluido en la IDA de grupo de los fosfatos (EFSA 2019).",
-      "flags": ["exposicion-fosfatos"]
+      "flags": [
+        "exposicion-fosfatos"
+      ]
     },
     "E451": {
       "code": "E451",
@@ -737,7 +1126,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Retenedor de agua en carnes y pescados procesados. Incluido en la IDA de grupo de los fosfatos.",
-      "flags": ["exposicion-fosfatos"]
+      "flags": [
+        "exposicion-fosfatos"
+      ]
     },
     "E452": {
       "code": "E452",
@@ -746,7 +1137,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Muy usados en quesos fundidos y carnes. Incluidos en la IDA de grupo de los fosfatos.",
-      "flags": ["exposicion-fosfatos"]
+      "flags": [
+        "exposicion-fosfatos"
+      ]
     },
     "E460": {
       "code": "E460",
@@ -763,7 +1156,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Emulgente sintético asociado en estudios recientes a cambios en la microbiota intestinal humana.",
-      "flags": ["microbiota"]
+      "flags": [
+        "microbiota"
+      ]
     },
     "E471": {
       "code": "E471",
@@ -772,7 +1167,9 @@
       "risk": "low",
       "origin": "mixto",
       "description": "El emulgente más usado en bollería industrial. Se digiere como una grasa; puede contener grasas trans residuales según el proceso.",
-      "flags": ["marcador-ultraprocesado"]
+      "flags": [
+        "marcador-ultraprocesado"
+      ]
     },
     "E472e": {
       "code": "E472e",
@@ -781,7 +1178,9 @@
       "risk": "low",
       "origin": "sintético",
       "description": "Mejorante de panificación industrial. Perfil de seguridad favorable, marcador claro de ultraprocesado.",
-      "flags": ["marcador-ultraprocesado"]
+      "flags": [
+        "marcador-ultraprocesado"
+      ]
     },
     "E476": {
       "code": "E476",
@@ -790,7 +1189,9 @@
       "risk": "low",
       "origin": "sintético",
       "description": "Reduce la viscosidad del chocolate y permite usar menos manteca de cacao. Marcador de producto reformulado a la baja.",
-      "flags": ["marcador-ultraprocesado"]
+      "flags": [
+        "marcador-ultraprocesado"
+      ]
     },
     "E481": {
       "code": "E481",
@@ -799,7 +1200,9 @@
       "risk": "low",
       "origin": "sintético",
       "description": "Emulgente de panificación industrial con IDA establecida y sin alertas relevantes.",
-      "flags": ["marcador-ultraprocesado"]
+      "flags": [
+        "marcador-ultraprocesado"
+      ]
     },
     "E491": {
       "code": "E491",
@@ -864,7 +1267,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Antiaglomerante. La EFSA no pudo concluir sobre su seguridad en 2018 por falta de datos sobre la fracción nanoparticulada.",
-      "flags": ["nanoparticulas", "datos-insuficientes-efsa"]
+      "flags": [
+        "nanoparticulas",
+        "datos-insuficientes-efsa"
+      ]
     },
     "E553b": {
       "code": "E553b",
@@ -873,7 +1279,9 @@
       "risk": "moderate",
       "origin": "natural",
       "description": "Antiaglomerante mineral. Su uso alimentario es marginal pero genera debate por la contaminación histórica con amianto.",
-      "flags": ["debate-abierto"]
+      "flags": [
+        "debate-abierto"
+      ]
     },
     "E570": {
       "code": "E570",
@@ -906,7 +1314,9 @@
       "risk": "low",
       "origin": "sintético",
       "description": "Potenciador del sabor considerado seguro por la EFSA, que en 2017 rebajó la IDA. Su presencia es un buen indicador de ultraprocesado.",
-      "flags": ["marcador-ultraprocesado"],
+      "flags": [
+        "marcador-ultraprocesado"
+      ],
       "efsaAdi": "30 mg/kg de peso corporal al día (IDA de grupo para glutamatos)"
     },
     "E627": {
@@ -916,7 +1326,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Potenciador derivado de nucleótidos. Aumenta la carga de purinas: desaconsejado en gota e hiperuricemia.",
-      "flags": ["purinas", "marcador-ultraprocesado"]
+      "flags": [
+        "purinas",
+        "marcador-ultraprocesado"
+      ]
     },
     "E631": {
       "code": "E631",
@@ -925,7 +1338,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Potenciador que aporta purinas; desaconsejado en personas con gota. Suele acompañar al E621.",
-      "flags": ["purinas", "marcador-ultraprocesado"]
+      "flags": [
+        "purinas",
+        "marcador-ultraprocesado"
+      ]
     },
     "E635": {
       "code": "E635",
@@ -934,7 +1350,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Mezcla de E627 y E631, con el mismo aporte de purinas.",
-      "flags": ["purinas", "marcador-ultraprocesado"]
+      "flags": [
+        "purinas",
+        "marcador-ultraprocesado"
+      ]
     },
     "E950": {
       "code": "E950",
@@ -943,7 +1362,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Edulcorante intensivo con IDA vigente, pero en revisión por la EFSA y con estudios que sugieren efectos sobre la microbiota.",
-      "flags": ["microbiota", "revision-abierta"]
+      "flags": [
+        "microbiota",
+        "revision-abierta"
+      ]
     },
     "E951": {
       "code": "E951",
@@ -952,7 +1374,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "En 2023 la IARC lo clasificó en el grupo 2B (posible cancerígeno) mientras el JECFA mantuvo la IDA. Contraindicado en fenilcetonuria.",
-      "flags": ["iarc-2b", "fenilcetonuria"],
+      "flags": [
+        "iarc-2b",
+        "fenilcetonuria"
+      ],
       "efsaAdi": "40 mg/kg de peso corporal al día"
     },
     "E952": {
@@ -962,7 +1387,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Edulcorante prohibido en Estados Unidos desde 1970, autorizado en la UE con IDA reducida.",
-      "flags": ["prohibido-eeuu"]
+      "flags": [
+        "prohibido-eeuu"
+      ]
     },
     "E954": {
       "code": "E954",
@@ -971,7 +1398,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "El edulcorante más antiguo. La sospecha de cáncer de vejiga en rata se descartó para humanos, pero hay estudios sobre efectos en la microbiota.",
-      "flags": ["microbiota"]
+      "flags": [
+        "microbiota"
+      ]
     },
     "E955": {
       "code": "E955",
@@ -980,7 +1409,10 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Edulcorante clorado. Debate abierto sobre efectos en la microbiota y sobre compuestos formados al calentarla por encima de 120 °C.",
-      "flags": ["microbiota", "no-apta-para-hornear"]
+      "flags": [
+        "microbiota",
+        "no-apta-para-hornear"
+      ]
     },
     "E960": {
       "code": "E960",
@@ -998,7 +1430,9 @@
       "risk": "moderate",
       "origin": "sintético",
       "description": "Derivado del aspartamo unas 10.000 veces más dulce que el azúcar. Estudios recientes plantean dudas sobre la barrera intestinal.",
-      "flags": ["microbiota"]
+      "flags": [
+        "microbiota"
+      ]
     },
     "E965": {
       "code": "E965",
@@ -1007,7 +1441,9 @@
       "risk": "low",
       "origin": "sintético",
       "description": "Poliol con efecto laxante por encima de unos 20-30 g al día.",
-      "flags": ["efecto-laxante"]
+      "flags": [
+        "efecto-laxante"
+      ]
     },
     "E967": {
       "code": "E967",
@@ -1016,7 +1452,10 @@
       "risk": "low",
       "origin": "mixto",
       "description": "Poliol con efecto anticaries reconocido. Laxante en cantidad y muy tóxico para los perros.",
-      "flags": ["efecto-laxante", "toxico-para-perros"]
+      "flags": [
+        "efecto-laxante",
+        "toxico-para-perros"
+      ]
     },
     "E968": {
       "code": "E968",
@@ -1025,7 +1464,9 @@
       "risk": "moderate",
       "origin": "natural",
       "description": "Poliol muy bien tolerado a nivel digestivo, pero estudios publicados desde 2023 lo asocian a un mayor riesgo trombótico. Evidencia aún en discusión.",
-      "flags": ["debate-abierto"]
+      "flags": [
+        "debate-abierto"
+      ]
     },
     "E901": {
       "code": "E901",
@@ -1034,7 +1475,9 @@
       "risk": "none",
       "origin": "natural",
       "description": "Agente de recubrimiento. Sin riesgo conocido; no apto para veganos.",
-      "flags": ["no-vegano"]
+      "flags": [
+        "no-vegano"
+      ]
     },
     "E903": {
       "code": "E903",
@@ -1051,7 +1494,9 @@
       "risk": "low",
       "origin": "natural",
       "description": "Resina de origen animal usada como agente de recubrimiento brillante.",
-      "flags": ["no-vegano"]
+      "flags": [
+        "no-vegano"
+      ]
     },
     "E920": {
       "code": "E920",
@@ -1061,5 +1506,6 @@
       "origin": "mixto",
       "description": "Aminoácido usado como mejorante de harinas. Sin riesgo conocido."
     }
-  }
+  },
+  "reviewPolicy": "El nivel de riesgo se deriva de las evidencias citadas en cada entrada según la regla de docs/REVISION-ADITIVOS.md. Las entradas sin campo 'evidence' siguen siendo la semilla original y están pendientes de revisar."
 }

@@ -62,6 +62,9 @@ toxicheck/
 │   │   ├── layout.tsx               # shell, metadatos PWA, script de tema
 │   │   ├── globals.css              # Tailwind v4 + tokens de color
 │   │   ├── manifest.ts              # manifiesto PWA tipado
+│   │   ├── robots.ts                # /robots.txt estático
+│   │   ├── sitemap.ts               # /sitemap.xml estático
+│   │   ├── favicon.ico / apple-icon.png
 │   │   ├── page.tsx                 # inicio + entrada manual de código
 │   │   ├── scan/page.tsx            # escáner de códigos de barras
 │   │   ├── ocr/page.tsx             # análisis de etiqueta por foto
@@ -73,6 +76,8 @@ toxicheck/
 │   │   ├── ScoreGauge.tsx           # medidor circular en SVG puro
 │   │   ├── ScoreBreakdown.tsx       # los tres bloques y sus motivos
 │   │   ├── ProductView.tsx          # composición de la ficha
+│   │   ├── SiteFooter.tsx           # autoría, atribución y descargo médico
+│   │   ├── HistoryActions.tsx       # copia de seguridad del historial
 │   │   ├── AppHeader.tsx            # barra superior de marca
 │   │   ├── ThemeToggle.tsx          # claro / oscuro / sistema
 │   │   ├── BottomNav.tsx            # pestañas inferiores
@@ -80,14 +85,18 @@ toxicheck/
 │   │   ├── icons.tsx                # iconos SVG en línea
 │   │   └── ServiceWorkerRegister.tsx
 │   ├── data/
-│   │   └── additives.json           # 122 números E con riesgo y descripción
+│   │   ├── additives.json           # 122 números E con riesgo y evidencias
+│   │   └── additives.test.ts        # validación de los DATOS, no del código
 │   ├── hooks/
 │   │   ├── useProductScore.ts       # fetch + cálculo + historial
 │   │   └── useHistory.ts            # useSyncExternalStore sobre localStorage
 │   ├── lib/
 │   │   ├── openfoodfacts.ts         # cliente + normalización + validación EAN
 │   │   ├── openfoodfacts.test.ts
+│   │   ├── site.ts                  # dirección pública, en un solo sitio
 │   │   ├── theme.ts                 # store de tema (sin React)
+│   │   ├── historyFile.ts           # exportar/importar: validación y fusión
+│   │   ├── historyFile.test.ts
 │   │   └── storage.ts               # historial observable
 │   ├── types/
 │   │   ├── product.ts               # capa cruda (OFF) + capa normalizada
@@ -98,6 +107,9 @@ toxicheck/
 │       ├── additives.ts             # normalización de códigos E y búsqueda
 │       ├── nutrition.ts             # Nutri-Score 2017 recalculado
 │       └── nova.ts                  # escala NOVA
+├── docs/REVISION-ADITIVOS.md        # cómo se clasifica un aditivo, y por qué
+├── scripts/revisar-aditivos.py      # aplica revisiones documentadas al diccionario
+├── .github/workflows/ci.yml         # tipos, lint, tests y build en cada push
 ├── eslint.config.mjs
 ├── next.config.ts
 ├── postcss.config.mjs
@@ -219,7 +231,7 @@ funciona: prueba con `3017620422003` (Nutella) o `5449000000996` (Coca-Cola).
 ```bash
 npm run typecheck   # TypeScript estricto, sin errores
 npm run lint        # ESLint 9, sin errores
-npm test            # 56 tests del algoritmo
+npm test            # 101 tests
 npm run build       # las 7 rutas deben salir como ○ (Static)
 ```
 
@@ -361,9 +373,121 @@ Todos los colores son tokens CSS declarados primero en `:root`. Ninguno se
 define sólo dentro de un bloque de tema: esa es justo la forma de acabar con
 texto de un tema sobre el fondo del otro.
 
+
 ---
 
-## 7. Licencias y aviso legal
+## 6 ter. Copia de seguridad del historial
+
+Mientras no haya cuentas, el historial vive sólo en `localStorage`, y **Safari
+borra el almacenamiento de las webs que no se abren en siete días**. Un usuario
+puede perder meses de escaneos sin haber hecho nada mal.
+
+La red de seguridad es un fichero JSON que se descarga y se vuelve a cargar,
+desde la pantalla de historial. Se genera entero en el navegador: la copia de
+seguridad tampoco pasa por ningún servidor.
+
+La lógica vive en `lib/historyFile.ts` y es **pura** (valida, fusiona y
+devuelve; no toca `localStorage` ni el DOM), lo que la hace testeable sin
+simular un navegador.
+
+Dos decisiones que conviene no deshacer:
+
+- **El fichero importado es contenido no confiable.** Puede venir de cualquier
+  sitio. Se valida campo por campo y se descarta lo que no encaje, en lugar de
+  aceptarlo y confiar en que la interfaz aguante. En particular, la URL de la
+  imagen **sólo se acepta si es `https:`**, porque se pinta en un `<img src>`.
+- **Importar nunca borra.** Ante un duplicado gana el escaneo más reciente;
+  todo lo demás se conserva. Reimportar el mismo fichero dos veces no duplica
+  nada.
+
+---
+
+## 6 quater. Integración continua
+
+`.github/workflows/ci.yml` ejecuta en cada push y cada pull request:
+`npm ci` → `typecheck` → `lint` → `test` → `build`.
+
+Incluye además un guardián específico del proyecto: **falla si aparece una
+ruta dinámica** (una carpeta `[algo]` dentro de `src/app`). Es la forma de que
+la premisa de coste cero no se erosione sin que nadie se dé cuenta, porque una
+ruta dinámica hace que Vercel levante una función serverless en cada visita.
+
+
+---
+
+## 6 quinquies. Familias y subvariantes de aditivos
+
+Open Food Facts etiqueta el mismo aditivo dos veces, con distinto nivel de
+detalle. La Nutella devuelve `["en:e322", "en:e322i"]`: **una sola lecitina**,
+marcada como familia y como subvariante.
+
+Tratarlas como dos aditivos distintos tenía dos consecuencias, y la segunda no
+era estética:
+
+1. La ficha listaba dos veces la misma entrada del diccionario.
+2. **La penalización se aplicaba dos veces.** Un producto con `E450` y `E450i`
+   (difosfatos, riesgo moderado) perdía −3 en lugar de −1,5, y cada duplicado
+   engordaba además el contador del efecto cóctel.
+
+`resolveAdditives` lo resuelve en dos pasos:
+
+- Si una familia tiene alguna subvariante **catalogada aparte**, la familia
+  desnuda sobra: `E150` + `E150d` → se queda `E150d`. Esto importa porque las
+  subvariantes no son intercambiables: `E150a` (caramelo natural) no tiene
+  riesgo y `E150d` (caramelo sulfito amónico) sí.
+- Después se deduplica por la **entrada del diccionario** a la que apunta cada
+  código, no por el código. `E322` y `E322i` caen en la misma ficha y cuentan
+  una vez.
+
+Hay tests de regresión con los tags reales de Open Food Facts.
+
+
+---
+
+## 6 sexies. De dónde sale el nivel de riesgo de un aditivo
+
+`risk: "high"` **no es un dato, es una conclusión**. Ningún organismo publica
+"niveles de riesgo": la EFSA publica dictámenes e ingestas diarias admisibles,
+la IARC publica clasificaciones de la *solidez de la evidencia*, y la Comisión
+publica normas. Toxicheck necesita un número, así que traduce todo eso a cuatro
+niveles, y esa traducción es una decision editorial que tiene que estar escrita
+y apoyada en fuentes.
+
+Por eso cada entrada revisada lleva un campo `evidence` con lo que dice cada
+fuente y su enlace, y un `reviewedAt`.
+
+Y hay un test que **falla si un aditivo esta en riesgo alto sin citar fuente**,
+o si la fuente no viene de un dominio oficial. Bloquea la integracion continua:
+no es una convencion, es un candado. Las fuentes se muestran ademas en la ficha
+del producto, junto al aditivo.
+
+La regla completa de clasificacion, el procedimiento de revision y las trampas
+que ya nos hemos encontrado estan en `docs/REVISION-ADITIVOS.md`.
+
+**Estado:** 8 de 122 entradas revisadas contra fuentes primarias, las que
+estaban clasificadas como riesgo alto. Las 114 restantes siguen siendo la
+semilla original y estan marcadas como tales por la ausencia de `evidence`.
+
+---
+
+## 7. Hoja de ruta
+
+- [x] ~~Cambiar la agregación por defecto a `geometric` y recalibrar `SCALE`.~~
+- [ ] Revisar las 122 entradas de `additives.json` contra la EFSA y añadir
+      `references` por entrada.
+- [x] ~~Exportar e importar el historial.~~
+- [ ] Comparador de dos productos lado a lado.
+- [ ] Alternativas mejores dentro de la misma categoría (usando
+      `categories_tags` de Open Food Facts).
+- [ ] Perfiles: sin gluten, sin lactosa, vegano, gota/purinas, fenilcetonuria.
+      Los `flags` del diccionario ya están preparados para esto.
+- [ ] OCR: reconocer aditivos escritos por su nombre, no sólo por su número E.
+- [ ] Contribuir de vuelta a Open Food Facts desde la propia app.
+- [ ] App nativa: `utils/` y `types/` son portables tal cual a React Native.
+
+---
+
+## 8. Licencias y aviso legal
 
 - Datos de producto: **Open Food Facts**, bajo licencia
   [ODbL](https://opendatacommons.org/licenses/odbl/). La atribución es

@@ -9,6 +9,7 @@
  */
 
 import type { RiskLevel, ScoreBlock, ScoreReason, ScoreResult } from "@/types/score";
+import { ExternalIcon } from "@/components/icons";
 
 const SEVERITY_COLOR: Record<RiskLevel, string> = {
   none: "var(--score-green)",
@@ -33,6 +34,29 @@ function ReasonRow({ reason }: { reason: ScoreReason }) {
         <p className="text-sm leading-snug font-medium">{reason.label}</p>
         {reason.detail && (
           <p className="muted mt-1 text-xs leading-relaxed">{reason.detail}</p>
+        )}
+
+        {/*
+          Las fuentes, cuando las hay. Una afirmación sobre salud que el
+          usuario no puede rastrear hasta su origen no debería estar aquí.
+        */}
+        {reason.sources && reason.sources.length > 0 && (
+          <p className="mt-1.5 flex flex-wrap gap-x-2 gap-y-1">
+            {reason.sources.map((s) => (
+              <a
+                key={s.url + s.year}
+                href={s.url}
+                target="_blank"
+                rel="noreferrer noopener"
+                title={s.finding}
+                className="inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[11px] font-medium"
+                style={{ background: "var(--surface-2)", color: "var(--muted)" }}
+              >
+                {s.body} {s.year}
+                <ExternalIcon size={11} />
+              </a>
+            ))}
+          </p>
         )}
       </div>
       <span
