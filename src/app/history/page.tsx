@@ -11,6 +11,7 @@
 
 import Link from "next/link";
 import { useCallback } from "react";
+import { HistoryActions } from "@/components/HistoryActions";
 import { ScanFab } from "@/components/ScanFab";
 import { TrashIcon } from "@/components/icons";
 import { clearHistory, getHistoryStats, type HistoryEntry } from "@/lib/storage";
@@ -20,6 +21,7 @@ export default function HistoryPage() {
   // Lee localStorage sin `useEffect`: React gestiona la hidratación.
   const entries = useHistory();
   const stats = getHistoryStats(entries);
+  const vacio = entries.length === 0;
 
   const onClear = useCallback(() => {
     if (window.confirm("¿Borrar todo el historial? No se puede deshacer.")) {
@@ -27,55 +29,63 @@ export default function HistoryPage() {
     }
   }, []);
 
-  if (entries.length === 0) {
-    return (
-      <div className="pb-24">
-        <h1 className="text-xl font-bold">Historial</h1>
-        <div className="card mt-6 px-6 py-12 text-center">
-          <p className="muted text-balance">
-            Todavía no has escaneado nada. Tu historial se guarda sólo en este
-            dispositivo y no sale de él.
-          </p>
-          <Link
-            href="/scan"
-            className="btn-primary mt-6 inline-block px-6 py-3"
-          >
-            Escanear el primero
-          </Link>
-        </div>
-        <ScanFab />
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-5 pb-24">
       <header className="flex items-center justify-between">
         <h1 className="text-xl font-bold">Historial</h1>
-        <button
-          type="button"
-          onClick={onClear}
-          className="muted flex items-center gap-1.5 rounded-lg px-2 py-1 text-sm"
-        >
-          <TrashIcon size={16} />
-          Borrar
-        </button>
+        {!vacio && (
+          <button
+            type="button"
+            onClick={onClear}
+            className="muted flex items-center gap-1.5 rounded-lg px-2 py-1 text-sm"
+          >
+            <TrashIcon size={16} />
+            Borrar
+          </button>
+        )}
       </header>
 
-      <div className="card grid grid-cols-4 divide-x divide-[var(--border)] py-3">
-        <Stat value={stats.total} label="Escaneos" />
-        <Stat value={stats.average.toFixed(1)} label="Media" />
-        <Stat value={stats.green} label="Buenos" tone="var(--score-green)" />
-        <Stat value={stats.red} label="Malos" tone="var(--score-red)" />
-      </div>
+      {vacio ? (
+        <div className="card px-6 py-10 text-center">
+          <p className="muted text-balance">
+            Todavía no has escaneado nada. Tu historial se guarda sólo en este
+            dispositivo y no sale de él.
+          </p>
+          <Link href="/scan" className="btn-primary mt-6 inline-block px-6 py-3">
+            Escanear el primero
+          </Link>
+        </div>
+      ) : (
+        <>
+          <div className="card grid grid-cols-4 divide-x divide-[var(--border)] py-3">
+            <Stat value={stats.total} label="Escaneos" />
+            <Stat value={stats.average.toFixed(1)} label="Media" />
+            <Stat value={stats.green} label="Buenos" tone="var(--score-green)" />
+            <Stat value={stats.red} label="Malos" tone="var(--score-red)" />
+          </div>
 
-      <ul className="grid grid-cols-2 gap-3">
-        {entries.map((entry) => (
-          <li key={entry.barcode}>
-            <ProductCard entry={entry} />
-          </li>
-        ))}
-      </ul>
+          <ul className="grid grid-cols-2 gap-3">
+            {entries.map((entry) => (
+              <li key={entry.barcode}>
+                <ProductCard entry={entry} />
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {/*
+        Fuera del condicional a propósito. Si estuviera dentro de cada rama,
+        importar con el historial vacío desmontaría este componente al pasar a
+        la rama con datos y el mensaje de confirmación desaparecería justo
+        cuando el usuario necesita leerlo.
+      */}
+      <section className={vacio ? "" : "border-line border-t pt-5"}>
+        <h2 className="mb-2 text-sm font-semibold">
+          {vacio ? "¿Vienes de otro dispositivo?" : "Copia de seguridad"}
+        </h2>
+        <HistoryActions hasEntries={!vacio} />
+      </section>
 
       <ScanFab />
     </div>

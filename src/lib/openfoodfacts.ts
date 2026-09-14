@@ -146,6 +146,66 @@ const BEVERAGE_TAGS = [
 
 const WATER_TAGS = ["en:waters", "en:spring-waters", "en:mineral-waters"];
 
+/** Normaliza para comparar: sin acentos, sin signos y en minúsculas. */
+function plano(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+/**
+ * Elige la marca que se muestra bajo el nombre del producto.
+ *
+ * `brands` de Open Food Facts es una lista separada por comas y muy
+ * desordenada: la Nutella viene como `"Nutella, Ferrero"`, con el nombre del
+ * producto ocupando el primer puesto. Coger el primero sin más producía una
+ * cabecera que decía "Nutella / Nutella · 400 g", que queda descuidado.
+ *
+ * Nos quedamos con la primera marca que aporte información nueva, es decir,
+ * que no sea el nombre del producto ni esté ya contenida en él.
+ */
+function pickBrand(brands: string | undefined, name: string): string | null {
+  if (!brands) return null;
+
+  const nombrePlano = plano(name);
+
+  for (const raw of brands.split(",")) {
+    const brand = raw.trim();
+    if (brand === "") continue;
+
+    const brandPlano = plano(brand);
+    if (brandPlano === "" || brandPlano === nombrePlano) continue;
+    // "Nutella" dentro de "Nutella Ferrero Rocher": no aporta nada.
+    if (nombrePlano.includes(brandPlano)) continue;
+
+    return brand;
+  }
+
+  return null;
+}
+
+/**
+ * Limpia la cantidad.
+ *
+ * Open Food Facts arrastra el símbolo de cantidad estimada de la UE, que
+ * según quién lo teclee llega como "℮" o como una "e" suelta al final:
+ * "400 g e". En la ficha sólo confunde.
+ */
+function cleanQuantity(quantity: string | undefined): string | null {
+  if (!quantity) return null;
+  /*
+   * La "e" debe ir suelta, precedida de espacio. Sin esa condición,
+   * cantidades legítimas como "1 sobre" se quedarían en "1 sobr".
+   */
+  const limpio = quantity
+    .trim()
+    .replace(/(\s+e|\s*℮)\s*$/i, "")
+    .trim();
+  return limpio === "" ? null : limpio;
+}
+
 /**
  * Convierte la respuesta cruda de Open Food Facts en nuestro `Product`.
  * Es la única función del proyecto que conoce el formato del tercero.
@@ -170,15 +230,17 @@ export function normalizeOffProduct(off: OffProduct): Product {
       ? grade
       : null;
 
+  const name =
+    off.product_name_es?.trim() ||
+    off.product_name?.trim() ||
+    off.generic_name?.trim() ||
+    "Producto sin nombre";
+
   return {
     barcode: off.code ?? null,
-    name:
-      off.product_name_es?.trim() ||
-      off.product_name?.trim() ||
-      off.generic_name?.trim() ||
-      "Producto sin nombre",
-    brand: off.brands?.split(",")[0]?.trim() || null,
-    quantity: off.quantity?.trim() || null,
+    name,
+    brand: pickBrand(off.brands, name),
+    quantity: cleanQuantity(off.quantity),
     imageUrl: off.image_front_url || off.image_url || null,
     ingredientsText,
     additiveCodes,

@@ -36,8 +36,50 @@ const RAW: OffProduct = {
 describe("normalizeOffProduct", () => {
   const product = normalizeOffProduct(RAW);
 
-  it("se queda con la primera marca", () => {
-    expect(product.brand).toBe("Ferrero");
+  /*
+   * Caso real de toxicheck.net: `brands` de la Nutella es "Nutella, Ferrero",
+   * y coger el primero sin más pintaba la cabecera como
+   * "Nutella / Nutella · 400 g".
+   */
+  it("no repite la marca cuando coincide con el nombre del producto", () => {
+    const p = normalizeOffProduct({ ...RAW, brands: "Nutella, Ferrero" });
+    expect(p.brand).toBe("Ferrero");
+  });
+
+  it("descarta la marca que ya está contenida en el nombre", () => {
+    const p = normalizeOffProduct({
+      ...RAW,
+      product_name_es: "Nutella Ferrero Rocher",
+      brands: "Nutella",
+    });
+    expect(p.brand).toBeNull();
+  });
+
+  it("ignora mayúsculas y acentos al comparar marca y nombre", () => {
+    const p = normalizeOffProduct({
+      ...RAW,
+      product_name_es: "Café Solo",
+      brands: "CAFE SOLO, Marca Real",
+    });
+    expect(p.brand).toBe("Marca Real");
+  });
+
+  it("se queda con la primera marca cuando ninguna es redundante", () => {
+    const p = normalizeOffProduct({ ...RAW, brands: "Ferrero, Nutella" });
+    expect(p.brand).toBe("Ferrero");
+  });
+
+  it("limpia el símbolo de cantidad estimada", () => {
+    expect(normalizeOffProduct({ ...RAW, quantity: "400 g e" }).quantity).toBe("400 g");
+    expect(normalizeOffProduct({ ...RAW, quantity: "1 L ℮" }).quantity).toBe("1 L");
+    expect(normalizeOffProduct({ ...RAW, quantity: "330 ml℮" }).quantity).toBe("330 ml");
+  });
+
+  it("no mutila cantidades que acaban en e de forma legítima", () => {
+    expect(normalizeOffProduct({ ...RAW, quantity: "1 sobre" }).quantity).toBe("1 sobre");
+    expect(normalizeOffProduct({ ...RAW, quantity: "6 unidades" }).quantity).toBe(
+      "6 unidades",
+    );
   });
 
   it("convierte kcal a kJ cuando no viene la energía en kJ", () => {

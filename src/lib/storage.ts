@@ -11,6 +11,13 @@
 
 import type { Product } from "@/types/product";
 import type { ScoreResult } from "@/types/score";
+import {
+  buildExport,
+  exportFileName,
+  mergeHistories,
+  parseHistoryFile,
+  type ImportOutcome,
+} from "@/lib/historyFile";
 
 const KEY = "toxicheck:history:v1";
 
@@ -163,6 +170,54 @@ export function clearHistory(): void {
     /* ignorado */
   }
   commit(EMPTY);
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Copia de seguridad: exportar e importar                                   */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Descarga el historial como fichero JSON.
+ *
+ * Se genera y se descarga íntegramente en el navegador: el historial no pasa
+ * por ningún servidor, ni siquiera para hacer una copia de seguridad.
+ */
+export function downloadHistory(): void {
+  if (!isBrowser()) return;
+
+  const payload = buildExport(getHistory());
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {
+    type: "application/json",
+  });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = exportFileName();
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  // Liberamos el objeto un instante después: si se revoca de inmediato,
+  // Safari cancela la descarga antes de empezarla.
+  window.setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+/**
+ * Importa un historial desde el texto de un fichero y lo fusiona con el
+ * actual. No borra nada de lo que ya había.
+ *
+ * @throws {InvalidHistoryFileError} si el fichero no es aprovechable.
+ */
+export function importHistoryFromText(text: string): ImportOutcome {
+  const { entries, invalid } = parseHistoryFile(text);
+
+  const { merged, added, updated } = mergeHistories(read(), entries, MAX_ENTRIES);
+
+  write(merged);
+  commit(merged);
+
+  return { added, updated, invalid, total: merged.length };
 }
 
 /** Estadísticas rápidas para la pantalla de historial. */

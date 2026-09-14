@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 import type { Nutrients, Product } from "@/types/product";
 import { calculateScore, WEIGHTS } from "@/utils/calculator";
-import { extractAdditiveCodesFromText, normalizeAdditiveCode } from "@/utils/additives";
+import {
+  extractAdditiveCodesFromText,
+  normalizeAdditiveCode,
+  resolveAdditives,
+} from "@/utils/additives";
 import { isValidBarcode } from "@/lib/openfoodfacts";
 
 /* -------------------------------------------------------------------------- */
@@ -484,6 +488,77 @@ describe("desglose", () => {
 /* -------------------------------------------------------------------------- */
 /*  Utilidades                                                                */
 /* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*  Familias y subvariantes (regresión de un fallo detectado en producción)    */
+/* -------------------------------------------------------------------------- */
+
+describe("familias y subvariantes de aditivos", () => {
+  /*
+   * Caso real: la ficha de Nutella en toxicheck.net listaba dos veces
+   * "E322 · Lecitinas" porque Open Food Facts devuelve `["en:e322","en:e322i"]`.
+   * Con un aditivo que penaliza, eso restaba el doble.
+   */
+  it("no duplica la lecitina de la Nutella (E322 + E322i)", () => {
+    const resueltos = resolveAdditives(["en:e322", "en:e322i"]);
+
+    expect(resueltos).toHaveLength(1);
+    expect(resueltos[0]!.code).toBe("E322");
+  });
+
+  it("no penaliza dos veces un aditivo que llega como familia y subvariante", () => {
+    // E450, difosfatos, riesgo moderado: −1,5 una sola vez.
+    const unaVez = calculateScore(makeProduct({ additiveCodes: ["E450"] }));
+    const dosVeces = calculateScore(
+      makeProduct({ additiveCodes: ["E450", "E450i"] }),
+    );
+
+    const bloque = (r: typeof unaVez) =>
+      r.blocks.find((b) => b.id === "additives")!.subScore;
+
+    expect(bloque(unaVez)).toBe(8.5);
+    expect(bloque(dosVeces)).toBe(8.5);
+  });
+
+  it("los duplicados tampoco inflan el contador del efecto cóctel", () => {
+    // Seis códigos, pero sólo tres aditivos reales: no debe saltar el cóctel.
+    const p = makeProduct({
+      additiveCodes: ["E322", "E322i", "E330", "E331", "E331i", "E331iii"],
+    });
+    const bloque = calculateScore(p).blocks.find((b) => b.id === "additives")!;
+
+    expect(bloque.subScore).toBe(10);
+    expect(bloque.reasons.filter((r) => r.label.startsWith("Efecto"))).toHaveLength(0);
+  });
+
+  it("conserva las subvariantes catalogadas aparte, que no son equivalentes", () => {
+    // E150a (sin riesgo) y E150d (moderado) son sustancias distintas.
+    const resueltos = resolveAdditives(["E150a", "E150d"]);
+
+    expect(resueltos).toHaveLength(2);
+    expect(resueltos.find((r) => r.code === "E150a")?.risk).toBe("none");
+    expect(resueltos.find((r) => r.code === "E150d")?.risk).toBe("moderate");
+  });
+
+  it("descarta la familia desnuda cuando hay una subvariante más específica", () => {
+    // OFF emite la etiqueta padre junto a la hija; la hija es la que informa.
+    const resueltos = resolveAdditives(["E150", "E150d"]);
+
+    expect(resueltos).toHaveLength(1);
+    expect(resueltos[0]!.code).toBe("E150d");
+    expect(resueltos[0]!.risk).toBe("moderate");
+  });
+
+  it("también deduplica subvariantes de aditivos desconocidos", () => {
+    const resueltos = resolveAdditives(["E999", "E999a", "E999b"]);
+    expect(resueltos).toHaveLength(1);
+  });
+
+  it("no mezcla aditivos distintos de la misma centena", () => {
+    // E160a (carotenos) y E160b (annatto) sí son fichas distintas.
+    expect(resolveAdditives(["E160a", "E160b"])).toHaveLength(2);
+  });
+});
 
 describe("normalizeAdditiveCode", () => {
   it.each([
