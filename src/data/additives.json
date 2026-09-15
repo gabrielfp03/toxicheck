@@ -510,35 +510,83 @@
       "code": "E210",
       "name": "Ácido benzoico",
       "category": "conservante",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "mixto",
-      "description": "Conservante asociado a reacciones pseudoalérgicas en personas sensibles (asma, urticaria).",
+      "description": "Conservante autorizado en la UE, presente también de forma natural en algunos alimentos. El JECFA (FAO/OMS) reevaluó en 2021 la IDA de grupo de los benzoatos y la elevó de 0-5 a 0-20 mg/kg de peso corporal/día, retirando la IDA anterior. No se ha podido verificar directamente el dictamen específico de la EFSA de 2016 (E210-E213) desde este entorno: Wiley bloquea el acceso automatizado y EUR-Lex no sirve contenido a herramientas automatizadas.",
       "flags": [
-        "posible-alergeno"
-      ]
+        "ida-jecfa-no-efsa",
+        "dictamen-efsa-no-verificado"
+      ],
+      "evidence": [
+        {
+          "body": "JECFA",
+          "type": "dictamen",
+          "year": 2021,
+          "finding": "El Comité retira la IDA de grupo anterior de 0-5 mg/kg pc y establece una nueva IDA de grupo de 0-20 mg/kg de peso corporal, aplicando un factor de ajuste específico para la variación toxicocinética entre especies en vez del factor por defecto.",
+          "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1098"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E211": {
       "code": "E211",
       "name": "Benzoato sódico",
       "category": "conservante",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "En presencia de vitamina C (E300) y calor puede formar trazas de benceno. Muy frecuente en refrescos.",
+      "description": "Conservante muy usado en refrescos y salsas. El JECFA (FAO/OMS) reevaluó en 2021 la IDA de grupo de los benzoatos y la elevó de 0-5 a 0-20 mg/kg de peso corporal/día. En presencia de vitamina C y calor o luz puede formar trazas de benceno; la FDA analizó cientos de muestras de bebidas y concluyó que los niveles encontrados no suponen un problema de seguridad para los consumidores. No se ha podido verificar directamente el dictamen específico de la EFSA de 2016 (E210-E213) desde este entorno: Wiley bloquea el acceso automatizado y EUR-Lex no sirve contenido a herramientas automatizadas.",
       "flags": [
-        "forma-benceno-con-e300",
-        "posible-alergeno"
-      ]
+        "formacion-benceno-con-vitamina-c",
+        "ida-jecfa-no-efsa",
+        "dictamen-efsa-no-verificado"
+      ],
+      "evidence": [
+        {
+          "body": "JECFA",
+          "type": "dictamen",
+          "year": 2021,
+          "finding": "El Comité retira la IDA de grupo anterior de 0-5 mg/kg pc y establece una nueva IDA de grupo de 0-20 mg/kg de peso corporal, aplicando un factor de ajuste específico para la variación toxicocinética entre especies en vez del factor por defecto.",
+          "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1098"
+        },
+        {
+          "body": "FDA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "El benceno puede formarse a niveles muy bajos (ppb) en algunas bebidas que contienen sales de benzoato y ácido ascórbico (vitamina C), favorecido por la exposición al calor y la luz; la encuesta de la FDA concluye que los niveles encontrados hasta la fecha no suponen un problema de seguridad para los consumidores. Página con fecha «content current as of» 02/25/2022.",
+          "url": "https://www.fda.gov/food/environmental-contaminants-food/questions-and-answers-occurrence-benzene-soft-drinks-and-other-beverages"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E212": {
       "code": "E212",
       "name": "Benzoato potásico",
       "category": "conservante",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "Mismo perfil que el benzoato sódico, incluida la posible formación de benceno junto a vitamina C.",
+      "description": "Benzoato potásico, con el mismo perfil que el benzoato sódico, incluida la posible formación de trazas de benceno junto a vitamina C. El JECFA (FAO/OMS) reevaluó en 2021 la IDA de grupo de los benzoatos y la elevó de 0-5 a 0-20 mg/kg de peso corporal/día. No se ha podido verificar directamente el dictamen específico de la EFSA de 2016 (E210-E213) desde este entorno: Wiley bloquea el acceso automatizado y EUR-Lex no sirve contenido a herramientas automatizadas.",
       "flags": [
-        "forma-benceno-con-e300"
-      ]
+        "formacion-benceno-con-vitamina-c",
+        "ida-jecfa-no-efsa",
+        "dictamen-efsa-no-verificado"
+      ],
+      "evidence": [
+        {
+          "body": "JECFA",
+          "type": "dictamen",
+          "year": 2021,
+          "finding": "El Comité retira la IDA de grupo anterior de 0-5 mg/kg pc y establece una nueva IDA de grupo de 0-20 mg/kg de peso corporal, aplicando un factor de ajuste específico para la variación toxicocinética entre especies en vez del factor por defecto.",
+          "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/1098"
+        },
+        {
+          "body": "FDA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "El benceno puede formarse a niveles muy bajos (ppb) en algunas bebidas que contienen sales de benzoato y ácido ascórbico (vitamina C), favorecido por la exposición al calor y la luz; la encuesta de la FDA concluye que los niveles encontrados hasta la fecha no suponen un problema de seguridad para los consumidores. Página con fecha «content current as of» 02/25/2022.",
+          "url": "https://www.fda.gov/food/environmental-contaminants-food/questions-and-answers-occurrence-benzene-soft-drinks-and-other-beverages"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E220": {
       "code": "E220",
@@ -1039,10 +1087,29 @@
       "category": "acidulante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Acidulante de los refrescos de cola. Un aporte alto de fósforo se ha asociado a peor salud ósea y renal, sobre todo con ingestas elevadas.",
+      "description": "Acidulante de refrescos de cola y otras bebidas. Comparte la IDA de grupo de los fosfatos que la EFSA fijó en 2019: 40 mg/kg de peso corporal al día como fósforo. La ingesta media ya supera esa IDA en lactantes, niños pequeños y niños, y el percentil 95 también en adolescentes, por la suma de fosfatos de todas las fuentes de la dieta.",
       "flags": [
+        "ida-grupo-superada-ninos",
         "exposicion-fosfatos"
-      ]
+      ],
+      "efsaAdi": "IDA de grupo: 40 mg/kg de peso corporal al día, expresada como fósforo (EFSA, 2019)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "El Panel establece una IDA de grupo de 40 mg/kg de peso corporal al día, expresada como fósforo, para el conjunto de fosfatos (E 338-341, E 343, E 450-452). Los considera de baja toxicidad aguda oral y sin problemas de genotoxicidad ni carcinogenicidad.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "En el escenario de exposición estimada, la ingesta media supera la IDA de grupo en lactantes, niños pequeños y niños, y el percentil 95 la supera también en adolescentes; no hay preocupación de seguridad en menores de 16 semanas alimentados con fórmula o alimentos para usos médicos especiales.",
+          "url": "https://www.efsa.europa.eu/en/press/news/190612"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E339": {
       "code": "E339",
@@ -1050,11 +1117,29 @@
       "category": "estabilizante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "La EFSA estableció en 2019 una IDA de grupo para los fosfatos porque la exposición total supera el límite en parte de la población.",
+      "description": "Fosfatos de sodio, usados como estabilizante y regulador de acidez. Comparten la IDA de grupo de los fosfatos que la EFSA fijó en 2019: 40 mg/kg de peso corporal al día como fósforo. La ingesta media ya supera esa IDA en lactantes, niños pequeños y niños, y el percentil 95 también en adolescentes.",
       "flags": [
+        "ida-grupo-superada-ninos",
         "exposicion-fosfatos"
       ],
-      "efsaAdi": "40 mg/kg de peso corporal al día (IDA de grupo, expresada como fósforo)"
+      "efsaAdi": "IDA de grupo: 40 mg/kg de peso corporal al día, expresada como fósforo (EFSA, 2019)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "El Panel establece una IDA de grupo de 40 mg/kg de peso corporal al día, expresada como fósforo, para el conjunto de fosfatos (E 338-341, E 343, E 450-452). Los considera de baja toxicidad aguda oral y sin problemas de genotoxicidad ni carcinogenicidad.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "En el escenario de exposición estimada, la ingesta media supera la IDA de grupo en lactantes, niños pequeños y niños, y el percentil 95 la supera también en adolescentes; no hay preocupación de seguridad en menores de 16 semanas alimentados con fórmula o alimentos para usos médicos especiales.",
+          "url": "https://www.efsa.europa.eu/en/press/news/190612"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E340": {
       "code": "E340",
@@ -1062,10 +1147,29 @@
       "category": "estabilizante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Incluido en la IDA de grupo de los fosfatos establecida por la EFSA en 2019.",
+      "description": "Fosfatos de potasio, usados como estabilizante y regulador de acidez. Comparten la IDA de grupo de los fosfatos que la EFSA fijó en 2019: 40 mg/kg de peso corporal al día como fósforo. La ingesta media ya supera esa IDA en lactantes, niños pequeños y niños, y el percentil 95 también en adolescentes.",
       "flags": [
+        "ida-grupo-superada-ninos",
         "exposicion-fosfatos"
-      ]
+      ],
+      "efsaAdi": "IDA de grupo: 40 mg/kg de peso corporal al día, expresada como fósforo (EFSA, 2019)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "El Panel establece una IDA de grupo de 40 mg/kg de peso corporal al día, expresada como fósforo, para el conjunto de fosfatos (E 338-341, E 343, E 450-452). Los considera de baja toxicidad aguda oral y sin problemas de genotoxicidad ni carcinogenicidad.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "En el escenario de exposición estimada, la ingesta media supera la IDA de grupo en lactantes, niños pequeños y niños, y el percentil 95 la supera también en adolescentes; no hay preocupación de seguridad en menores de 16 semanas alimentados con fórmula o alimentos para usos médicos especiales.",
+          "url": "https://www.efsa.europa.eu/en/press/news/190612"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E341": {
       "code": "E341",
@@ -1073,10 +1177,29 @@
       "category": "estabilizante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Antiaglomerante y enriquecedor. Incluido en la IDA de grupo de los fosfatos.",
+      "description": "Fosfatos de calcio, usados como antiaglomerante y enriquecedor. Comparten la IDA de grupo de los fosfatos que la EFSA fijó en 2019: 40 mg/kg de peso corporal al día como fósforo. La ingesta media ya supera esa IDA en lactantes, niños pequeños y niños, y el percentil 95 también en adolescentes.",
       "flags": [
+        "ida-grupo-superada-ninos",
         "exposicion-fosfatos"
-      ]
+      ],
+      "efsaAdi": "IDA de grupo: 40 mg/kg de peso corporal al día, expresada como fósforo (EFSA, 2019)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "El Panel establece una IDA de grupo de 40 mg/kg de peso corporal al día, expresada como fósforo, para el conjunto de fosfatos (E 338-341, E 343, E 450-452). Los considera de baja toxicidad aguda oral y sin problemas de genotoxicidad ni carcinogenicidad.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "En el escenario de exposición estimada, la ingesta media supera la IDA de grupo en lactantes, niños pequeños y niños, y el percentil 95 la supera también en adolescentes; no hay preocupación de seguridad en menores de 16 semanas alimentados con fórmula o alimentos para usos médicos especiales.",
+          "url": "https://www.efsa.europa.eu/en/press/news/190612"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E385": {
       "code": "E385",
@@ -1220,10 +1343,29 @@
       "category": "estabilizante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Gasificante y retenedor de agua. Incluido en la IDA de grupo de los fosfatos (EFSA 2019).",
+      "description": "Difosfatos, usados como gasificante y retenedor de agua. Comparten la IDA de grupo de los fosfatos que la EFSA fijó en 2019: 40 mg/kg de peso corporal al día como fósforo. La ingesta media ya supera esa IDA en lactantes, niños pequeños y niños, y el percentil 95 también en adolescentes.",
       "flags": [
+        "ida-grupo-superada-ninos",
         "exposicion-fosfatos"
-      ]
+      ],
+      "efsaAdi": "IDA de grupo: 40 mg/kg de peso corporal al día, expresada como fósforo (EFSA, 2019)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "El Panel establece una IDA de grupo de 40 mg/kg de peso corporal al día, expresada como fósforo, para el conjunto de fosfatos (E 338-341, E 343, E 450-452). Los considera de baja toxicidad aguda oral y sin problemas de genotoxicidad ni carcinogenicidad.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "En el escenario de exposición estimada, la ingesta media supera la IDA de grupo en lactantes, niños pequeños y niños, y el percentil 95 la supera también en adolescentes; no hay preocupación de seguridad en menores de 16 semanas alimentados con fórmula o alimentos para usos médicos especiales.",
+          "url": "https://www.efsa.europa.eu/en/press/news/190612"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E451": {
       "code": "E451",
@@ -1231,10 +1373,29 @@
       "category": "estabilizante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Retenedor de agua en carnes y pescados procesados. Incluido en la IDA de grupo de los fosfatos.",
+      "description": "Trifosfatos, usados como retenedor de agua en carnes y pescados procesados. Comparten la IDA de grupo de los fosfatos que la EFSA fijó en 2019: 40 mg/kg de peso corporal al día como fósforo. La ingesta media ya supera esa IDA en lactantes, niños pequeños y niños, y el percentil 95 también en adolescentes.",
       "flags": [
+        "ida-grupo-superada-ninos",
         "exposicion-fosfatos"
-      ]
+      ],
+      "efsaAdi": "IDA de grupo: 40 mg/kg de peso corporal al día, expresada como fósforo (EFSA, 2019)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "El Panel establece una IDA de grupo de 40 mg/kg de peso corporal al día, expresada como fósforo, para el conjunto de fosfatos (E 338-341, E 343, E 450-452). Los considera de baja toxicidad aguda oral y sin problemas de genotoxicidad ni carcinogenicidad.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "En el escenario de exposición estimada, la ingesta media supera la IDA de grupo en lactantes, niños pequeños y niños, y el percentil 95 la supera también en adolescentes; no hay preocupación de seguridad en menores de 16 semanas alimentados con fórmula o alimentos para usos médicos especiales.",
+          "url": "https://www.efsa.europa.eu/en/press/news/190612"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E452": {
       "code": "E452",
@@ -1242,10 +1403,29 @@
       "category": "estabilizante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Muy usados en quesos fundidos y carnes. Incluidos en la IDA de grupo de los fosfatos.",
+      "description": "Polifosfatos, muy usados en quesos fundidos y carnes procesadas. Comparten la IDA de grupo de los fosfatos que la EFSA fijó en 2019: 40 mg/kg de peso corporal al día como fósforo. La ingesta media ya supera esa IDA en lactantes, niños pequeños y niños, y el percentil 95 también en adolescentes.",
       "flags": [
+        "ida-grupo-superada-ninos",
         "exposicion-fosfatos"
-      ]
+      ],
+      "efsaAdi": "IDA de grupo: 40 mg/kg de peso corporal al día, expresada como fósforo (EFSA, 2019)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "El Panel establece una IDA de grupo de 40 mg/kg de peso corporal al día, expresada como fósforo, para el conjunto de fosfatos (E 338-341, E 343, E 450-452). Los considera de baja toxicidad aguda oral y sin problemas de genotoxicidad ni carcinogenicidad.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009158/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "En el escenario de exposición estimada, la ingesta media supera la IDA de grupo en lactantes, niños pequeños y niños, y el percentil 95 la supera también en adolescentes; no hay preocupación de seguridad en menores de 16 semanas alimentados con fórmula o alimentos para usos médicos especiales.",
+          "url": "https://www.efsa.europa.eu/en/press/news/190612"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E460": {
       "code": "E460",
@@ -1465,13 +1645,30 @@
       "code": "E950",
       "name": "Acesulfamo K",
       "category": "edulcorante",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "Edulcorante intensivo con IDA vigente, pero en revisión por la EFSA y con estudios que sugieren efectos sobre la microbiota.",
+      "description": "Edulcorante sintético autorizado en la UE. La EFSA completó en 2025 su reevaluación y elevó la IDA de 9 a 15 mg/kg de peso corporal al día; concluye que las estimaciones de exposición actuales no indican preocupación de seguridad. Es un marcador de ultraprocesado sin problema toxicológico propio identificado en la reevaluación.",
       "flags": [
-        "microbiota",
-        "revision-abierta"
-      ]
+        "marcador-ultraprocesado"
+      ],
+      "efsaAdi": "15 mg/kg de peso corporal al día (EFSA, 2025; sustituye los 9 mg/kg fijados en 2000)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2025,
+          "finding": "El Panel eleva la IDA de acesulfamo K de 9 a 15 mg/kg de peso corporal al día, a partir de un NOAEL de 1500 mg/kg pc/día en rata, y concluye que las estimaciones actuales de exposición dietética no indican preocupación de seguridad para el acesulfamo K.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12041894/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2025,
+          "finding": "En la UE, la estimación de exposición más alta al E 950 se sitúa generalmente por debajo de la IDA en todos los grupos de población, sin indicar preocupación de seguridad.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/re-evaluation-acesulfame-k-e-950-food-additive"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E951": {
       "code": "E951",
@@ -1479,46 +1676,116 @@
       "category": "edulcorante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "En 2023 la IARC lo clasificó en el grupo 2B (posible cancerígeno) mientras el JECFA mantuvo la IDA. Contraindicado en fenilcetonuria.",
+      "description": "Edulcorante sintético, el más estudiado del mercado. En 2023 la IARC lo clasificó como posible cancerígeno para humanos (grupo 2B) por evidencia limitada de cáncer de hígado, mientras que el JECFA, ese mismo año, reafirmó la IDA de 40 mg/kg de peso corporal al día tras no hallar evidencia convincente de efectos adversos. La reevaluación de la EFSA de 2013 llegó a la misma conclusión de seguridad. Está contraindicado en personas con fenilcetonuria, que deben evitar cualquier fuente de fenilalanina.",
       "flags": [
         "iarc-2b",
         "fenilcetonuria"
       ],
-      "efsaAdi": "40 mg/kg de peso corporal al día"
+      "efsaAdi": "40 mg/kg de peso corporal al día (EFSA 2013 y JECFA 2023, sin cambios)",
+      "evidence": [
+        {
+          "body": "IARC",
+          "type": "clasificacion",
+          "year": 2023,
+          "finding": "El Grupo de Trabajo clasifica el aspartamo como posiblemente cancerígeno para humanos (grupo 2B), por evidencia limitada de cáncer en humanos (carcinoma hepatocelular), evidencia limitada en animales de experimentación y evidencia mecanicista limitada. Publicado en el volumen 134 de las IARC Monographs.",
+          "url": "https://monographs.iarc.who.int/news-events/iarc-monographs-evaluation-of-the-carcinogenicity-of-aspartame-methyleugenol-and-isoeugenol"
+        },
+        {
+          "body": "JECFA",
+          "type": "dictamen",
+          "year": 2023,
+          "finding": "El Comité reafirma la ingesta diaria admisible de 40 mg/kg de peso corporal; con una lata de refresco light de 200-300 mg de aspartamo, un adulto de 70 kg necesitaría consumir más de 9-14 latas al día para superar la IDA.",
+          "url": "https://www.who.int/news/item/14-07-2023-aspartame-hazard-and-risk-assessment-results-released"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2013,
+          "finding": "El aspartamo y sus productos de degradación son seguros para el consumo humano a los niveles de exposición actuales; la IDA de 40 mg/kg de peso corporal al día es protectora para la población general.",
+          "url": "https://www.efsa.europa.eu/en/press/news/131210"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2013,
+          "finding": "Para pacientes con fenilcetonuria la IDA no es aplicable, ya que requieren una adherencia estricta a una dieta baja en fenilalanina, un aminoácido presente en muchos alimentos con proteína.",
+          "url": "https://www.efsa.europa.eu/en/topics/topic/aspartame"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E952": {
       "code": "E952",
       "name": "Ciclamato",
       "category": "edulcorante",
-      "risk": "moderate",
+      "risk": "high",
       "origin": "sintético",
-      "description": "Edulcorante prohibido en Estados Unidos desde 1970, autorizado en la UE con IDA reducida.",
+      "description": "Edulcorante sintético. La FDA lo retiró de su lista GRAS (reconocidos como seguros) en 1969 por motivos de seguridad y sigue prohibido en Estados Unidos. Estudios posteriores no lograron reproducir el hallazgo original y organismos como el JECFA lo consideran seguro con una IDA establecida (0-7 mg/kg de peso corporal al día, fijada en 2000 por el precursor de la EFSA), y en la UE sigue autorizado; pero la prohibición estadounidense no se ha revocado y la EFSA aún no ha publicado una reevaluación propia que la sustituya.",
       "flags": [
         "prohibido-eeuu"
-      ]
+      ],
+      "evidence": [
+        {
+          "body": "FDA",
+          "type": "norma",
+          "year": 1969,
+          "finding": "En 1969 la FDA retiró las sales de ciclamato de su lista GRAS (reconocidas como seguras) por motivos de seguridad.",
+          "url": "https://www.fda.gov/food/generally-recognized-safe-gras/fdas-approach-gras-provision-history-processes"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E954": {
       "code": "E954",
       "name": "Sacarina",
       "category": "edulcorante",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "El edulcorante más antiguo. La sospecha de cáncer de vejiga en rata se descartó para humanos, pero hay estudios sobre efectos en la microbiota.",
+      "description": "El edulcorante sintético más antiguo. La EFSA completó en 2024 su reevaluación y elevó la IDA a 9 mg/kg de peso corporal al día (como imida libre); confirma que los tumores de vejiga observados en estudios antiguos en rata son específicos de esa especie y no relevantes para el ser humano. No hay preocupación de seguridad a los niveles de exposición actuales.",
       "flags": [
-        "microbiota"
-      ]
+        "marcador-ultraprocesado"
+      ],
+      "efsaAdi": "9 mg/kg de peso corporal al día, como imida libre (EFSA, 2024)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2024,
+          "finding": "El Panel establece una nueva IDA de 9 mg/kg de peso corporal al día (como imida libre); la IDA anterior se basaba en el aumento de tumores de vejiga en estudios en rata, pero existe ahora acuerdo científico en que esos tumores son específicos de ratas macho y no relevantes para humanos.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/re-evaluation-saccharin-and-its-sodium-potassium-and-calcium-salts-e-954"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E955": {
       "code": "E955",
       "name": "Sucralosa",
       "category": "edulcorante",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "Edulcorante clorado. Debate abierto sobre efectos en la microbiota y sobre compuestos formados al calentarla por encima de 120 °C.",
+      "description": "Edulcorante clorado. La reevaluación más reciente de la EFSA mantiene la IDA en 15 mg/kg de peso corporal al día, sin problemas de genotoxicidad, y concluye que no hay preocupación de seguridad en los usos autorizados. Señala incertidumbre sobre posibles compuestos de degradación si se somete a temperaturas altas y prolongadas en el ámbito doméstico (freír, hornear), por lo que no es apta para cocinar a esas temperaturas.",
       "flags": [
-        "microbiota",
-        "no-apta-para-hornear"
-      ]
+        "no-apta-para-hornear",
+        "marcador-ultraprocesado"
+      ],
+      "efsaAdi": "15 mg/kg de peso corporal al día (EFSA, sin cambios respecto a la IDA anterior)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2026,
+          "finding": "El Panel no encuentra preocupación de seguridad por genotoxicidad de la sucralosa ni de sus impurezas y productos de degradación, y reafirma la IDA de 15 mg/kg de peso corporal al día; la sucralosa sigue siendo segura en las condiciones de uso autorizadas en la UE.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/re-evaluation-sucralose-e-955-food-additive"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2026,
+          "finding": "Existe incertidumbre sobre la posible transferencia de cloro desde la sucralosa a otras moléculas orgánicas bajo condiciones prolongadas de alta temperatura, como freír u hornear en el ámbito doméstico; esas condiciones no se dan en el procesado industrial autorizado.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/re-evaluation-sucralose-e-955-food-additive"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E960": {
       "code": "E960",
@@ -1533,12 +1800,23 @@
       "code": "E961",
       "name": "Neotamo",
       "category": "edulcorante",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "Derivado del aspartamo unas 10.000 veces más dulce que el azúcar. Estudios recientes plantean dudas sobre la barrera intestinal.",
+      "description": "Edulcorante derivado del aspartamo, unas 10.000 veces más dulce que el azúcar. La EFSA completó en 2025 su reevaluación y elevó la IDA de 2 a 10 mg/kg de peso corporal al día; concluye que no hay preocupación de seguridad en los usos y niveles permitidos. Su uso real en la UE es muy escaso y la exposición estimada queda muy por debajo de la IDA incluso en los escenarios más conservadores.",
       "flags": [
-        "microbiota"
-      ]
+        "marcador-ultraprocesado"
+      ],
+      "efsaAdi": "10 mg/kg de peso corporal al día (EFSA, 2025; sustituye los 2 mg/kg fijados en 2007)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2025,
+          "finding": "El Panel eleva la IDA de neotamo de 2 a 10 mg/kg de peso corporal al día, a partir de un NOAEL de 1000 mg/kg pc/día en estudios crónicos y de carcinogenicidad en rata, y concluye que no hay preocupación de seguridad en los usos y niveles de uso permitidos y notificados.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12231243/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E965": {
       "code": "E965",
@@ -1569,10 +1847,30 @@
       "category": "edulcorante",
       "risk": "moderate",
       "origin": "natural",
-      "description": "Poliol muy bien tolerado a nivel digestivo, pero estudios publicados desde 2023 lo asocian a un mayor riesgo trombótico. Evidencia aún en discusión.",
+      "description": "Poliol de origen natural, muy usado como edulcorante de mesa y en productos «sin azúcar». La EFSA completó en 2023 su reevaluación y fijó una IDA de 0,5 g/kg de peso corporal al día por su efecto laxante; tanto la exposición aguda como la crónica superan esa IDA en todos los grupos de población con un consumo habitual, por lo que se mantiene la advertencia de etiquetado por posible efecto laxante. La propia EFSA señala que la evidencia actual no muestra una relación de causa-efecto entre el consumo de eritritol y un mayor riesgo cardiovascular, aunque pide más investigación.",
       "flags": [
-        "debate-abierto"
-      ]
+        "ida-superada-todos-grupos",
+        "efecto-laxante",
+        "advertencia-etiquetado-laxante"
+      ],
+      "efsaAdi": "0,5 g/kg de peso corporal al día (EFSA, 2023), superada por la exposición habitual en todos los grupos de población",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2023,
+          "finding": "El Panel fija una IDA de 0,5 g/kg de peso corporal al día a partir del NOAEL más bajo relacionado con la prevención de diarrea; tanto la exposición aguda como la crónica al eritritol superan esa IDA en todos los grupos de población, por lo que la advertencia de etiquetado por efecto laxante sigue siendo válida.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/re-evaluation-erythritol-e-968-food-additive"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2023,
+          "finding": "La evidencia actual no muestra una relación de causa-efecto entre el consumo de alimentos con eritritol y un mayor riesgo de enfermedad cardiovascular; el Panel señala que sería útil más investigación para aclarar la naturaleza de la asociación observada en algunos estudios observacionales.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/re-evaluation-erythritol-e-968-food-additive"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E901": {
       "code": "E901",

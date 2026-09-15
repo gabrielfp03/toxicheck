@@ -164,9 +164,11 @@ describe("diccionario de aditivos · cobertura de la revisión", () => {
     const revisados = entradas.filter(([, a]) => evidenciasDe(a).length > 0);
     const pct = Math.round((revisados.length / entradas.length) * 100);
 
-    // Suelo actual: los de riesgo alto + los seis de Southampton + sulfitos (E220-E224).
-    expect(revisados.length).toBeGreaterThanOrEqual(18);
-    expect(pct).toBeGreaterThanOrEqual(14);
+    // Suelo actual: riesgo alto + Southampton + sulfitos (E220-E224) +
+    // benzoatos (E210-E212) + fosfatos (E338-E341, E450-E452) +
+    // edulcorantes (E950, E951, E952, E954, E955, E961, E968).
+    expect(revisados.length).toBeGreaterThanOrEqual(35);
+    expect(pct).toBeGreaterThanOrEqual(28);
   });
 
   it("el diccionario declara su política de revisión", () => {
