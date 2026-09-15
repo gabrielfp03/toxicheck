@@ -19,10 +19,23 @@
       "code": "E100",
       "name": "Curcumina",
       "category": "colorante",
-      "risk": "none",
+      "risk": "moderate",
       "origin": "natural",
-      "description": "Pigmento amarillo extraído de la cúrcuma. Sin riesgo conocido a las dosis autorizadas.",
-      "efsaAdi": "3 mg/kg de peso corporal al día"
+      "description": "Colorante amarillo-naranja extraído de la cúrcuma. La EFSA fijó en 2010 una IDA de 3 mg/kg de peso corporal al día. Un informe posterior de exposición refinada encontró que, en algunas encuestas nacionales, la estimación de ingesta alta en niños pequeños y niños llega a igualar o superar esa IDA.",
+      "efsaAdi": "3 mg/kg de peso corporal al día (EFSA, 2010); igualada o superada en niños pequeños y niños en algunas encuestas",
+      "flags": [
+        "ida-superada-ninos-alguna-encuesta"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2014,
+          "finding": "Las estimaciones de ingesta alta estuvieron al nivel de la IDA en niños pequeños y niños, con superación de la IDA en una encuesta de cada uno de esos dos grupos de población.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13136989/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E101": {
       "code": "E101",
@@ -146,11 +159,22 @@
       "category": "colorante",
       "risk": "low",
       "origin": "natural",
-      "description": "Rojo obtenido del insecto cochinilla. Seguro, pero puede desencadenar reacciones alérgicas y no es apto para veganos.",
+      "description": "Colorante rojo obtenido del insecto cochinilla. La EFSA reevaluó en 2015 la IDA y la expresó como contenido de ácido carmínico: 2,5 mg/kg de peso corporal al día (antes 5 mg/kg como carmín). La exposición estimada, en el escenario no fiel a una marca, queda por debajo de esa IDA en todos los grupos de población.",
       "flags": [
         "posible-alergeno",
         "no-vegano"
-      ]
+      ],
+      "efsaAdi": "2,5 mg de ácido carmínico/kg de peso corporal al día (EFSA, 2015)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2015,
+          "finding": "El Panel expresa la IDA como contenido de ácido carmínico, 2,5 mg/kg pc/día, y concluye que la exposición a E 120 en el escenario no fiel a una marca está por debajo de esa IDA en todos los grupos de población.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13189440/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E122": {
       "code": "E122",
@@ -315,20 +339,45 @@
       "code": "E132",
       "name": "Indigotina (carmín de índigo)",
       "category": "colorante",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "Colorante azul sintético con casos descritos de reacciones alérgicas.",
+      "description": "Colorante azul sintético. La EFSA reafirmó en 2014 la IDA de 5 mg/kg de peso corporal al día que ya había fijado el JECFA en 1975, sin preocupación por genotoxicidad. Un seguimiento de 2023 confirmó la misma IDA con especificaciones de pureza revisadas y concluyó que no hay preocupación de seguridad a los niveles de uso declarados.",
       "flags": [
-        "posible-alergeno"
-      ]
+        "marcador-ultraprocesado"
+      ],
+      "efsaAdi": "5 mg/kg de peso corporal al día (JECFA 1975, reafirmada por la EFSA en 2014 y 2023)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2023,
+          "finding": "El Panel concluye que no hay preocupación de seguridad por el uso de indigotina (E 132), sales disódicas, cumpliendo la revisión propuesta de la especificación, a los niveles de uso declarados.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10369292/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E133": {
       "code": "E133",
       "name": "Azul brillante FCF",
       "category": "colorante",
-      "risk": "low",
+      "risk": "moderate",
       "origin": "sintético",
-      "description": "Colorante azul sintético. Reevaluado por la EFSA sin problemas de seguridad a las dosis de uso."
+      "description": "Colorante azul sintético. La EFSA rebajó en 2010 la IDA de 10 a 6 mg/kg de peso corporal al día. Con las estimaciones más refinadas (nivel de detalle más alto) la exposición queda por debajo de la IDA, pero con estimaciones menos refinadas se supera en niños en el percentil 95 de consumo.",
+      "flags": [
+        "ida-superada-ninos-percentil-95"
+      ],
+      "efsaAdi": "6 mg/kg de peso corporal al día (EFSA, 2010; antes 10 mg/kg)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2010,
+          "finding": "El Panel establece una nueva IDA de 6 mg/kg pc/día. Con las estimaciones refinadas (nivel 3) la ingesta queda por debajo de la IDA, pero con las estimaciones de nivel 2 se supera en el percentil 95 de consumo en niños.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13129995/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E140": {
       "code": "E140",
@@ -383,15 +432,41 @@
       "category": "colorante",
       "risk": "low",
       "origin": "natural",
-      "description": "Colorante negro de origen vegetal. Puede reducir la absorción de medicamentos si se consume en cantidad."
+      "description": "Colorante negro de origen vegetal. La EFSA consideró en 2012 los datos toxicológicos demasiado limitados para fijar una IDA, pero concluyó que no supone un problema de seguridad a los niveles de uso declarados, siempre que el contenido residual de hidrocarburos aromáticos policíclicos (expresado como benzo[a]pireno) se mantenga por debajo de 1,0 µg/kg.",
+      "flags": [
+        "datos-limitados-sin-ida"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2012,
+          "finding": "El Panel considera los datos toxicológicos disponibles demasiado limitados para fijar una IDA, pero concluye que el carbón vegetal (E 153) con menos de 1,0 µg/kg de PAH cancerígenos residuales (expresado como benzo[a]pireno) no supone un problema de seguridad a los niveles de uso declarados.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13136860/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E160a": {
       "code": "E160a",
       "name": "Carotenos",
       "category": "colorante",
-      "risk": "none",
+      "risk": "low",
       "origin": "mixto",
-      "description": "Precursores de la vitamina A. Sin riesgo conocido en alimentos."
+      "description": "Carotenos mixtos y betacaroteno, usados como colorante naranja. La EFSA no pudo fijar una IDA numérica en 2012 por especificaciones inadecuadas y datos toxicológicos limitados, pero concluyó que su uso como colorante no supone un problema de seguridad siempre que la ingesta total por esta vía y por complementos no supere lo que se ingeriría con una dieta normal rica en estos pigmentos (5-10 mg al día).",
+      "flags": [
+        "ida-no-establecida-datos-limitados"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2012,
+          "finding": "Con los datos disponibles no puede establecerse una IDA para los carotenos mixtos y el betacaroteno. Su uso como colorante alimentario no supone un problema de seguridad siempre que la ingesta por esta vía y por complementos no supere la cantidad que se ingeriría con el consumo habitual de los alimentos donde se encuentran de forma natural (5-10 mg al día).",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13151842/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E160b": {
       "code": "E160b",
@@ -399,10 +474,21 @@
       "category": "colorante",
       "risk": "low",
       "origin": "natural",
-      "description": "Colorante naranja natural. Descritas reacciones de hipersensibilidad en personas sensibles.",
+      "description": "Colorante naranja natural (achiote). La EFSA fijó en 2016 una IDA de 6 mg/kg de peso corporal al día para la bixina y de 0,3 mg/kg para la norbixina, sus dos principios colorantes. Con los usos actualmente autorizados, la exposición estimada queda por debajo de ambas IDA en todos los grupos de población; solo se detectó una posible superación de la IDA de norbixina en un escenario de ampliación de uso todavía no autorizada.",
       "flags": [
         "posible-alergeno"
-      ]
+      ],
+      "efsaAdi": "Bixina: 6 mg/kg pc/día; norbixina: 0,3 mg/kg pc/día (EFSA, 2016)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2016,
+          "finding": "El Panel fija una IDA de 6 mg bixina/kg pc/día y 0,3 mg norbixina/kg pc/día. Con los escenarios de exposición refinada para los usos ya autorizados, la exposición a bixina y a norbixina queda por debajo de sus respectivas IDA en todos los grupos de población.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009150/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E160c": {
       "code": "E160c",
@@ -440,9 +526,22 @@
       "code": "E170",
       "name": "Carbonato de calcio",
       "category": "colorante",
-      "risk": "none",
+      "risk": "moderate",
       "origin": "natural",
-      "description": "Mineral usado como colorante blanco y antiaglomerante. Fuente de calcio."
+      "description": "Fuente de calcio autorizada como aditivo, sin problema de seguridad por el carbonato de calcio en sí mismo. El problema es el aluminio que puede contener como impureza: con los límites de especificación actuales, la EFSA calcula que la exposición a aluminio puede llegar a superar hasta unas 4 veces la ingesta semanal tolerable en varios grupos de población, y pide que se revisen esos límites.",
+      "flags": [
+        "impureza-aluminio-supera-limite"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2023,
+          "finding": "No hace falta una IDA numérica para el carbonato de calcio y no hay preocupación de seguridad por la sustancia en sí. Pero la presencia inevitable de aluminio es motivo de preocupación: con los límites de especificación propuestos, la exposición a aluminio por esta vía supera sustancialmente (hasta unas 4 veces) la ingesta semanal tolerable en varios grupos de población.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10373136/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E171": {
       "code": "E171",
@@ -488,7 +587,19 @@
       "category": "conservante",
       "risk": "low",
       "origin": "mixto",
-      "description": "Conservante antifúngico de baja toxicidad. Puede irritar la piel en personas sensibles."
+      "description": "Conservante antifúngico de baja toxicidad. La EFSA fijó en 2015 una IDA de grupo temporal para el ácido sórbico (E 200) y el sorbato potásico (E 202), y en 2019, tras un estudio ampliado de toxicidad reproductiva, la confirmó y elevó a 11 mg de ácido sórbico/kg de peso corporal al día.",
+      "flags": [],
+      "efsaAdi": "11 mg de ácido sórbico/kg de peso corporal al día (IDA de grupo con E202, EFSA 2019)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "Aplicando un factor de incertidumbre de 100 a los resultados de un estudio ampliado de toxicidad reproductiva de una generación, el Panel establece una IDA de grupo de 11 mg de ácido sórbico/kg pc/día para el ácido sórbico (E 200) y su sal potásica (E 202).",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009143/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E202": {
       "code": "E202",
@@ -496,15 +607,40 @@
       "category": "conservante",
       "risk": "low",
       "origin": "sintético",
-      "description": "El conservante antifúngico más habitual. Bien tolerado; ocasionalmente asociado a reacciones cutáneas."
+      "description": "El conservante antifúngico más habitual. Comparte con el ácido sórbico (E 200) la IDA de grupo que la EFSA confirmó y elevó en 2019 a 11 mg de ácido sórbico/kg de peso corporal al día tras un estudio ampliado de toxicidad reproductiva.",
+      "flags": [],
+      "efsaAdi": "11 mg de ácido sórbico/kg de peso corporal al día (IDA de grupo con E200, EFSA 2019)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "Aplicando un factor de incertidumbre de 100 a los resultados de un estudio ampliado de toxicidad reproductiva de una generación, el Panel establece una IDA de grupo de 11 mg de ácido sórbico/kg pc/día para el ácido sórbico (E 200) y su sal potásica (E 202).",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009143/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E203": {
       "code": "E203",
       "name": "Sorbato cálcico",
       "category": "conservante",
-      "risk": "low",
+      "risk": "high",
       "origin": "sintético",
-      "description": "Variante cálcica del sorbato, con el mismo perfil de seguridad."
+      "description": "El sorbato cálcico ya NO está autorizado como aditivo alimentario en la UE: la Comisión lo retiró de la lista de aditivos mediante el Reglamento (UE) 2018/98, de 22 de enero de 2018, después de que nadie presentara los estudios de genotoxicidad que la EFSA había pedido en su reevaluación. No es un problema de toxicidad demostrada, sino de datos nunca aportados que llevaron a la retirada.",
+      "flags": [
+        "prohibido-ue"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "El sorbato cálcico (E 203) ha sido retirado de la lista de aditivos alimentarios mediante el Reglamento (UE) 2018/98 de la Comisión, de 22 de enero de 2018, al no haberse presentado los estudios de genotoxicidad solicitados por ningún operador.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009143/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E210": {
       "code": "E210",
@@ -744,9 +880,23 @@
       "code": "E234",
       "name": "Nisina",
       "category": "conservante",
-      "risk": "none",
+      "risk": "low",
       "origin": "natural",
-      "description": "Bacteriocina producida por fermentación. Se digiere como una proteína más."
+      "description": "Bacteriocina producida por fermentación, se digiere como una proteína más. La EFSA elevó en 2017 la IDA de 0,13 a 1 mg de nisina A/kg de peso corporal al día y concluyó que la extensión de uso propuesta no supone un problema de seguridad. El propio Panel señaló que la posible inducción de resistencia antimicrobiana quedaba fuera del alcance de esa evaluación toxicológica y recomendó valorarla por separado.",
+      "flags": [
+        "resistencia-antimicrobiana-no-evaluada"
+      ],
+      "efsaAdi": "1 mg de nisina A/kg de peso corporal al día (EFSA, 2017; antes 0,13 mg/kg)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel eleva la IDA a 1 mg de nisina A/kg pc/día y concluye que la extensión de uso propuesta en queso no curado y productos cárnicos tratados con calor no supone un problema de seguridad; recomienda evaluar por separado, fuera de esta valoración toxicológica, el riesgo de inducir resistencia antimicrobiana.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009836/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E235": {
       "code": "E235",
@@ -1027,8 +1177,21 @@
       "category": "antioxidante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Antioxidante sintético emparentado con el BHA. Reevaluado por la EFSA con IDA establecida, pero sigue siendo objeto de debate.",
-      "efsaAdi": "0,25 mg/kg de peso corporal al día"
+      "description": "Antioxidante sintético emparentado con el BHA (E320). La EFSA fijó en 2012 una IDA de 0,25 mg/kg de peso corporal al día; no hay preocupación por genotoxicidad y considera que una posible carcinogenicidad tendría umbral. La exposición media de los adultos no supera esa IDA, pero sí se supera en el percentil 95 de los niños en algunos países europeos (Finlandia, Países Bajos).",
+      "efsaAdi": "0,25 mg/kg de peso corporal al día",
+      "flags": [
+        "ida-superada-ninos-percentil-95"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2012,
+          "finding": "El Panel deriva una IDA de 0,25 mg/kg pc/día; el BHT no plantea preocupación de genotoxicidad y cualquier carcinogenicidad tendría umbral. La exposición de los niños no suele superar la IDA de media, pero sí se supera en el percentil 95 en algunos países europeos (Finlandia, Países Bajos).",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13151845/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E322": {
       "code": "E322",
@@ -1036,10 +1199,18 @@
       "category": "emulgente",
       "risk": "none",
       "origin": "natural",
-      "description": "Emulgente natural de soja o girasol. Sin riesgo conocido; si es de soja, es alérgeno declarable.",
-      "flags": [
-        "posible-soja"
-      ]
+      "description": "Emulgente extraído de la soja, el girasol u otras semillas oleaginosas; es un constituyente natural del propio cuerpo humano. La EFSA concluyó en 2017 que no hace falta una IDA numérica y que no hay preocupación de seguridad para la población general a partir de un año de edad, con la evaluación de exposición refinada a los usos declarados.",
+      "flags": [],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel concluye que no hace falta una IDA numérica para las lecitinas (E 322) y que no hay preocupación de seguridad para la población general a partir de un año de edad, con la evaluación de exposición refinada a los usos declarados.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010002/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E325": {
       "code": "E325",
@@ -1207,8 +1378,21 @@
       "category": "estabilizante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Quelante que puede interferir en la absorción de minerales como el zinc y el hierro.",
-      "efsaAdi": "2,5 mg/kg de peso corporal al día"
+      "description": "Quelante que puede interferir en la absorción de minerales como el zinc y el hierro. Su IDA (2,5 mg/kg de peso corporal al día) la fijó el JECFA en 1974, antes de que existiera la EFSA. La EFSA todavía no ha completado su propia reevaluación como aditivo alimentario: en el marco de un dictamen relacionado de 2018 señaló que hacen falta más estudios de toxicidad para completarla.",
+      "efsaAdi": "2,5 mg/kg de peso corporal al día (JECFA, 1974; la EFSA aún no ha completado su propia reevaluación)",
+      "flags": [
+        "reevaluacion-efsa-en-curso"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2018,
+          "finding": "El Panel señala que harán falta estudios de toxicidad adicionales para completar la reevaluación del EDTA cálcico disódico (E 385) como aditivo alimentario, y que la EFSA estableció en 1974 una IDA de 2,5 mg/kg pc/día para esta sustancia.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009604/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E401": {
       "code": "E401",
@@ -1224,7 +1408,18 @@
       "category": "espesante",
       "risk": "none",
       "origin": "natural",
-      "description": "Gelificante de algas rojas. Fibra no digerible, sin riesgo conocido."
+      "description": "Gelificante de algas rojas, mínimamente absorbido y apenas fermentado por la microbiota intestinal. La EFSA concluyó en 2016 que no hace falta una IDA numérica y que no hay preocupación de seguridad para la población general con los usos declarados.",
+      "flags": [],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2016,
+          "finding": "El Panel concluye que no hace falta una IDA numérica para el agar (E 406) y que no hay preocupación de seguridad para la población general con la evaluación de exposición refinada a los usos declarados; no se observó genotoxicidad ni efectos adversos hasta las dosis más altas ensayadas.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13088875/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E407": {
       "code": "E407",
@@ -1232,10 +1427,22 @@
       "category": "espesante",
       "risk": "moderate",
       "origin": "natural",
-      "description": "Extraído de algas. Estudios en animales lo asocian a inflamación intestinal y la EFSA pidió más datos sobre el peso molecular del producto comercial.",
+      "description": "Espesante extraído de algas. La EFSA reevaluó en 2018 el carragenano y consideró que la IDA de grupo existente (75 mg/kg de peso corporal al día) debe tratarse como temporal por incertidumbres en los datos. Señaló que el carragenano degradado (poligeenano, una sustancia distinta del aditivo, no autorizada como tal) provoca colitis y tumores en ratas, y que los indicios de que el carragenano pueda agravar la enfermedad inflamatoria intestinal en humanos «necesitan aclararse».",
       "flags": [
+        "ida-temporal-datos-insuficientes",
         "inflamacion-intestinal-estudios-animales"
-      ]
+      ],
+      "efsaAdi": "IDA de grupo temporal: 75 mg/kg de peso corporal al día (EFSA, 2018)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2018,
+          "finding": "La IDA de grupo existente para carragenano (E 407) y alga Eucheuma procesada (E 407a) de 75 mg/kg pc/día debe considerarse temporal. Los resultados que sugieren que el carragenano podría agravar la enfermedad inflamatoria intestinal en humanos necesitan aclararse.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009739/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E410": {
       "code": "E410",
@@ -1251,7 +1458,20 @@
       "category": "espesante",
       "risk": "low",
       "origin": "natural",
-      "description": "Fibra soluble. En cantidades altas puede causar molestias digestivas y gases."
+      "description": "Fibra soluble usada como espesante. La EFSA concluyó en 2017, confirmado en un seguimiento de 2024, que no hace falta fijar una IDA numérica y que no hay preocupación de seguridad para la población general con los usos autorizados.",
+      "flags": [
+        "fibra-molestias-digestivas"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel concluye que no hace falta una IDA numérica para la goma guar (E 412) y que no hay preocupación de seguridad para la población general con la evaluación de exposición refinada a los usos declarados.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11070944/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E414": {
       "code": "E414",
@@ -1259,7 +1479,18 @@
       "category": "espesante",
       "risk": "none",
       "origin": "natural",
-      "description": "Fibra prebiótica de la acacia. Muy bien tolerada."
+      "description": "Goma extraída de la savia de la acacia. La EFSA concluyó en 2017 que no hace falta una IDA numérica y que no hay preocupación de seguridad con los usos declarados; en dosis muy altas (hasta 30 g al día) puede producir flatulencia leve, considerada molesta pero no un efecto adverso.",
+      "flags": [],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel concluye que no hace falta una IDA numérica para la goma arábiga (E 414) y que no hay preocupación de seguridad con la evaluación de exposición refinada a los usos declarados; la tolerancia en humanos llega hasta 30 g al día, con flatulencia leve en algunos casos, considerada molesta pero no adversa.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010027/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E415": {
       "code": "E415",
@@ -1267,7 +1498,20 @@
       "category": "espesante",
       "risk": "low",
       "origin": "natural",
-      "description": "Obtenida por fermentación bacteriana. En cantidades altas puede tener efecto laxante."
+      "description": "Espesante obtenido por fermentación bacteriana. La EFSA concluyó en 2017 que no hace falta fijar una IDA numérica y que no hay preocupación de seguridad con los usos autorizados; un seguimiento de 2023 confirmó lo mismo para alimentos de uso médico especial en lactantes.",
+      "flags": [
+        "fibra-efecto-laxante"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel concluye que no hace falta una IDA numérica para la goma xantana (E 415) y que no hay preocupación de seguridad con la evaluación de exposición refinada a los usos declarados; esta reevaluación no cubre a los lactantes menores de 12 semanas.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009887/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E418": {
       "code": "E418",
@@ -1275,7 +1519,18 @@
       "category": "espesante",
       "risk": "low",
       "origin": "natural",
-      "description": "Gelificante de fermentación. Bien tolerado a las dosis de uso."
+      "description": "Gelificante obtenido por fermentación. La EFSA concluyó en 2018 que no hace falta una IDA numérica y que no hay preocupación de seguridad con la evaluación de exposición refinada a los usos declarados.",
+      "flags": [],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2018,
+          "finding": "El Panel concluye que no hace falta una IDA numérica para la goma gellan (E 418) y que no hay preocupación de seguridad con la evaluación de exposición refinada a los usos y niveles de uso declarados.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009714/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E420": {
       "code": "E420",
@@ -1283,10 +1538,21 @@
       "category": "edulcorante",
       "risk": "low",
       "origin": "mixto",
-      "description": "Poliol edulcorante. Por encima de 10 g al día produce efecto laxante; la etiqueta debe advertirlo.",
+      "description": "Poliol edulcorante. Por encima de 10 g al día produce efecto laxante, de ahí la advertencia obligatoria en el etiquetado. La EFSA todavía no ha publicado su reevaluación completa: en 2023 pidió un ensayo de micronúcleo in vitro actualizado porque los estudios de genotoxicidad disponibles son anteriores a las directrices OCDE vigentes.",
       "flags": [
-        "efecto-laxante"
-      ]
+        "efecto-laxante",
+        "reevaluacion-efsa-en-curso"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2023,
+          "finding": "La EFSA solicita un ensayo de micronúcleo in vitro sobre el sorbitol (E 420 i), siguiendo la versión más reciente de la directriz OCDE TG 487, porque los estudios de genotoxicidad disponibles carecen de un ensayo de micronúcleo in vitro plenamente fiable según los estándares actuales.",
+          "url": "https://www.efsa.europa.eu/en/call/call-data-genotoxicity-data-sorbitol-e-420-i"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E421": {
       "code": "E421",
@@ -1303,9 +1569,23 @@
       "code": "E422",
       "name": "Glicerol (glicerina)",
       "category": "otro",
-      "risk": "none",
+      "risk": "moderate",
       "origin": "mixto",
-      "description": "Humectante presente de forma natural en las grasas. Sin riesgo conocido en alimentos."
+      "description": "Aditivo autorizado sin problema de IDA crónica: la EFSA no considera necesario fijar un límite numérico para el uso habitual. Pero un dictamen de 2026 centrado en las bebidas «slush» heladas encontró que, por el consumo de una sola bebida, la exposición aguda al glicerol supera la dosis de referencia aguda (125 mg/kg de peso corporal) en TODOS los grupos de población, con concentraciones en el producto de hasta 33.100-52.900 mg/kg. La EFSA recomienda que la Comisión fije límites máximos de glicerol en bebidas.",
+      "flags": [
+        "exposicion-aguda-slush-supera-arfd"
+      ],
+      "efsaAdi": "Sin IDA crónica numérica; dosis de referencia aguda (ARfD) de 125 mg/kg de peso corporal, superada por el consumo de bebidas «slush» (EFSA, 2026)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2026,
+          "finding": "La exposición aguda al glicerol por el consumo de una sola bebida «slush» helada superaría la dosis de referencia aguda (ARfD de 125 mg/kg pc) en todos los grupos de población, con concentraciones de glicerol en el producto de 33.100 a 52.900 mg/kg. El Panel recomienda a la Comisión Europea estudiar el establecimiento de niveles máximos numéricos de glicerol (E 422) en bebidas.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13140524/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E432": {
       "code": "E432",
@@ -1313,10 +1593,22 @@
       "category": "emulgente",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Emulgente sintético. Los polisorbatos han mostrado alteración de la microbiota e inflamación intestinal en modelos animales.",
+      "description": "Emulgente sintético (polisorbato 20). Comparte con el resto de polisorbatos (E432-E436) la IDA de grupo de 25 mg/kg de peso corporal al día que fijó la EFSA en 2015; no hay preocupación por genotoxicidad, carcinogenicidad ni toxicidad para el desarrollo, pero la exposición estimada en niños pequeños llega a 24,5 mg/kg, muy cerca del límite, y faltan datos de uso para tres categorías de alimentos.",
       "flags": [
-        "microbiota-estudios-animales"
-      ]
+        "ida-grupo-cerca-limite-ninos",
+        "datos-uso-incompletos"
+      ],
+      "efsaAdi": "IDA de grupo: 25 mg/kg de peso corporal al día (EFSA, 2015); la exposición en niños pequeños llega a 24,5 mg/kg, muy cerca del límite",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2015,
+          "finding": "El Panel establece una IDA de grupo de 25 mg/kg de peso corporal al día para los polisorbatos (E432-E436) y concluye que no hay preocupación respecto a genotoxicidad, carcinogenicidad ni toxicidad para el desarrollo; señala que para tres categorías de alimentos no se obtuvieron datos de uso, y que la exposición en niños pequeños en el escenario no fiel a una marca alcanza 24,5 mg/kg pc/día, muy cerca del límite de 25.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13151592/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E433": {
       "code": "E433",
@@ -1324,10 +1616,22 @@
       "category": "emulgente",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Emulgente sintético con estudios animales que apuntan a alteración de la microbiota y de la barrera intestinal.",
+      "description": "Emulgente sintético (polisorbato 80). Comparte con el resto de polisorbatos (E432-E436) la IDA de grupo de 25 mg/kg de peso corporal al día que fijó la EFSA en 2015; no hay preocupación por genotoxicidad, carcinogenicidad ni toxicidad para el desarrollo, pero la exposición estimada en niños pequeños llega a 24,5 mg/kg, muy cerca del límite, y faltan datos de uso para tres categorías de alimentos.",
       "flags": [
-        "microbiota-estudios-animales"
-      ]
+        "ida-grupo-cerca-limite-ninos",
+        "datos-uso-incompletos"
+      ],
+      "efsaAdi": "IDA de grupo: 25 mg/kg de peso corporal al día (EFSA, 2015); la exposición en niños pequeños llega a 24,5 mg/kg, muy cerca del límite",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2015,
+          "finding": "El Panel establece una IDA de grupo de 25 mg/kg de peso corporal al día para los polisorbatos (E432-E436) y concluye que no hay preocupación respecto a genotoxicidad, carcinogenicidad ni toxicidad para el desarrollo; señala que para tres categorías de alimentos no se obtuvieron datos de uso, y que la exposición en niños pequeños en el escenario no fiel a una marca alcanza 24,5 mg/kg pc/día, muy cerca del límite de 25.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13151592/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E440": {
       "code": "E440",
@@ -1335,7 +1639,18 @@
       "category": "espesante",
       "risk": "none",
       "origin": "natural",
-      "description": "Fibra soluble de frutas, la base de las mermeladas. Sin riesgo conocido."
+      "description": "Fibra gelificante natural presente en frutas y verduras, extraída sobre todo de cítricos y manzana. La EFSA concluyó en 2017 que no hace falta una IDA numérica y que no hay preocupación de seguridad para la población general con los usos declarados.",
+      "flags": [],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel concluye que no hace falta una IDA numérica para la pectina (E 440i) ni para la pectina amidada (E 440ii), y que no hay preocupación de seguridad para la población general; la exposición estimada, incluso en el escenario más alto en niños pequeños (hasta 442 mg/kg pc/día), no genera preocupación.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010145/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E450": {
       "code": "E450",
@@ -1439,12 +1754,23 @@
       "code": "E466",
       "name": "Carboximetilcelulosa (CMC)",
       "category": "espesante",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "Emulgente sintético asociado en estudios recientes a cambios en la microbiota intestinal humana.",
+      "description": "Espesante y estabilizante sintético (carboximetilcelulosa sódica). El JECFA le asignó en 1989 una IDA «no especificada» y la EFSA concluyó en 2018 que no hay preocupación de seguridad a los niveles de uso declarados. El propio Panel recoge un estudio en ratón que asocia este tipo de emulgentes con alteración de la microbiota e inflamación intestinal, pero señala que ese efecto no se estudia de forma sistemática en los ensayos de toxicidad estándar.",
       "flags": [
-        "microbiota"
-      ]
+        "microbiota-estudio-raton"
+      ],
+      "efsaAdi": "IDA no especificada (JECFA 1989, confirmada por la EFSA en 2018)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2018,
+          "finding": "No hace falta una IDA numérica y no hay preocupación de seguridad a los niveles de uso declarados para las celulosas sin modificar y modificadas (E 460(i), E 460(ii), E 461-466, E 468 y E 469). El Panel recoge que la carboximetilcelulosa está entre los aditivos que, en un estudio en ratón, se asoció a alteración de la microbiota intestinal, promoción de inflamación intestinal, obesidad y peor control glucémico.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009359/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E471": {
       "code": "E471",
@@ -1452,10 +1778,20 @@
       "category": "emulgente",
       "risk": "low",
       "origin": "mixto",
-      "description": "El emulgente más usado en bollería industrial. Se digiere como una grasa; puede contener grasas trans residuales según el proceso.",
+      "description": "El emulgente más usado en bollería industrial. La EFSA concluyó en 2017 que no hace falta una IDA numérica y que no supone un problema de seguridad a los niveles de uso declarados: se hidroliza en el tracto digestivo liberando glicerol y ácidos grasos, ambos ya evaluados como seguros.",
       "flags": [
         "marcador-ultraprocesado"
-      ]
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel concluye que no hace falta una IDA numérica y que los mono y diglicéridos de ácidos grasos (E 471) no suponen un problema de seguridad a los niveles de uso declarados; se hidrolizan liberando glicerol y ácidos grasos, previamente evaluados como seguros.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010209/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E472e": {
       "code": "E472e",
@@ -1463,10 +1799,21 @@
       "category": "emulgente",
       "risk": "low",
       "origin": "sintético",
-      "description": "Mejorante de panificación industrial. Perfil de seguridad favorable, marcador claro de ultraprocesado.",
+      "description": "Mejorante de panificación industrial (DATEM). La EFSA fijó en 2020 una IDA de 600 mg/kg de peso corporal al día, ligada a la IDA de grupo de los tartratos, y concluyó que no hay preocupación de seguridad a los niveles de uso declarados; se hidroliza liberando ácidos grasos, glicerol y ácido tartárico.",
       "flags": [
         "marcador-ultraprocesado"
-      ]
+      ],
+      "efsaAdi": "600 mg/kg de peso corporal al día, como ácido tartárico (EFSA, 2020)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2020,
+          "finding": "El Panel establece una IDA de 600 mg/kg pc/día para el E 472e, expresada como ácido tartárico, ligada a la IDA de grupo de los tartratos; no hay preocupación de seguridad a los niveles de uso declarados.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7448088/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E476": {
       "code": "E476",
@@ -1474,10 +1821,21 @@
       "category": "emulgente",
       "risk": "low",
       "origin": "sintético",
-      "description": "Reduce la viscosidad del chocolate y permite usar menos manteca de cacao. Marcador de producto reformulado a la baja.",
+      "description": "Reduce la viscosidad del chocolate y permite usar menos manteca de cacao. La EFSA elevó en 2017 la IDA de 7,5 a 25 mg/kg de peso corporal al día; un seguimiento de 2022 confirmó que la exposición no la supera en ningún escenario y que la extensión de uso propuesta tampoco supondría un problema de seguridad, aunque pidió revisar los límites de arsénico en las especificaciones.",
       "flags": [
         "marcador-ultraprocesado"
-      ]
+      ],
+      "efsaAdi": "25 mg/kg de peso corporal al día (EFSA, 2017; antes 7,5 mg/kg)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "En ninguno de los escenarios la exposición supera la IDA de 25 mg/kg pc/día para el E 476; la extensión de uso propuesta, de autorizarse, tampoco supondría un problema de seguridad. El Panel señala que el margen de exposición al arsénico calculado en el extremo inferior del rango es insuficiente, y pide revisar las especificaciones.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9066526/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E481": {
       "code": "E481",
@@ -1496,7 +1854,19 @@
       "category": "emulgente",
       "risk": "low",
       "origin": "sintético",
-      "description": "Emulgente sintético del grupo de los ésteres de sorbitano. IDA de grupo establecida por la EFSA."
+      "description": "Emulgente sintético del grupo de los ésteres de sorbitano (E491-E495). La EFSA estableció en 2017 una IDA de grupo de 10 mg/kg de peso corporal al día, expresada como sorbitano, y concluyó que la exposición no la supera en ningún grupo de población.",
+      "flags": [],
+      "efsaAdi": "10 mg/kg de peso corporal al día, como sorbitano (IDA de grupo E491-E495, EFSA 2017)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel deriva una IDA de grupo de 10 mg/kg pc/día, expresada como sorbitano, para los ésteres de sorbitano (E 491-E495); la exposición media y la del percentil 95, en el escenario no fiel a una marca, no superan la IDA en ningún grupo de población.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010202/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E500": {
       "code": "E500",
@@ -1536,7 +1906,18 @@
       "category": "estabilizante",
       "risk": "none",
       "origin": "sintético",
-      "description": "Endurecedor usado en conservas vegetales y quesería. Sin riesgo conocido."
+      "description": "Sal mineral usada como firmeza en conservas de fruta y verdura. La EFSA confirmó en 2019, junto con el resto de cloruros (E507, E508, E511), la IDA «no especificada» y concluyó que no hay preocupación de seguridad con los usos declarados.",
+      "flags": [],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2019,
+          "finding": "La exposición al cloruro procedente del ácido clorhídrico y sus sales de potasio, calcio y magnesio (E 507, E 508, E 509 y E 511) no plantea preocupación de seguridad a los niveles de uso declarados; se confirma la IDA «no especificada».",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009240/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E524": {
       "code": "E524",
@@ -1550,13 +1931,23 @@
       "code": "E551",
       "name": "Dióxido de silicio (sílice)",
       "category": "otro",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "Antiaglomerante. La EFSA no pudo concluir sobre su seguridad en 2018 por falta de datos sobre la fracción nanoparticulada.",
+      "description": "Antiaglomerante (dióxido de silicio). La EFSA no pudo concluir en 2018 por falta de caracterización de la fracción nanoparticulada, pero su seguimiento de 2024 concluye que el E551 no plantea preocupación de seguridad en ningún grupo de población, incluidos los lactantes menores de 16 semanas. Sigue sin poder fijarse una IDA numérica por las limitaciones de los datos disponibles: el Panel evalúa el riesgo por margen de exposición (MOE) en su lugar.",
       "flags": [
         "nanoparticulas",
-        "datos-insuficientes-efsa"
-      ]
+        "sin-ida-numerica"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2024,
+          "finding": "El E 551 no plantea preocupación de seguridad en ningún grupo de población, incluidos los lactantes menores de 16 semanas. Sigue faltando información sobre la proporción de partículas de E 551 presentes como nanopartículas aisladas, agregados y aglomerados nanométricos en el alimento; el Panel aplica un enfoque de margen de exposición (MOE) en vez de fijar una IDA por las limitaciones de los datos disponibles.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/re-evaluation-silicon-dioxide-e-551-food-additive-foods-infants-below-16"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E553b": {
       "code": "E553b",
@@ -1564,10 +1955,21 @@
       "category": "otro",
       "risk": "moderate",
       "origin": "natural",
-      "description": "Antiaglomerante mineral. Su uso alimentario es marginal pero genera debate por la contaminación histórica con amianto.",
+      "description": "Antiaglomerante mineral. La EFSA concluyó en 2018 que la seguridad del talco como aditivo alimentario no puede evaluarse por falta de estudios fiables de toxicidad subcrónica, crónica, carcinogenicidad y toxicidad reproductiva. Las especificaciones de la UE exigen que esté libre de amianto (comprobado mediante el ensayo de anfíboles y serpentinas), pero el Panel señala que puede contener otros minerales asociados —cuarzo cristalino alfa, fluorita, níquel— sin límites máximos establecidos.",
       "flags": [
-        "debate-abierto"
-      ]
+        "datos-insuficientes-efsa",
+        "contaminantes-minerales-sin-limite"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2018,
+          "finding": "Faltan datos fiables de toxicidad subcrónica, crónica, carcinogenicidad y toxicidad reproductiva de los silicatos y el talco, por lo que su seguridad no puede evaluarse. Las especificaciones de la UE exigen que el talco esté libre de amianto según el ensayo de anfíboles y serpentinas, pero puede contener cuarzo cristalino alfa, fluorita y níquel sin límite máximo establecido.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009349/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E570": {
       "code": "E570",
@@ -1575,7 +1977,18 @@
       "category": "otro",
       "risk": "none",
       "origin": "mixto",
-      "description": "Grasa usada como antiaglomerante y agente de recubrimiento. Sin riesgo conocido."
+      "description": "Ácidos grasos, entre ellos el ácido esteárico, usados como antiaglomerante y agente de recubrimiento. La EFSA concluyó que no hay preocupación de seguridad con los usos declarados; la exposición por esta vía representa alrededor de un 1% del total de ácidos grasos saturados de la dieta.",
+      "flags": [],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel mantiene la IDA «no especificada» y concluye que los ácidos grasos (E 570) no suponen un problema de seguridad a los niveles de uso declarados; la exposición por esta vía es aproximadamente el 1% de la exposición total a ácidos grasos saturados de todas las fuentes de la dieta.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009963/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E575": {
       "code": "E575",
@@ -1589,57 +2002,151 @@
       "code": "E620",
       "name": "Ácido glutámico",
       "category": "potenciador",
-      "risk": "low",
+      "risk": "moderate",
       "origin": "mixto",
-      "description": "Aminoácido presente de forma natural en muchos alimentos. Como aditivo, marcador de ultraprocesado."
+      "description": "Aminoácido presente de forma natural en muchos alimentos; como aditivo, marcador de ultraprocesado. La EFSA fijó en 2017 una IDA de grupo de 30 mg/kg de peso corporal al día para el conjunto de glutamatos (E 620-E625), pero señaló que la exposición real ya supera, en niños pequeños y niños, las dosis asociadas al «síndrome del restaurante chino» (síndrome MSG) descrito en humanos.",
+      "flags": [
+        "ida-superada-sindrome-msg",
+        "marcador-ultraprocesado"
+      ],
+      "efsaAdi": "IDA de grupo: 30 mg/kg de peso corporal al día, como ácido glutámico (EFSA, 2017); superada en niños pequeños y niños incluso en la exposición media",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel establece una IDA de grupo de 30 mg/kg de peso corporal al día, expresada como ácido glutámico, para el ácido glutámico y los glutamatos (E 620-E625). Señala que la exposición supera no solo la IDA propuesta, sino también las dosis asociadas al «síndrome MSG» en humanos (>42,9 mg/kg pc/día) en parte de la población.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009848/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "En el escenario no fiel a una marca, la exposición media ya supera la dosis asociada al síndrome MSG en niños pequeños y niños, y la exposición del percentil 95 la supera en lactantes, niños pequeños, niños y adolescentes.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009848/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E621": {
       "code": "E621",
       "name": "Glutamato monosódico (MSG)",
       "category": "potenciador",
-      "risk": "low",
+      "risk": "moderate",
       "origin": "sintético",
-      "description": "Potenciador del sabor considerado seguro por la EFSA, que en 2017 rebajó la IDA. Su presencia es un buen indicador de ultraprocesado.",
+      "description": "Potenciador del sabor y marcador de ultraprocesado. Comparte con el resto de glutamatos (E 620-E625) la IDA de grupo de 30 mg/kg de peso corporal al día que fijó la EFSA en 2017; la exposición real ya supera, en niños pequeños y niños, las dosis asociadas al síndrome MSG descrito en humanos, y en adolescentes en el percentil 95 de consumo.",
       "flags": [
+        "ida-superada-sindrome-msg",
         "marcador-ultraprocesado"
       ],
-      "efsaAdi": "30 mg/kg de peso corporal al día (IDA de grupo para glutamatos)"
+      "efsaAdi": "IDA de grupo: 30 mg/kg de peso corporal al día, como ácido glutámico (EFSA, 2017); superada en niños pequeños y niños incluso en la exposición media",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "El Panel establece una IDA de grupo de 30 mg/kg de peso corporal al día, expresada como ácido glutámico, para el ácido glutámico y los glutamatos (E 620-E625). Señala que la exposición supera no solo la IDA propuesta, sino también las dosis asociadas al «síndrome MSG» en humanos (>42,9 mg/kg pc/día) en parte de la población.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009848/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2017,
+          "finding": "En el escenario no fiel a una marca, la exposición media ya supera la dosis asociada al síndrome MSG en niños pequeños y niños, y la exposición del percentil 95 la supera en lactantes, niños pequeños, niños y adolescentes.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7009848/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E627": {
       "code": "E627",
       "name": "Guanilato disódico",
       "category": "potenciador",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "Potenciador derivado de nucleótidos. Aumenta la carga de purinas: desaconsejado en gota e hiperuricemia.",
+      "description": "Potenciador del sabor derivado de nucleótidos. El JECFA le asigna una IDA de grupo «no especificada» junto con el resto de sales del ácido guanílico, y concluye que la ingesta combinada con el inosinato no es de importancia toxicológica. La EFSA tiene abierta desde 2023 una convocatoria de datos para su reevaluación como aditivo alimentario (E626-E635), todavía sin dictamen publicado.",
       "flags": [
-        "purinas",
-        "marcador-ultraprocesado"
-      ]
+        "marcador-ultraprocesado",
+        "reevaluacion-efsa-en-curso"
+      ],
+      "efsaAdi": "IDA de grupo «no especificada» (JECFA, 1993); la EFSA tiene abierta una reevaluación como aditivos alimentarios (E626-E635) sin dictamen todavía",
+      "evidence": [
+        {
+          "body": "JECFA",
+          "type": "dictamen",
+          "year": 1993,
+          "finding": "IDA de grupo para el ácido guanílico y sus sales de calcio, disodio y dipotasio: «not specified». El Comité concluyó que la ingesta combinada de disodium 5'-guanylate y disodium 5'-inosinate no es de importancia toxicológica.",
+          "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/822"
+        },
+        {
+          "body": "JECFA",
+          "type": "dictamen",
+          "year": 1993,
+          "finding": "IDA de grupo para el ácido inosínico y sus sales de calcio, disodio y dipotasio: «not specified».",
+          "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2512"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E631": {
       "code": "E631",
       "name": "Inosinato disódico",
       "category": "potenciador",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "Potenciador que aporta purinas; desaconsejado en personas con gota. Suele acompañar al E621.",
+      "description": "Potenciador del sabor derivado de nucleótidos, suele acompañar al E627. El JECFA le asigna una IDA de grupo «no especificada» junto con el resto de sales del ácido inosínico. La EFSA tiene abierta desde 2023 una convocatoria de datos para su reevaluación como aditivo alimentario (E626-E635), todavía sin dictamen publicado.",
       "flags": [
-        "purinas",
-        "marcador-ultraprocesado"
-      ]
+        "marcador-ultraprocesado",
+        "reevaluacion-efsa-en-curso"
+      ],
+      "efsaAdi": "IDA de grupo «no especificada» (JECFA, 1993); la EFSA tiene abierta una reevaluación como aditivos alimentarios (E626-E635) sin dictamen todavía",
+      "evidence": [
+        {
+          "body": "JECFA",
+          "type": "dictamen",
+          "year": 1993,
+          "finding": "IDA de grupo para el ácido guanílico y sus sales de calcio, disodio y dipotasio: «not specified». El Comité concluyó que la ingesta combinada de disodium 5'-guanylate y disodium 5'-inosinate no es de importancia toxicológica.",
+          "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/822"
+        },
+        {
+          "body": "JECFA",
+          "type": "dictamen",
+          "year": 1993,
+          "finding": "IDA de grupo para el ácido inosínico y sus sales de calcio, disodio y dipotasio: «not specified».",
+          "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2512"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E635": {
       "code": "E635",
       "name": "Ribonucleótidos de sodio",
       "category": "potenciador",
-      "risk": "moderate",
+      "risk": "low",
       "origin": "sintético",
-      "description": "Mezcla de E627 y E631, con el mismo aporte de purinas.",
+      "description": "Mezcla 1:1 de E627 (guanilato disódico) y E631 (inosinato disódico), con el mismo perfil que ambos: IDA de grupo «no especificada» por el JECFA. La EFSA tiene abierta desde 2023 una convocatoria de datos para reevaluar el conjunto de ribonucleótidos (E626-E635) como aditivos alimentarios, todavía sin dictamen publicado.",
       "flags": [
-        "purinas",
-        "marcador-ultraprocesado"
-      ]
+        "marcador-ultraprocesado",
+        "reevaluacion-efsa-en-curso"
+      ],
+      "efsaAdi": "IDA de grupo «no especificada» (JECFA, 1993); la EFSA tiene abierta una reevaluación como aditivos alimentarios (E626-E635) sin dictamen todavía",
+      "evidence": [
+        {
+          "body": "JECFA",
+          "type": "dictamen",
+          "year": 1993,
+          "finding": "IDA de grupo para el ácido guanílico y sus sales de calcio, disodio y dipotasio: «not specified». El Comité concluyó que la ingesta combinada de disodium 5'-guanylate y disodium 5'-inosinate no es de importancia toxicológica.",
+          "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/822"
+        },
+        {
+          "body": "JECFA",
+          "type": "dictamen",
+          "year": 1993,
+          "finding": "IDA de grupo para el ácido inosínico y sus sales de calcio, disodio y dipotasio: «not specified».",
+          "url": "https://apps.who.int/food-additives-contaminants-jecfa-database/Home/Chemical/2512"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E950": {
       "code": "E950",
@@ -1791,10 +2298,23 @@
       "code": "E960",
       "name": "Glucósidos de esteviol (estevia)",
       "category": "edulcorante",
-      "risk": "low",
+      "risk": "moderate",
       "origin": "natural",
-      "description": "Extracto purificado de la hoja de estevia, con IDA establecida y buen perfil de seguridad.",
-      "efsaAdi": "4 mg/kg de peso corporal al día (como esteviol)"
+      "description": "Extracto purificado de la hoja de estevia. La IDA es de 4 mg/kg de peso corporal al día, como esteviol. Un dictamen de 2024 que evaluaba una posible ampliación de uso la mantuvo sin cambios porque, incluso con los usos YA autorizados hoy, la exposición del percentil 95 en niños pequeños alcanza 4,8 mg/kg pc/día, por encima de la IDA; ampliar el uso agravaría esa superación.",
+      "efsaAdi": "4 mg/kg de peso corporal al día, como esteviol (sin cambios; superada en niños pequeños con los usos actuales)",
+      "flags": [
+        "ida-superada-ninos-percentil-95"
+      ],
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2024,
+          "finding": "El Panel concluye que no hay justificación suficiente para subir la IDA de 4 mg/kg pc/día. Con los usos ya autorizados, la exposición del percentil 95 en niños pequeños alcanza 4,8 mg/kg pc/día, ya por encima de la IDA; con la extensión de uso propuesta llegaría a 6,9 mg/kg pc/día.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11533382/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E961": {
       "code": "E961",
@@ -1897,10 +2417,21 @@
       "category": "otro",
       "risk": "low",
       "origin": "natural",
-      "description": "Resina de origen animal usada como agente de recubrimiento brillante.",
+      "description": "Resina de origen animal usada como agente de recubrimiento brillante. La EFSA fijó en 2024 una IDA de 4 mg/kg de peso corporal al día para la goma laca sin cera producida por decoloración física (la variante decolorada químicamente tiene una IDA temporal, pendiente de datos sobre impurezas organocloradas). Aunque el cálculo teórico supera la IDA en el percentil 95 de algunos grupos de edad, la EFSA concluye explícitamente que ese exceso no indica preocupación de seguridad real, por ser una estimación conservadora.",
       "flags": [
         "no-vegano"
-      ]
+      ],
+      "efsaAdi": "4 mg/kg de peso corporal al día para la variante sin cera (EFSA, 2024); temporal para la variante decolorada químicamente",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2024,
+          "finding": "El Panel fija una IDA de 4 mg/kg pc/día para la goma laca sin cera producida por decoloración física. Aunque el cálculo supera la IDA en el percentil 95 de varios grupos de edad, concluye que ese exceso calculado no indica preocupación de seguridad, al ser conservadoras tanto la estimación de exposición como la evaluación toxicológica.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11292212/"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E920": {
       "code": "E920",

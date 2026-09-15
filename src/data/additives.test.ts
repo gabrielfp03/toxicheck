@@ -166,9 +166,19 @@ describe("diccionario de aditivos · cobertura de la revisión", () => {
 
     // Suelo actual: riesgo alto + Southampton + sulfitos (E220-E224) +
     // benzoatos (E210-E212) + fosfatos (E338-E341, E450-E452) +
-    // edulcorantes (E950, E951, E952, E954, E955, E961, E968).
-    expect(revisados.length).toBeGreaterThanOrEqual(35);
-    expect(pct).toBeGreaterThanOrEqual(28);
+    // edulcorantes (E950, E951, E952, E954, E955, E961, E968) + resto de
+    // moderados (E132, E321, E385, E407, E432, E433, E466, E551, E553b,
+    // E627, E631, E635) + riesgo bajo 1ª mitad (E120, E133, E153, E160b,
+    // E200, E202, E203, E412, E415) + riesgo bajo 2ª mitad (E418, E420,
+    // E471, E472e, E476, E491, E620, E621, E904, E960) + parte de riesgo
+    // cero (E100, E160a, E170, E234, E322, E406, E414, E422, E440, E509,
+    // E570). Sin resolver: E131, E141, E150c, E150d, E172, E235, E280,
+    // E282, E316, E421, E481, E903, E965, E967, y 31 de los 42 de la
+    // Tanda 8 (E101, E140, E150a, E160c, E161b, E162, E163, E260, E270,
+    // E290, E296, E300, E301, E306, E307, E325, E330, E331, E333, E334,
+    // E401, E410, E460, E500, E501, E503, E504, E524, E575, E901, E920).
+    expect(revisados.length).toBeGreaterThanOrEqual(77);
+    expect(pct).toBeGreaterThanOrEqual(63);
   });
 
   it("el diccionario declara su política de revisión", () => {
