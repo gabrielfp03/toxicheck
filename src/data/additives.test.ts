@@ -164,9 +164,9 @@ describe("diccionario de aditivos · cobertura de la revisión", () => {
     const revisados = entradas.filter(([, a]) => evidenciasDe(a).length > 0);
     const pct = Math.round((revisados.length / entradas.length) * 100);
 
-    // Suelo actual: los de riesgo alto. Súbelo según avance la revisión.
-    expect(revisados.length).toBeGreaterThanOrEqual(14);
-    expect(pct).toBeGreaterThanOrEqual(11);
+    // Suelo actual: los de riesgo alto + los seis de Southampton + sulfitos (E220-E224).
+    expect(revisados.length).toBeGreaterThanOrEqual(18);
+    expect(pct).toBeGreaterThanOrEqual(14);
   });
 
   it("el diccionario declara su política de revisión", () => {

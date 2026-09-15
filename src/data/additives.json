@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updatedAt": "2026-09-14",
+  "updatedAt": "2026-09-15",
   "disclaimer": "Diccionario semilla. Cada clasificación debe revisarse contra el dictamen EFSA vigente antes de publicar en producción. La clasificación es una simplificación pedagógica: la EFSA no publica niveles de 'riesgo' sino IDA y dictámenes de seguridad.",
   "sources": [
     "https://www.efsa.europa.eu/en/topics/topic/food-additives",
@@ -61,7 +61,7 @@
           "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E104": {
       "code": "E104",
@@ -100,7 +100,7 @@
           "url": "https://eur-lex.europa.eu/eli/reg/2012/232/oj"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E110": {
       "code": "E110",
@@ -138,7 +138,7 @@
           "url": "https://eur-lex.europa.eu/eli/reg/2012/232/oj"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E120": {
       "code": "E120",
@@ -181,7 +181,7 @@
           "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E123": {
       "code": "E123",
@@ -205,7 +205,7 @@
           "url": "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2010.1649"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E124": {
       "code": "E124",
@@ -245,7 +245,7 @@
           "url": "https://eur-lex.europa.eu/eli/reg/2012/232/oj"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E127": {
       "code": "E127",
@@ -267,7 +267,7 @@
           "url": "https://www.fda.gov/industry/color-additives/fdc-red-no-3"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E129": {
       "code": "E129",
@@ -298,7 +298,7 @@
           "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E131": {
       "code": "E131",
@@ -472,7 +472,7 @@
           "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32022R0063"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E172": {
       "code": "E172",
@@ -546,11 +546,37 @@
       "category": "conservante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Sulfito de declaración obligatoria como alérgeno. Puede provocar crisis asmáticas en personas sensibles.",
+      "description": "Gas conservante, el más antiguo de la familia de los sulfitos. La EFSA fijó en 2016 una IDA temporal de grupo, pero en 2022 la retiró por falta de datos toxicológicos suficientes y pasó a evaluar el riesgo por margen de exposición (MOE): para consumidores altos ese margen queda por debajo del umbral de seguridad en casi todos los grupos de población. Es además un alérgeno de declaración obligatoria por su capacidad de provocar crisis de asma en personas sensibles.",
       "flags": [
         "alergeno-declarable",
-        "riesgo-asma"
-      ]
+        "riesgo-asma",
+        "ida-retirada-falta-datos"
+      ],
+      "efsaAdi": "IDA temporal de grupo (0,7 mg SO2 eq/kg pc/día, 2016) retirada en 2022 por datos insuficientes; se evalúa ahora por margen de exposición (MOE)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "El Panel considera que la base de datos toxicológica disponible sigue siendo inadecuada para derivar una IDA y retira la IDA temporal de grupo fijada en 2016 (0,7 mg SO2 eq/kg pc/día); adopta en su lugar un enfoque de margen de exposición (MOE).",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9685353/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "Con datos de exposición realista, los MOE en el percentil 95 de consumidores altos quedan por debajo de 80 (el umbral de seguridad) en casi todos los grupos de población, lo que plantea una preocupación de seguridad para consumidores altos.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/follow-re-evaluation-sulfur-dioxide-e-220-sodium-sulfite-e-221-sodium"
+        },
+        {
+          "body": "FDA",
+          "type": "norma",
+          "year": 1986,
+          "finding": "Los agentes sulfitantes deben declararse en el etiquetado de alimentos cuando están presentes en concentraciones de 10 ppm o más, por su capacidad de provocar reacciones adversas como crisis de asma en personas sensibles.",
+          "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E221": {
       "code": "E221",
@@ -558,10 +584,37 @@
       "category": "conservante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Sulfito de declaración obligatoria. Destruye parte de la vitamina B1 del alimento.",
+      "description": "Sal conservante y antioxidante de la familia de los sulfitos. Comparte el mismo dictamen EFSA que el resto del grupo (E220-E228): IDA temporal retirada en 2022 por falta de datos suficientes, y preocupación de seguridad por margen de exposición en consumidores altos. Alérgeno de declaración obligatoria por riesgo de crisis de asma.",
       "flags": [
-        "alergeno-declarable"
-      ]
+        "alergeno-declarable",
+        "riesgo-asma",
+        "ida-retirada-falta-datos"
+      ],
+      "efsaAdi": "IDA temporal de grupo (0,7 mg SO2 eq/kg pc/día, 2016) retirada en 2022 por datos insuficientes; se evalúa ahora por margen de exposición (MOE)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "El Panel considera que la base de datos toxicológica disponible sigue siendo inadecuada para derivar una IDA y retira la IDA temporal de grupo fijada en 2016 (0,7 mg SO2 eq/kg pc/día); adopta en su lugar un enfoque de margen de exposición (MOE).",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9685353/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "Con datos de exposición realista, los MOE en el percentil 95 de consumidores altos quedan por debajo de 80 (el umbral de seguridad) en casi todos los grupos de población, lo que plantea una preocupación de seguridad para consumidores altos.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/follow-re-evaluation-sulfur-dioxide-e-220-sodium-sulfite-e-221-sodium"
+        },
+        {
+          "body": "FDA",
+          "type": "norma",
+          "year": 1986,
+          "finding": "Los agentes sulfitantes deben declararse en el etiquetado de alimentos cuando están presentes en concentraciones de 10 ppm o más, por su capacidad de provocar reacciones adversas como crisis de asma en personas sensibles.",
+          "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E223": {
       "code": "E223",
@@ -569,11 +622,37 @@
       "category": "conservante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Sulfito muy usado en vinos, frutos secos y crustáceos. Alérgeno de declaración obligatoria.",
+      "description": "Metabisulfito muy usado en vinificación, frutos secos y crustáceos. Comparte dictamen con el resto de sulfitos (E220-E228): IDA temporal retirada en 2022 por falta de datos suficientes, con preocupación de seguridad por margen de exposición en consumidores altos. Alérgeno de declaración obligatoria por riesgo de crisis de asma.",
       "flags": [
         "alergeno-declarable",
-        "riesgo-asma"
-      ]
+        "riesgo-asma",
+        "ida-retirada-falta-datos"
+      ],
+      "efsaAdi": "IDA temporal de grupo (0,7 mg SO2 eq/kg pc/día, 2016) retirada en 2022 por datos insuficientes; se evalúa ahora por margen de exposición (MOE)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "El Panel considera que la base de datos toxicológica disponible sigue siendo inadecuada para derivar una IDA y retira la IDA temporal de grupo fijada en 2016 (0,7 mg SO2 eq/kg pc/día); adopta en su lugar un enfoque de margen de exposición (MOE).",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9685353/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "Con datos de exposición realista, los MOE en el percentil 95 de consumidores altos quedan por debajo de 80 (el umbral de seguridad) en casi todos los grupos de población, lo que plantea una preocupación de seguridad para consumidores altos.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/follow-re-evaluation-sulfur-dioxide-e-220-sodium-sulfite-e-221-sodium"
+        },
+        {
+          "body": "FDA",
+          "type": "norma",
+          "year": 1986,
+          "finding": "Los agentes sulfitantes deben declararse en el etiquetado de alimentos cuando están presentes en concentraciones de 10 ppm o más, por su capacidad de provocar reacciones adversas como crisis de asma en personas sensibles.",
+          "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E224": {
       "code": "E224",
@@ -581,10 +660,37 @@
       "category": "conservante",
       "risk": "moderate",
       "origin": "sintético",
-      "description": "Sulfito habitual en vinificación. Alérgeno de declaración obligatoria.",
+      "description": "Metabisulfito potásico, habitual en vinificación como conservante. Comparte dictamen con el resto de sulfitos (E220-E228): IDA temporal retirada en 2022 por falta de datos suficientes, con preocupación de seguridad por margen de exposición en consumidores altos. Alérgeno de declaración obligatoria por riesgo de crisis de asma.",
       "flags": [
-        "alergeno-declarable"
-      ]
+        "alergeno-declarable",
+        "riesgo-asma",
+        "ida-retirada-falta-datos"
+      ],
+      "efsaAdi": "IDA temporal de grupo (0,7 mg SO2 eq/kg pc/día, 2016) retirada en 2022 por datos insuficientes; se evalúa ahora por margen de exposición (MOE)",
+      "evidence": [
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "El Panel considera que la base de datos toxicológica disponible sigue siendo inadecuada para derivar una IDA y retira la IDA temporal de grupo fijada en 2016 (0,7 mg SO2 eq/kg pc/día); adopta en su lugar un enfoque de margen de exposición (MOE).",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9685353/"
+        },
+        {
+          "body": "EFSA",
+          "type": "dictamen",
+          "year": 2022,
+          "finding": "Con datos de exposición realista, los MOE en el percentil 95 de consumidores altos quedan por debajo de 80 (el umbral de seguridad) en casi todos los grupos de población, lo que plantea una preocupación de seguridad para consumidores altos.",
+          "url": "https://www.efsa.europa.eu/en/plain-language-summary/follow-re-evaluation-sulfur-dioxide-e-220-sodium-sulfite-e-221-sodium"
+        },
+        {
+          "body": "FDA",
+          "type": "norma",
+          "year": 1986,
+          "finding": "Los agentes sulfitantes deben declararse en el etiquetado de alimentos cuando están presentes en concentraciones de 10 ppm o más, por su capacidad de provocar reacciones adversas como crisis de asma en personas sensibles.",
+          "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies"
+        }
+      ],
+      "reviewedAt": "2026-09-15"
     },
     "E234": {
       "code": "E234",
@@ -637,7 +743,7 @@
           "url": "https://eur-lex.europa.eu/eli/reg/2023/2108/oj"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E250": {
       "code": "E250",
@@ -674,7 +780,7 @@
           "url": "https://eur-lex.europa.eu/eli/reg/2023/2108/oj"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E251": {
       "code": "E251",
@@ -711,7 +817,7 @@
           "url": "https://eur-lex.europa.eu/eli/reg/2023/2108/oj"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E252": {
       "code": "E252",
@@ -748,7 +854,7 @@
           "url": "https://eur-lex.europa.eu/eli/reg/2023/2108/oj"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E280": {
       "code": "E280",
@@ -865,7 +971,7 @@
           "url": "https://www.efsa.europa.eu/en/efsajournal/pub/2392"
         }
       ],
-      "reviewedAt": "2026-09-14"
+      "reviewedAt": "2026-09-15"
     },
     "E321": {
       "code": "E321",

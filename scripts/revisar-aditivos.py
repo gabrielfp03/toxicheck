@@ -16,7 +16,7 @@ import pathlib
 import sys
 
 RUTA = pathlib.Path(__file__).resolve().parent.parent / "src/data/additives.json"
-FECHA = "2026-09-14"
+FECHA = "2026-09-15"
 
 # ---------------------------------------------------------------------------
 #  Revisiones
@@ -248,6 +248,74 @@ REVISIONES = {
             {"body": "Comisión Europea", "type": "norma", "year": 2008,
              "finding": "Reg. 1333/2008, anexo V: los alimentos que contengan Allura Red (E 129) deben etiquetarse con la mención «puede tener efectos negativos sobre la actividad y la atención de los niños».",
              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R1333"},
+        ],
+    },
+    "E220": {
+        "risk": "moderate",
+        "description": "Gas conservante, el más antiguo de la familia de los sulfitos. La EFSA fijó en 2016 una IDA temporal de grupo, pero en 2022 la retiró por falta de datos toxicológicos suficientes y pasó a evaluar el riesgo por margen de exposición (MOE): para consumidores altos ese margen queda por debajo del umbral de seguridad en casi todos los grupos de población. Es además un alérgeno de declaración obligatoria por su capacidad de provocar crisis de asma en personas sensibles.",
+        "flags": ["alergeno-declarable", "riesgo-asma", "ida-retirada-falta-datos"],
+        "efsaAdi": "IDA temporal de grupo (0,7 mg SO2 eq/kg pc/día, 2016) retirada en 2022 por datos insuficientes; se evalúa ahora por margen de exposición (MOE)",
+        "evidence": [
+            {"body": "EFSA", "type": "dictamen", "year": 2022,
+             "finding": "El Panel considera que la base de datos toxicológica disponible sigue siendo inadecuada para derivar una IDA y retira la IDA temporal de grupo fijada en 2016 (0,7 mg SO2 eq/kg pc/día); adopta en su lugar un enfoque de margen de exposición (MOE).",
+             "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9685353/"},
+            {"body": "EFSA", "type": "dictamen", "year": 2022,
+             "finding": "Con datos de exposición realista, los MOE en el percentil 95 de consumidores altos quedan por debajo de 80 (el umbral de seguridad) en casi todos los grupos de población, lo que plantea una preocupación de seguridad para consumidores altos.",
+             "url": "https://www.efsa.europa.eu/en/plain-language-summary/follow-re-evaluation-sulfur-dioxide-e-220-sodium-sulfite-e-221-sodium"},
+            {"body": "FDA", "type": "norma", "year": 1986,
+             "finding": "Los agentes sulfitantes deben declararse en el etiquetado de alimentos cuando están presentes en concentraciones de 10 ppm o más, por su capacidad de provocar reacciones adversas como crisis de asma en personas sensibles.",
+             "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies"},
+        ],
+    },
+    "E221": {
+        "risk": "moderate",
+        "description": "Sal conservante y antioxidante de la familia de los sulfitos. Comparte el mismo dictamen EFSA que el resto del grupo (E220-E228): IDA temporal retirada en 2022 por falta de datos suficientes, y preocupación de seguridad por margen de exposición en consumidores altos. Alérgeno de declaración obligatoria por riesgo de crisis de asma.",
+        "flags": ["alergeno-declarable", "riesgo-asma", "ida-retirada-falta-datos"],
+        "efsaAdi": "IDA temporal de grupo (0,7 mg SO2 eq/kg pc/día, 2016) retirada en 2022 por datos insuficientes; se evalúa ahora por margen de exposición (MOE)",
+        "evidence": [
+            {"body": "EFSA", "type": "dictamen", "year": 2022,
+             "finding": "El Panel considera que la base de datos toxicológica disponible sigue siendo inadecuada para derivar una IDA y retira la IDA temporal de grupo fijada en 2016 (0,7 mg SO2 eq/kg pc/día); adopta en su lugar un enfoque de margen de exposición (MOE).",
+             "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9685353/"},
+            {"body": "EFSA", "type": "dictamen", "year": 2022,
+             "finding": "Con datos de exposición realista, los MOE en el percentil 95 de consumidores altos quedan por debajo de 80 (el umbral de seguridad) en casi todos los grupos de población, lo que plantea una preocupación de seguridad para consumidores altos.",
+             "url": "https://www.efsa.europa.eu/en/plain-language-summary/follow-re-evaluation-sulfur-dioxide-e-220-sodium-sulfite-e-221-sodium"},
+            {"body": "FDA", "type": "norma", "year": 1986,
+             "finding": "Los agentes sulfitantes deben declararse en el etiquetado de alimentos cuando están presentes en concentraciones de 10 ppm o más, por su capacidad de provocar reacciones adversas como crisis de asma en personas sensibles.",
+             "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies"},
+        ],
+    },
+    "E223": {
+        "risk": "moderate",
+        "description": "Metabisulfito muy usado en vinificación, frutos secos y crustáceos. Comparte dictamen con el resto de sulfitos (E220-E228): IDA temporal retirada en 2022 por falta de datos suficientes, con preocupación de seguridad por margen de exposición en consumidores altos. Alérgeno de declaración obligatoria por riesgo de crisis de asma.",
+        "flags": ["alergeno-declarable", "riesgo-asma", "ida-retirada-falta-datos"],
+        "efsaAdi": "IDA temporal de grupo (0,7 mg SO2 eq/kg pc/día, 2016) retirada en 2022 por datos insuficientes; se evalúa ahora por margen de exposición (MOE)",
+        "evidence": [
+            {"body": "EFSA", "type": "dictamen", "year": 2022,
+             "finding": "El Panel considera que la base de datos toxicológica disponible sigue siendo inadecuada para derivar una IDA y retira la IDA temporal de grupo fijada en 2016 (0,7 mg SO2 eq/kg pc/día); adopta en su lugar un enfoque de margen de exposición (MOE).",
+             "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9685353/"},
+            {"body": "EFSA", "type": "dictamen", "year": 2022,
+             "finding": "Con datos de exposición realista, los MOE en el percentil 95 de consumidores altos quedan por debajo de 80 (el umbral de seguridad) en casi todos los grupos de población, lo que plantea una preocupación de seguridad para consumidores altos.",
+             "url": "https://www.efsa.europa.eu/en/plain-language-summary/follow-re-evaluation-sulfur-dioxide-e-220-sodium-sulfite-e-221-sodium"},
+            {"body": "FDA", "type": "norma", "year": 1986,
+             "finding": "Los agentes sulfitantes deben declararse en el etiquetado de alimentos cuando están presentes en concentraciones de 10 ppm o más, por su capacidad de provocar reacciones adversas como crisis de asma en personas sensibles.",
+             "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies"},
+        ],
+    },
+    "E224": {
+        "risk": "moderate",
+        "description": "Metabisulfito potásico, habitual en vinificación como conservante. Comparte dictamen con el resto de sulfitos (E220-E228): IDA temporal retirada en 2022 por falta de datos suficientes, con preocupación de seguridad por margen de exposición en consumidores altos. Alérgeno de declaración obligatoria por riesgo de crisis de asma.",
+        "flags": ["alergeno-declarable", "riesgo-asma", "ida-retirada-falta-datos"],
+        "efsaAdi": "IDA temporal de grupo (0,7 mg SO2 eq/kg pc/día, 2016) retirada en 2022 por datos insuficientes; se evalúa ahora por margen de exposición (MOE)",
+        "evidence": [
+            {"body": "EFSA", "type": "dictamen", "year": 2022,
+             "finding": "El Panel considera que la base de datos toxicológica disponible sigue siendo inadecuada para derivar una IDA y retira la IDA temporal de grupo fijada en 2016 (0,7 mg SO2 eq/kg pc/día); adopta en su lugar un enfoque de margen de exposición (MOE).",
+             "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9685353/"},
+            {"body": "EFSA", "type": "dictamen", "year": 2022,
+             "finding": "Con datos de exposición realista, los MOE en el percentil 95 de consumidores altos quedan por debajo de 80 (el umbral de seguridad) en casi todos los grupos de población, lo que plantea una preocupación de seguridad para consumidores altos.",
+             "url": "https://www.efsa.europa.eu/en/plain-language-summary/follow-re-evaluation-sulfur-dioxide-e-220-sodium-sulfite-e-221-sodium"},
+            {"body": "FDA", "type": "norma", "year": 1986,
+             "finding": "Los agentes sulfitantes deben declararse en el etiquetado de alimentos cuando están presentes en concentraciones de 10 ppm o más, por su capacidad de provocar reacciones adversas como crisis de asma en personas sensibles.",
+             "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies"},
         ],
     },
 }

@@ -147,15 +147,23 @@ criterio combinada con una restricción de uso.
 | | |
 |---|---|
 | Entradas en el diccionario | 122 |
-| Revisadas contra fuentes primarias | 14 |
-| Pendientes | 108 |
-| De ellas, con penalización sin verificar | 36 moderados + 30 bajos |
+| Revisadas contra fuentes primarias | 18 |
+| Pendientes | 104 |
+| De ellas, con penalización sin verificar | 32 moderados + 30 bajos |
 
-Hechas: los ocho de riesgo alto, y los seis colorantes de Southampton
-(E102, E104, E110, E122, E124, E129).
+Hechas: los ocho de riesgo alto, los seis colorantes de Southampton
+(E102, E104, E110, E122, E124, E129), y los cuatro sulfitos E220, E221, E223,
+E224 (comparten dictamen EFSA 2016/2022: IDA temporal de grupo retirada en
+2022 por falta de datos suficientes, con MOE por debajo del umbral de
+seguridad para consumidores altos).
 
-**Siguiente tanda:** conservantes y sulfitos — E210, E211, E212, E220, E221,
-E223, E224. Después los fosfatos (E338 a E341, E450 a E452), que comparten la
+**Pendiente de la tanda anterior:** E210, E211, E212 (benzoatos). Comparten
+dictamen EFSA 2016 (14(3):4433), pero ese documento no se pudo abrir desde
+este entorno — Wiley devuelve 403 a cualquier cliente automatizado y EUR-Lex
+responde con un reto de bot de AWS WAF. Quedan en `moderate` sin evidencia
+nueva hasta que alguien pueda abrir el dictamen con un navegador real.
+
+**Siguiente tanda:** los fosfatos (E338 a E341, E450 a E452), que comparten la
 IDA de grupo de la EFSA de 2019 y se resuelven casi de una vez.
 
 Cuando termines una tanda, sube el mínimo del test de cobertura en
